@@ -1,3 +1,42 @@
+# PART 1
+## 01 - Pay attention to UI re-renders
+- Issue: Incorrect state updates cause extraneous rendering cycles
+- By default, a component re-render if its parent is re-rendering or the props are different. This means that your component’s render method can sometimes run, even if their props didn’t change. This is an acceptable tradeoff in most scenarios, as comparing the two objects (the previous and current props) would take longer.
+- Note: Performing premature optimizations may have a counter-positive effect. Try looking at performance issues as soon as you spot dropped frames or undesired performance within your app.
+- Solution: Profile with Flipper and find out what are the causes for re-render. Optimize the number of state updates and use memoized components when needed. Atomic state.
+
+## 02 - Use dedicated components for certain layouts
+- Issue: You are unaware of the higher-order components that are provided with React Native. Like FlatList. Or FlashList for better.
+
+## 03 - Think twice before you pick an external library
+- Be more selective and use smaller specialized library
+
+`import moment from 'moment';` 67KB
+
+`import dayjs from 'dayjs';` 2KB
+
+`import { map } from 'lodash';` instead `import map from 'lodash/map';`
+
+## 04 - Always remember to use libraries which dedicated to mobile
+- Issue: Not optimized libraries cause battery drain and slow down the app. The OS may limit your application’s capabilities.
+
+## 05 - Find the balance between native and JavaScript
+- Issues: Issue: While working on native modules, you draw the line in the wrong place between native and JavaScript abstractions
+
+## 06 * Animate at 60FPS - no matter what
+- Issue: Use native solutions to achieve smooth animations and a ges- ture-driven interface at 60FPS. JS-driven animations are occupying the bridge traffic and slowing down the application.
+- Solution: react-native-gesture-handler with Reanimated. Also wait for New Architecture for startTransition API.
+
+## 07 - Replace Lottie with Rive
+- use rive for better performance while using animations
+
+## 08 - Optimize your app’s JavaScript bundle
+- Issue: Metro, the default JS bundler for React Native, produces a bundle that’s too large.
+- Solution: Use different bundlers like Re.Pack, ESBuild etc.
+- Benefits: Ship less JavaScript to your users. Save devel- opers’ time when bundling.
+
+# PART 2
+
 ## 01 - Always run the latest React Native version to access the new features
 - So you'll get better performance, newer features and easier updating work
 
@@ -54,3 +93,8 @@ Fabric is React Native's new concurrent rendering system, a conceptual evolution
 Fabric allows us to take advantage of the features introduced in React 18. Instead of the bridge, we can use JSI which is synchronous by de- fault. For the time being, React Native is not removing the bridge com- pletely; it’s still available so developers can gradually adopt the New Architecture and JSI. However, using the bridge needs to be explicitly stated (by importing it), so modules not yet migrated won’t work. Meta is planning to soon allow apps to run in a completely bridge-less mode.
 ### TurboModules
 This is a new way of writing native modules that also leverages the power of JSI, allowing for synchronous, and an order of magnitude faster data transfer from native to JS and vice versa. It is a rewrite of the communication layer between JavaScript and platform native modules like Bluetooth, Biometrics, etc. It also allows for writing native code for both platforms using C++ and introduces the lazy loading of modules to speed up your app startup time.
+
+# PART 3
+
+## 01 - Run tests for key pieces of your app
+- Solution: Don’t aim at 100% coverage, focus on key piec- es of the app. Test mostly integration.
