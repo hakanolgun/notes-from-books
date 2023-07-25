@@ -2,7 +2,7 @@
 
 This book is about liberty, and how and why human societies have achieved or failed to achieve it.
 
-Where does liberty come from? Not from Assad's dictatoship and also not from the anarchy that followed the collapse of the Syrian state.
+Where does liberty come from? Not from Assad's dictatorship and also not from the anarchy that followed the collapse of the Syrian state.
 
 Our answer is simple. Liberty needs the state and the laws. But it is not given by the state or the elites controlling it. It is taken by regular people, by society. Society needs to control the state.
 
@@ -18,7 +18,7 @@ Thommas Hobbes's terms is Warre which is similar to anarchy.
 
 "If any two men desire the same thing which they cannot bot enjoy, they become enemies... endeavor to destroy one an other."
 
-Warre-Anarchy emerges when men live without a common power to keep them all in awe. Hobbes dubbed this common power the **Leviathan** or **Common-Wealth** or **state** interchangeably. Solution to Warre is to create a centralized authority.
+Anarchy emerges when men live without a common power to keep them all in awe. Hobbes dubbed this common power the **Leviathan** or **Common-Wealth** or **state** interchangeably. Solution to Warre is to create a centralized authority.
 
 Hobbes understood that the all-powerful Leviathan would be feared. But better to fear one powerful Leviathan than to fear everybody.
 
