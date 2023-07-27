@@ -98,3 +98,14 @@ This is a new way of writing native modules that also leverages the power of JSI
 
 ## 01 - Run tests for key pieces of your app
 - Solution: Don’t aim at 100% coverage, focus on key piec- es of the app. Test mostly integration.
+
+## 02 - Have a working Continuous Integration (CI) in place
+- Solution: Use a CI provider such as **CircleCI** to build your application. Run all the required tests and make preview releases if possible.
+
+## 03 - Don’t be afraid to ship fast with Continuous Deployment
+- Issue: Building and distributing your apps manually is a complex and time-consuming process.
+- Continuous Deployment is a strategy in which software is released fre- quently through a set of automated scripts. It aims at building, testing, and releasing software with greater speed and frequency. The approach helps reduce the cost, time, and risk of delivering changes by allowing for more incremental updates to applications in production.
+- Solution: Establish a continuous deployment setup (based on **Fastlane**) that makes the build and generates the changelog. Ship to your users instantly.
+- **AppCenter** is a cloud service with tooling for the automation and de- ployment of your application. Its biggest advantage is that many of the settings can be configured from the graphical interface. It is much easier to set up the App Store and Play Store deployments this way, rather than working with uploads from the command line.
+
+## 03 - Ship OTA (Over-The-Air) when in an emergency
