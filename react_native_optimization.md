@@ -95,17 +95,25 @@ Fabric allows us to take advantage of the features introduced in React 18. Inste
 This is a new way of writing native modules that also leverages the power of JSI, allowing for synchronous, and an order of magnitude faster data transfer from native to JS and vice versa. It is a rewrite of the communication layer between JavaScript and platform native modules like Bluetooth, Biometrics, etc. It also allows for writing native code for both platforms using C++ and introduces the lazy loading of modules to speed up your app startup time.
 
 # PART 3
-
-## 01 - Run tests for key pieces of your app
+## 1 - Run tests for key pieces of your app
 - Solution: Don’t aim at 100% coverage, focus on key piec- es of the app. Test mostly integration.
 
-## 02 - Have a working Continuous Integration (CI) in place
+## 2 - Have a working Continuous Integration (CI) in place
 - Solution: Use a CI provider such as **CircleCI** to build your application. Run all the required tests and make preview releases if possible.
 
-## 03 - Don’t be afraid to ship fast with Continuous Deployment
+## 3 - Don’t be afraid to ship fast with Continuous Deployment
 - Issue: Building and distributing your apps manually is a complex and time-consuming process.
 - Continuous Deployment is a strategy in which software is released fre- quently through a set of automated scripts. It aims at building, testing, and releasing software with greater speed and frequency. The approach helps reduce the cost, time, and risk of delivering changes by allowing for more incremental updates to applications in production.
 - Solution: Establish a continuous deployment setup (based on **Fastlane**) that makes the build and generates the changelog. Ship to your users instantly.
 - **AppCenter** is a cloud service with tooling for the automation and de- ployment of your application. Its biggest advantage is that many of the settings can be configured from the graphical interface. It is much easier to set up the App Store and Play Store deployments this way, rather than working with uploads from the command line.
 
-## 03 - Ship OTA (Over-The-Air) when in an emergency
+#There are two popular ways to implement OTA into your app. The first and most popular tool for OTA updates is CodePush, a service that is a part of Microsoft’s App Center suite. The second tool is created by the Expo team and it’s called EAS Update.
+
+## 4 - Ship OTA (Over-The-Air) when in an emergency
+- There are two popular ways to implement OTA into your app. The first and most popular tool for OTA updates is CodePush, a service that is a part of Microsoft’s App Center suite. The second tool is created by the Expo team and it’s called EAS Update.
+
+## 5 - Make your app consistently fast
+- Issue: Every once in a while after fixing a performance issue, the app gets slow again.
+- Solution: Use the DMAIC methodology to help you solve performance issues consistently.  The acronym stands for Define, Measure, Analyze, Improve, and Control.
+
+## 6 - Know how to profile iOS
