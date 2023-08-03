@@ -205,18 +205,76 @@ function empty() {
   }
 }
 ```
+
 **Priority Queues**
 In the course of normal queue operations, when an element is removed from a queue, that element is always the first element that was inserted into the queue. There are certain applications of queues, however, that require that elements be removed in an order other than first-in, first-out. When we need to simulate such an application, we need to create a data structure called a priority queue.
 
-
 # 6 - Linked List
-There are several reasons arrays are not always the best data structure to use for organ‐ izing data. In many programming languages, arrays are fixed in length, so it is hard to add new data when the last element of the array is reached. Adding and removing data from an array is also difficult because you have to move array elements up or down to reflect either an addition or a deletion. However, these problems do not come up with JavaScript arrays, since we can use the split() function without having to perform additional array element accesses.
 
-The main problem with using JavaScript arrays, however, is that arrays in JavaScript are implemented as objects, causing them to be less efficient than arrays built in languages such as C++ and Java (see Crockford, Chapter 6).
+There are several reasons arrays are not always the best data structure to use for organizing data. In many programming languages, arrays are fixed in length, so it is hard to add new data when the last element of the array is reached. Adding and removing data from an array is also difficult because you have to move array elements up or down to reflect either an addition or a deletion. However, these problems do not come up with JavaScript arrays, since we can use the split() function without having to perform additional array element accesses.
 
-When you determine that the operations performed on an array are too slow for prac‐ tical use, you can consider using the linked list as an alternative data structure. The linked list can be used in almost every situation where a one-dimensional array is used, except when you need random access to the elements of a list. When random access is required, an array is the better data structure to use.
+The main problem with using JavaScript arrays, however, is that arrays in JavaScript are implemented as objects, causing them to be less efficient than arrays built in languages such as C++ and Java.
 
+When you determine that the operations performed on an array are too slow for practical use, you can consider using the linked list as an alternative data structure. The linked list can be used in almost every situation where a one-dimensional array is used, except when you need random access to the elements of a list. When random access is required, an array is the better data structure to use.
 
+Linked List is very efficient when inserting and removing item from the list.
+
+```js
+function Node(element) {
+  this.element = element;
+  this.next = null;
+}
+function LList() {
+  this.head = new Node("head");
+  this.find = find;
+  this.insert = insert;
+  this.display = display;
+  this.findPrevious = findPrevious;
+  this.remove = remove;
+}
+function remove(item) {
+  var prevNode = this.findPrevious(item);
+  if (!(prevNode.next == null)) {
+    prevNode.next = prevNode.next.next;
+  }
+}
+function findPrevious(item) {
+  var currNode = this.head;
+  while (!(currNode.next == null) && currNode.next.element != item) {
+    currNode = currNode.next;
+  }
+  return currNode;
+}
+function display() {
+  var currNode = this.head;
+  while (!(currNode.next == null)) {
+    print(currNode.next.element);
+    currNode = currNode.next;
+  }
+}
+function find(item) {
+  var currNode = this.head;
+  while (currNode.element != item) {
+    currNode = currNode.next;
+  }
+  return currNode;
+}
+function insert(newElement, item) {
+  var newNode = new Node(newElement);
+  var current = this.find(item);
+  newNode.next = current.next;
+  current.next = newNode;
+}
+var cities = new LList();
+cities.insert("Conway", "head");
+cities.insert("Russellville", "Conway");
+cities.insert("Carlisle", "Russellville");
+cities.insert("Alma", "Carlisle");
+cities.display();
+console.log();
+cities.remove("Carlisle");
+cities.display();
+```
 
 # 7 - Dictionaries
 
