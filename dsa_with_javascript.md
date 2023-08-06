@@ -442,6 +442,125 @@ cities.remove("Carlisle");
 cities.display();
 ```
 
+**ArrayList**
+ArrayList is the data structure which js uses for arrays. So const arr = [] is an ArrayList.
+
+```js
+class ArrayList {
+  constructor() {
+    this.array = [];
+  }
+
+  // Add an element to the end of the ArrayList
+  add(element) {
+    this.array.push(element);
+  }
+
+  // Get the element at the specified index
+  get(index) {
+    if (index >= 0 && index < this.array.length) {
+      return this.array[index];
+    }
+    return undefined;
+  }
+
+  // Remove the element at the specified index
+  remove(index) {
+    if (index >= 0 && index < this.array.length) {
+      this.array.splice(index, 1);
+    }
+  }
+
+  // Get the current size of the ArrayList
+  size() {
+    return this.array.length;
+  }
+
+  // Check if the ArrayList is empty
+  isEmpty() {
+    return this.array.length === 0;
+  }
+}
+
+// Usage example:
+const myArrayList = new ArrayList();
+myArrayList.add(10);
+myArrayList.add(20);
+myArrayList.add(30);
+
+console.log("Size:", myArrayList.size()); // Output: Size: 3
+console.log("Element at index 1:", myArrayList.get(1)); // Output: Element at index 1: 20
+
+myArrayList.remove(0);
+console.log("Size after removing:", myArrayList.size()); // Output: Size after removing: 2
+```
+
+A RingBuffer is a fixed-size buffer that overwrites the oldest data when it reaches its capacity. Here's an implementation of a RingBuffer:
+```js
+class RingBuffer {
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.buffer = new Array(capacity).fill(null);
+    this.readIndex = 0;
+    this.writeIndex = 0;
+    this.size = 0;
+  }
+
+  // Add an element to the buffer
+  enqueue(value) {
+    this.buffer[this.writeIndex] = value;
+    this.writeIndex = (this.writeIndex + 1) % this.capacity;
+    if (this.size < this.capacity) {
+      this.size++;
+    } else {
+      this.readIndex = this.writeIndex;
+    }
+  }
+
+  // Remove and return the oldest element from the buffer
+  dequeue() {
+    if (this.size === 0) {
+      return undefined;
+    }
+    const value = this.buffer[this.readIndex];
+    this.buffer[this.readIndex] = null;
+    this.readIndex = (this.readIndex + 1) % this.capacity;
+    this.size--;
+    return value;
+  }
+
+  // Get the number of elements in the buffer
+  getSize() {
+    return this.size;
+  }
+
+  // Get the capacity of the buffer
+  getCapacity() {
+    return this.capacity;
+  }
+
+  // Check if the buffer is empty
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  // Check if the buffer is full
+  isFull() {
+    return this.size === this.capacity;
+  }
+}
+
+// Usage example:
+const myRingBuffer = new RingBuffer(5);
+myRingBuffer.enqueue(1);
+myRingBuffer.enqueue(2);
+myRingBuffer.enqueue(3);
+myRingBuffer.enqueue(4);
+myRingBuffer.enqueue(5);
+console.log(myRingBuffer.dequeue()); // Output: 1 (Oldest element)
+console.log(myRingBuffer.getSize()); // Output: 4
+```
+
 # 7 - Dictionaries
 
 # 8 - Hashing
