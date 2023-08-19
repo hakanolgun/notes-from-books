@@ -20,83 +20,87 @@ He asked to Algamish the money lender how to become rich. Algamish said to him "
 
 ---
 
-“On iki ay sonra Algamish yine kâtipler odasında beni ziyaret etti ve sordu: ‘En son gördüğümden beri ne gibi gelişmeler oldu?’
+Again, twelve months later, Algamish came to the room of the scribes and addressed me.
 
-‘“Kendime düzenli bir şekilde ödeme yaptım,’ diye cevap verdim. ‘Bu sefer birikimlerimi kalkan yapan usta Aggar’a bronz alması için teslim ettim ve dört ayda bir bana faiz ödüyor.’
+’’What progress have you made since last I saw you?”
 
-“‘Bu iyi. Peki aldığın faizle ne yapıyorsun?’
+"I have paid myself faithfully,' I replied, 'and my savings I have entrusted to Agger the shield maker, to buy bronze, and each fourth month he does pay me the rental.”
 
-‘“Bal ve iyi şarap ve baharatlı keklerle büyük bir ziyafet çekiyorum. Kendime kırmızı bir tunik de aldım. Bir gün umarım genç bir eşek alacağım binmek için.’
+"That is good. And what do you do with the rental?' "I do have a great feast with honey and fine wine and spiced cake. Also I have bought me a scarlet tunic. And some day I shall buy me a young ass upon which to ride.” To which Algamish laughed, “You do eat the children of your savings. Then how do you expect them to work for you?
 
-“Algamish bu söylediklerime güldü. ‘Birikimlerinin çocuklarını yemişsin. O zaman onların senin için çalışmasını nasıl beklersin? O zaman onların çocukları olur mu? İlk önce kendine bir altın köle ordusu al, ondan sonra pişman olmadan istediğin kadar zengin ziyafetler çekebilirsin.’
+And how can they have children that will also work for you?
 
-İki yıl sonra: “‘Arkad, derslerini iyi öğrendin. Önce kazandığından daha azıyla yaşamayı öğrendin. Sonra kendi alanlarında tavsiye verebilecek insanlara fikir danışmayı öğrendin. Ve sonunda altının senin için çalışmasını sağlamayı öğrendin.
-
-“‘Parayı kendine ayırmayı öğrendin, onu tutmayı ve kullanmayı. Bu yüzden de sorumluluk gerektiren bir pozisyonu artık yerine getirebilecek kıvamdasın. Ben yaşlanıyorum. Oğullarım sadece para harcamayı düşünüyorlar ve para kazanmakla ilgilenmiyorlar. Benim çok mülküm var ve artık hepsine hâkim olamıyorum. Benim için Nippur’a gidip oradaki topraklarımla ilgilenirsen seni ortağım yaparım ve mal varlığımı seninle paylaşırım.’
-
-“Böylece Nippur’a gittim ve Algamish’in oradaki mülkleriyle ilgilenmeye başladım ki bu gerçekten de oldukça büyük bir sorumluluktu. Hırslı olduğum ve parayı yönetme konusunda bu üç kuralı benimsemiş olduğum için mal varlığının değerini artırabildim. Zenginleştim ve Algamish’in ruhu karanlığa doğru gittiğinde, hukuken düzenlemiş olduğu üzere mal varlığının bir kısmı bana kaldı.”
+First get thee an army of golden slaves and then many a rich banquet may you enjoy without regret.” So saying he again went away.
 
 ---
 
-Bunun üzerine diğer bir arkadaşı söz aldı ve dedi ki: “Eğer söylediklerin doğruysa, ki hepsi mantıklı geliyor, her insan bu basit şeyleri gerçekleştirseydi herkese yetecek kadar zenginlik olmazdı.”
+"Arkad,” he continued, “you have learned your lessons well. You first learned to live upon less than you could earn. Next you learned to seek advice from those who were competent through their own experiences to give it. And, lastly, you have learned to make gold work for you.”
 
-“Zenginlik insan enerjisini nereye verirse orada büyür,” diye cevap verdi Arkad. “Eğer zengin bir adam yeni bir saray yaparsa ödediği altınlar yitirilmiş mi sayılır? Hayır, altınların bir kısmı tuğla ustasında, bir kısmı inşaat işçisinde, bir kısmı sanatçıdadır. Eve emek veren her kişi, zenginliğin bir parçasına sahip olmuştur. Saray bittiğinde değeri bütün bu masrafların toplamı değil midir? Üzerinde olduğu toprağın değeri sarayın varlığıyla birlikte artmamış mıdır? Peki yanındaki arsa, saray orada olduğu için daha değerli değil midir? Zenginlik sihirli şekillerde büyür. Hiç kimse sınırlarını bilemez. Fenikeliler denizden gelen ticari zenginlikleriyle çıplak sahillerde görkemli şehirler inşa etmediler mi?”
+"You have taught yourself how to acquire money, how to keep it, and how to use it. Therefore, you are competent for a responsible position. I am becoming an old man. My sons think only of spending and give no thought to earning. My interests are great and I fear too much for me to look after. If you will go to Nippur and look after my lands there, I shall make you my partner and you shall share in my estate.”
 
-Arkadaşlarından bir başkası “O zaman bizim de zengin olabilmemiz için tavsiyen nedir?” diye sordu. “Yıllar geçti, artık genç de değiliz ve kenara hiçbir şey koymadık.”
+"So I went to Nippur and took charge of his holdings, which were large. And because I was full of ambition and because I had mastered the three laws of successfully handling wealth, I was enabled to increase greatly the value of his properties.
 
-“Tavsiyem, Algamish’in bilgeliğini örnek alın ve kendinize şöyle söyleyin: ‘Kazandığımın bir kısmı bende kalmalı.’ Sabah kalktığınızda bunu düşünün. Öğlen kendinize bunu hatırlatın. Gece bunu düşünün. Her gün, her saat başı bunu düşünün. O kadar çok kez bunu kendinize söyleyin ki harfler gökyüzünde ateşten yapılmış bir şekilde belirsin gözlerinizin önünde.Daha sonra makul gelen bir miktar belirleyin. Gelirinizin onda birinden az olmasın ve bunu bir kenara koyun. Gerekirse diğer harcamalarınızı buna göre ayarlayın. İlk önce bu miktarı kenara koyun. Zaman içinde sadece size ait olan bir hazinenizin olmasının nasıl zengin bir his olduğunu duyumsayacaksınız. Büyüdükçe sizi kamçılayacak. Size yeni bir mutluluk verecek. Daha çok kazanmak için çaba sarf etmek isteyeceksiniz. Kazançlarınız arttıkça aynı orandaki miktar sizin olacak, değil mi?
+---
 
-“Daha sonra hazineniz sizin için çalışmalı. Sizin köleniz olmalı. Çocuklarınızı ve çocuklarınızın çocuklarını kendiniz için çalıştırmalısınız.
+"What then do you advise us to do that we also may become rich?" asked still another of his friends. "The years have passed and we are no longer young men and we have nothing put by."
 
-“Geleceğiniz için gelir kaynağınızı garantilemelisiniz. Yaşlılara bakın, bir süre sonra sizin de onlardan biri olacağınızı unutmayın. Hazinenizi çok dikkatli bir şekilde yatırımlar a yönlendirin ki kaybolmasın. Yüksek faizler sizi kayalara çağıran, geminizi batıracak olan sirenlerin tatlı ama yalancı melodilerinden farklı değildir.
+“"I advise that you take the wisdom of Algamish and say to yourselves, **_'A part of all I earn is mine to keep.'_** Say it in the morning when you first arise. Say it at noon. Say it at night. Say it each hour of every day. Say it to yourself until the words stand out like letters of fire across the sky.
 
-“Tanrılar sizi yanlarına çağırdığında aileniz ihtiyaçlarını karşılayabilsin diye biriktirin. Düzenli olarak küçük ödemeler yaparsanız böyle bir korumayı sağlamanız mümkün olur. Tutumlu bir insan büyük bir miktarı böyle akıllıca bir neden için kenara koymayı hiç ertelemez.
+"Impress yourself with the idea. Fill yourself with the thought. Then take whatever portion seems wise. Let it be not less than one-tenth and lay it by. Arrange your other expenditures to do this if necessary. But lay by that portion first. Soon you will realize what a rich feeling it is to own a treasure upon which you alone have claim. As it grows it will stimulate you. A new joy of life will thrill you.
 
-“Buradayken hayatın tadını çıkarın. Kendinizi fazla zorlamayın ya da çok fazla biriktirmeye çalışmayın. Eğer kazandığınızın sadece onda birini tutabiliyorsanız bununla tatmin olun. Bunun dışında gelirinize göre yaşayın ve harcamaktan korkup cimrileşmeyin. Hayat güzel ve tadı çıkarılması gereken şeylerle dolu.”
+Greater efforts will come to you to earn more. For of your increased earnings, will not the same percentage be also yours to keep?
+
+"Then learn to make your treasure work for you. Make it your slave. Make its children and its children's children work for you.
+
+"Insure an income for thy future. Look thou at the aged and forget not that in the days to come thou also will be numbered among them. Therefore invest thy treasure with greatest caution that it be not lost. Usurious rates of return are deceitful sirens that sing but to lure the unwary upon the rocks of loss and remorse.
+
+"Provide also that thy family may not want should the Gods call thee to their realms. For such protection it is always possible to make provision with small payments at regular intervals. Therefore the provident man delays not in expectation of a large sum becoming available for such a wise purpose.
+
+"Counsel with wise men. Seek the advice of men whose daily work is handling money. Let them save you from such an error as I myself made in entrusting my money to the judgment of Azmur, the brickmaker. A small return and a safe one is far more desirable than risk.
+
+"Enjoy life while you are here. Do not overstrain or try to save too much. If one-tenth of all you earn is as much as you can comfortably keep, be content to keep this portion. Live otherwise according to your income and let not yourself get niggardly and afraid to spend. Life is good and life is rich with things worthwhile and things to enjoy."
 
 ## Seven Cures For a Lean Purse
 
-Kral Sargon, Arkad'tan babillilere nasıl zengin olunacağını öğretmesini ister.
-Arkad yüz kişilik öğrenci grubuna yedi günde yedi çare öğretmeye başlar.
+King Sargon, asked Arkad to teach people how to become rich. Arkad accepted and started to teach seven cure.
 
 ## The First Cure - Start thy purse to fattening
 
-Kazandığın her on paradan dokuzunu harcamak, birini biriktirmek.
+Save one in tenth in every money you own. Only expence nine in tenth.
 
 ## The Second Cure - Control thy expenditures
 
-Eğer kazancınız zaten az ise bütçe yapın, harcamalarınızı tespit edip olmazsa da olurları kısın; tasarruf yaptığınız o onda biri azaltmayın.
+Never cut that one in tenth. If your income is small, make a budget and cut some expenses.
 
 ## The Third Cure - Make thy gold multiply
 
-Kazandıklarımızdan kenara koyduğumuz altın sadece bir başlangıç. Bu altın üzerinden kazandıklarımız servetimizi oluşturacak.
+The gold which we save from our income is just a beginning. Gold that we earn from this gold will be our wealth.
 
-Paranızı kiraya verin. Mesela faize yatırın, birilerine faizli borç verin. Bir sonraki sefere gelen faizle birlikte toplam parayı kiraya verin. Kar topu gibi büyütün.
+Rent your money. When you get interest. Next time rent your money with that. Snowball effect.
 
 ## The Fourth Cure - Guard thy treasures from loss
 
-Anaparanızın güvende olduğu yatırımlar yapın. Eş dost lafıyla riskli işlere girişirken çok dikkatli olun. Geri alabilceğinizden emin olmadığınız kişilere borç vermeyin. Hazinenizi başkalarına hediye etmemiş olursunuz. İş yapacağınız kişiler o işin ustası olsun.
+Invest something which your capital is safe. Don't start risky business with the affect of your friends or relatives. Never lend your money someone you are not sure pay back. The man which you will do business should be professional and expert of that area.
 
 ## The Fifth Cure - Make of thy dwelling a profitable investment
 
-Kiracı iseniz kira ödemek yerine kira öder gibi kredi ödeyerek kendi evinizin sahibi olun. Kendi evinizin sahibi olmask hem maddi olarak uzun vadede rahatlatır hem de manevi olarak daha huzurlu ve yaşam dolu yapar.
+If you are paying rent, buy your own house and pay that credit like your rent. Owning a house make you happy and lifefull.
 
 ## The Sixth Cure - Insure a future income
 
-Yaşlandığınızdaki ve ailenizin ileriki yıllardaki ihtiyaçları için şimdiden bir gelir yaratmaya bakın. Altın gömmek riskli. Onun yerine ev - arsa alınabilir. Birilerine faizli kredi verilebilir.
+Start to create a saving for your old ages or your families needs. Burying gold is risky. Buying land or flat better. Or invest that money.
 
 ## The Seventh Cure - Increase thy ability to earn
 
 Daha çok bildikçe daha fazla kazanırız. Kendi zanaatında daha fazla şey öğrenmek isteyen kişi daha fazla kazanır. Eğer zanaatkârsa daha fazla yöntem ve araç kullanmayı öğrenerek işini daha iyi yapabilir. Kişi zayıf cüzdana karşı yedi çarenin kurallarını öğrenip kendi alanındaki kişilerin fikrini alarak bilgi paylaşımı yapmalıdır. Mesela tüccarsa daha iyi malları daha ucuza almak için çalışmalıdır.
 
 Ayrıca:
-“Bütün borçlarını elinden geldiğince hızlı bir şekilde ödemelidir. İmkânının dışında olan şeyleri satın almamalıdır.
 
-“Ailesine iyi bakmalıdır ki onun hakkında iyi düşünüp iyi konuşsunlar.
+- “Ailesine iyi bakmalıdır ki onun hakkında iyi düşünüp iyi konuşsunlar.
 
-“Vasiyetini hazırlamalıdır ki tanrılar onu yanına çağırdığında mülkleri uygun ve onurlu bir şekilde bölünebilsin.
+- “Vasiyetini hazırlamalıdır ki tanrılar onu yanına çağırdığında mülkleri uygun ve onurlu bir şekilde bölünebilsin.
 
-“Fiziksel olarak zayıf olanlara ve şanssızlıklar yaşamış kişilere şefkat göstererek makul sınırlar içinde yardım etmeli. Değer verdiği kişilere düşünceli jestler yapmalı.
+- “Fiziksel olarak zayıf olanlara ve şanssızlıklar yaşamış kişilere şefkat göstererek makul sınırlar içinde yardım etmeli. Değer verdiği kişilere düşünceli jestler yapmalı.
 
 ## Meet the Goddess of Good Luck
 
