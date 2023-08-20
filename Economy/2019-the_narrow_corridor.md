@@ -24,8 +24,6 @@ Hobbes understood that the all-powerful Leviathan would be feared. But better to
 
 How to get a Leviathan? Hobbes proposed two routes. First one is people submit their wills to his will, and their judgements to his judgement. So a sort of grand social contract. The second one is by force. Somebody will emerge in anarchy and destroy his enemies and become Leviathan. Both ways ends up to end of Warre.
 
-Hobbes' theree ways to govern a state: monarch, aristocracy or democracy.
-
 Hobbes was right about avoiding anarchy. But there was also much that Hobbes didn't get right. For one, it turns out that stateless societies are quite capable of controlling violence, though as we'll see this doesn't bring much liberty. For another, he was too optimistic about the liberty that states would bring.
 
 Nazi Germany and Communist China shows that leviathan can be bad also. The state finished anarchy but it murder his people, monitor them etc.
