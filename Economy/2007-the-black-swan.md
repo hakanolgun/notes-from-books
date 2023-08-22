@@ -12,7 +12,7 @@
 
 - Siyah Kuğular öngörülemediğine göre, safça onları öngörmeye çalışmak yerine varlıklarına alışmamız gerekir. Anti-bilgiye ya da bilmediklerimize odaklandığımız takdirde yapabileceğimiz pek çok şey vardır. Diğer çok sayıda faydasının yanı sıra, kendimizi azami düzeyde açık tutarak (pozitif türdeki) az bulunur Siyah Kuğuları biriktirmeye başlayabiliriz. Bazı alanlarda –örneğin bilimsel keşifler ve riskli sermaye yatırımlarında– bilinmeyenden orantısız bir getiri elde edilir, çünkü nadir bir olaydan kaybedecek çok az, fakat kazanacak çok şeyiniz vardır.
 
-- Bu açıdan, Marx ve Adam Smith’in görüşünde olanlara katılmıyorum: serbest piyasaların işlemesinin nedeni, beceriye karşılık ödül veya “teşvik” vermek yerine, girişimci deneme ve yanılmalar sayesinde insanlara şansı yakalama imkânı tanımasıdır. Dolayısıyla doğru strateji, olabildiğince kurcalamak ve elinizden geldiğince Siyah Kuğu fırsatları toplamaya çalışmaktır.
+- Bu açıdan, Marx ve Adam Smith’in görüşünde olanlara katılmıyorum: serbest piyasaların işlemesinin nedeni, beceriye karşılık ödül veya “teşvik” vermek yerine, girişken deneme ve yanılmalar sayesinde insanlara şansı yakalama imkânı tanımasıdır. Dolayısıyla doğru strateji, olabildiğince kurcalamak ve elinizden geldiğince Siyah Kuğu fırsatları toplamaya çalışmaktır.
 
 - Kısaca özetleyecek olursam, bu (kişisel) denemede düşünme alışkanlıklarımızın birçoğunu eleştirerek, dünyamıza uç, bilinmeyen ve olasılıksız (şimdiki bilgimize göre olasılıksız) olanın hükmettiğini ve bizim de bu arada zamanımızı bilinene ve tekrarlanana odaklanarak boş laflarla geçirdiğimizi ileri sürüyorum. Bu durum, uç olanı bir kenara itilecek bir istisna değil de başlangıç noktası olarak görmemiz gerektiğini ortaya koyuyor. Daha cüretli ve (sinir bozucu) bir iddiada daha bulunup, ilerlememize ve bilgimizin artmasına rağmen, hatta belki tam da bu tür bir ilerleme ve artış nedeniyle, insan doğası ve sosyal “bilim” bu fikri bizlerden elbirliği etmişçesine sakladığı sürece, geleceğin gitgide daha az öngörülebilir hale geleceğini ileri sürüyorum.
 
@@ -21,31 +21,10 @@
 - Tarih ve toplumlar emeklemez, sıçrama yapar. Yine de bizler, öngörülebilir, küçük aşamalar halinde ilerlemeye inanmak isteriz.
 
 - Kategorilere ayırmak her zaman gerçek karmaşıklığın boyutlarını
-  küçültür. Önsözde tanımladığım Siyah Kuğu üreticisinin, o sarsıl-
-  maz Platonikliğin belirtisidir. Çevremizdeki dünyada herhangi bir
-  daralma çok şiddetli sonuçlar doğurabilir, çünkü bazı belirsizlik kay-
-  naklarını yok sayar; dünyanın dokusunu yanlış anlamamıza yol açar.
-  Örneğin, radikal İslam’ın (ve savunduğu değerlerin) komünizm
-  tehdidi karşısında müttefiğiniz olduğunu düşünebilir ve gelişmesini
-  destekleyebilirsiniz… sonunda Manhattan’ın göbeğine iki uçak gön-
+  küçültür. Önsözde tanımladığım Siyah Kuğu üreticisinin, o sarsılmaz Platonikliğin belirtisidir. Çevremizdeki dünyada herhangi bir daralma çok şiddetli sonuçlar doğurabilir, çünkü bazı belirsizlik kaynaklarını yok sayar; dünyanın dokusunu yanlış anlamamıza yol açar. Örneğin, radikal İslam’ın komünizm tehdidi karşısında müttefiğiniz olduğunu düşünebilir ve gelişmesini destekleyebilirsiniz… sonunda Manhattan’ın göbeğine iki uçak gön-
   deriverirler.
 
-- Lübnan savaşının başlamasından birkaç yıl sonra, yirmi iki yaşın-
-  da Wharton School’a devam ederken, verimli piyasalar fikrinden çok
-  etkilendim. Bu fikre göre, borsada işlem gören menkul kıymetlerden
-  kâr elde etmek mümkün değildir, çünkü bu senetler tüm mevcut bilgileri otomatik olarak bünyesinde barındırır. Dolayısıyla kamusal en-
-  formasyon özellikle bir iş adamı için faydasız olabilir, zira fiyatlar tüm
-  bu bilgileri zaten “içeriyor” olabilir ve milyonlarca insanla paylaşılan
-  haber size gerçek bir avantaj sağlamaz. Böyle bir haberi okuyan yüz
-  milyonlarca kişiden biri veya daha fazlası muhtemelen o enstrümanı
-  çoktan almış olacak, bu da fiyatı yukarıya çekecektir. Bunu öğrendik-
-  ten sonra gazete okumayı ve televizyon seyretmeyi tümüyle bıraktım,
-  bu da bana azımsanmayacak bir zaman kazandırdı (sözgelimi günde
-  bir veya birkaç saat, bir yılda yüzün üzerinde fazladan kitap okumaya
-  yeterli bir zamandır, ki bu da yirmi-otuz yıl sonra katlanarak yüksel-
-  meye başlar). Ancak bu kitapta gazete okumaktan kaçınmanızı salık
-  vermemin tek nedeni bu değil; bilgi kirliliğini önlemekteki yararlarını
-  ileride göreceğiz.
+- Lübnan savaşının başlamasından birkaç yıl sonra, yirmi iki yaşında Wharton School’a devam ederken, verimli piyasalar fikrinden çok etkilendim. Bu fikre göre, borsada işlem gören menkul kıymetlerden kâr elde etmek mümkün değildir, çünkü bu senetler tüm mevcut bilgileri otomatik olarak bünyesinde barındırır. Dolayısıyla kamusal enformasyon özellikle bir iş adamı için faydasız olabilir, zira fiyatlar tüm bu bilgileri zaten “içeriyor” olabilir ve milyonlarca insanla paylaşılan haber size gerçek bir avantaj sağlamaz. Böyle bir haberi okuyan yüz milyonlarca kişiden biri veya daha fazlası muhtemelen o enstrümanı çoktan almış olacak, bu da fiyatı yukarıya çekecektir. Bunu öğrendikten sonra gazete okumayı ve televizyon seyretmeyi tümüyle bıraktım, bu da bana azımsanmayacak bir zaman kazandırdı (sözgelimi günde bir veya birkaç saat, bir yılda yüzün üzerinde fazladan kitap okumaya yeterli bir zamandır, ki bu da yirmi-otuz yıl sonra katlanarak yükselmeye başlar). Ancak bu kitapta gazete okumaktan kaçınmanızı salık vermemin tek nedeni bu değil; bilgi kirliliğini önlemekteki yararlarını ileride göreceğiz.
 
 ## Bölüm 2 - Yevgenia'nın Siyah Kuğusu
 
@@ -54,8 +33,7 @@
 ## Bölüm 3 - Spekülator ve Fahişe
 
 - Ölçeklenebilir meslekler, ancak başarılıysanız iyidir; daha fazla rekabet
-  içerir, korkunç eşitsizlikler yaratır, harcanan çabalarla karşılıkları ara-
-  sında büyük farklar barındırdığından çok daha rastlantısaldır. Pastanın
+  içerir, korkunç eşitsizlikler yaratır, harcanan çabalarla karşılıkları arasında büyük farklar barındırdığından çok daha rastlantısaldır. Pastanın
   büyük payını birkaç kişi paylaşırken, ötekiler hiçbir hataları olmadığı
   halde dışarıda bırakılır.
   Meslek kategorilerinin birinde vasat, ortalama, orta karar olanlar
@@ -84,32 +62,18 @@
 
 - Aşıristan Siyah Kuğuları ortaya çıkarabilir ve birkaç büyük olay tarihte muazzam etkiler yarattığından beri çıkarmaktadır da. Kitabın ana fikri budur.
 
-- Hem sosyal adalet hem de olayların dinamiği açısından ciddi sonuç-
-  ları olan bu Vasatistan-Aşıristan ayrımının bilgiye uygulanmasına bir
-  göz atalım, çünkü asıl değeri buradadır. Bir Marslı dünyamıza gelse ve
-  bu mutlu gezegenin sakinlerinin boy ölçümlerini almaya kalksa, yüz
-  kişiye geldiğinde ortalama boya dair iyi bir fikir edinip rahatlıkla işi bırakabilirdi. Vasatistan’da yaşıyorsanız yaptığınız ölçümler konusunda
-  rahat olabilirsiniz, ancak ölçtüğünüz şeyin Vasatistan’a ait olduğun-
-  dan emin olmanız lazımdır. Ayrıca verilerden öğrendiğiniz şeylerden de
-  emin olabilirsiniz. Epistemolojik sonuç şudur: Vasatistan tarzı rastlan-
-  tısallıkta tek bir olayın bir fenomene hükmetmesi gibi bir Siyah Kuğu
-  sürpriziyle karşılaşmak mümkün değildir.\* Birincisi, ilk yüz gün, ve-
-  riler hakkında bilmeniz gereken her şeyi size sunacaktır. İkincisi, en
+- Hem sosyal adalet hem de olayların dinamiği açısından ciddi sonuçları olan bu Vasatistan-Aşıristan ayrımının bilgiye uygulanmasına bir göz atalım, çünkü asıl değeri buradadır. Bir Marslı dünyamıza gelse ve bu mutlu gezegenin sakinlerinin boy ölçümlerini almaya kalksa, yüz kişiye geldiğinde ortalama boya dair iyi bir fikir edinip rahatlıkla işi bırakabilirdi. Vasatistan’da yaşıyorsanız yaptığınız ölçümler konusunda rahat olabilirsiniz, ancak ölçtüğünüz şeyin Vasatistan’a ait olduğundan emin olmanız lazımdır. Ayrıca verilerden öğrendiğiniz şeylerden de emin olabilirsiniz. Epistemolojik sonuç şudur: Vasatistan tarzı rastlantısallıkta tek bir olayın bir fenomene hükmetmesi gibi bir Siyah Kuğu
+  sürpriziyle karşılaşmak mümkün değildir. Birincisi, ilk yüz gün, veriler hakkında bilmeniz gereken her şeyi size sunacaktır. İkincisi, en
   kilolu insan örneğinde gördüğümüz gibi, bir sürprizle karşılaşsanız
   bile bunun bir önemi olmayacaktır.
 
-- Aşıristan’a özgü niceliklerle uğraşıyorsanız, tek bir gözleme fazla-
-  sıyla bağlı olabileceğinden herhangi bir örneklemeye bakarak ortalamayı
-  hesaplamakta zorlanacaksınız. Aşıristan’da tek bir birim kolaylıkla top-
-  lamı orantısız bir biçimde etkileyebilir. Bu dünyada verilerden edindiği-
-  niz bilgiden her zaman kuşkulanmalısınız.
+- Aşıristan’a özgü niceliklerle uğraşıyorsanız, tek bir gözleme fazlasıyla bağlı olabileceğinden herhangi bir örneklemeye bakarak ortalamayı hesaplamakta zorlanacaksınız. Aşıristan’da tek bir birim kolaylıkla toplamı orantısız bir biçimde etkileyebilir. Bu dünyada verilerden edindiğiniz bilgiden her zaman kuşkulanmalısınız.
 
 ## Bölüm 4 - Binbir gün ya da enayi olmamanın yolu
 
 - Yemi her gün aksatmadan verilen bir hindi düşünün. Önüne konan
   her yem, politikacı tabiriyle “onun çıkarını kollayan” insan ırkının dost
-  üyeleri tarafından her gün beslenmenin hayatın genel kuralı olduğu-
-  na dair inancını pekiştirecektir. Şükran Günü’nden önceki çarşamba
+  üyeleri tarafından her gün beslenmenin hayatın genel kuralı olduğuna dair inancını pekiştirecektir. Şükran Günü’nden önceki çarşamba
   günü öğleden sonra, hindinin başına beklenmedik bir şey gelecek ve
   inancını gözden geçirmesine yol açacaktır.
 
@@ -124,8 +88,7 @@
   mıştır! Ancak sorun aslında çok daha geneldir; bizatihi deneysel bilgi-
   nin doğasını hedef alır. Geçmişte geçerli olan bir şey, hiç beklenmedik
   bir zamanda geçerliliğini yitirir ve geçmişten öğrendiğimiz şeyin en iyi
-  ihtimalle uygunsuz veya yanlış, en kötü ihtimalle de alçakça bir aldat-
-  maca olduğu anlaşılır.
+  ihtimalle uygunsuz veya yanlış, en kötü ihtimalle de alçakça bir aldatmaca olduğu anlaşılır.
 
 - 1987’deki borsa krizinin ardından Amerika’da borsacıların yarısı her
   Ekim ayında –ilkinin bir önceli olmadığını hesaba katmadan– bir di-
@@ -133,3 +96,35 @@
   ra. Geçmişe dair naif bir gözlemi kesin veya geleceği temsil eden bir
   şey sanmak, Siyah Kuğuları anlamaktaki beceriksizliğimizin ilk ve tek
   nedenidir.
+
+- Sonraki 5 bölümde Siyah Kuğu körlüğümüzün nedeni olan 5 şeyi açıklayacağım
+
+## Bölüm 5 - Teyit, Meyit
+
+- Teyit, düşünme alışkanlıklarımıza ve genel kanımıza işlediği ölçüde tehlikeli bir hata olabilir.
+
+- Popper'ın ortaya koyduğu varsayım ve çürütme mekanizması şu şekilde işler: Bir varsayımda bulunur ve yanıldığınızı kanıtlayacak gözlemi aramaya başlarsınız. Bu onaylayıcı örnekler arayaşımızın alternatifidir. Kolay bir iş değildir.
+
+- Yokluğun delili olmaz konulu bir bölümdü.
+
+## Bölüm 6 - Anlatı Yanıltmacası
+
+A BIRD IN THE
+THE HAND IS WORTH
+TWO IN THE BUSH
+
+Sizce bir tuhaflık var mı? Tekrar deneyin.\*
+
+Sydney’li beyin bilimci (Philadelphia aksanıyla konuşan) Alan
+Snyder şunu saptamıştır: Sağ elini kullanan bir insanın sol yarımküre-
+sini baskılarsanız (daha teknik bir dille sol fronto-temporal [alın-şafak]
+lobuna düşük frekanslı manyetik titreşimler uygularsanız) yukarıdaki
+satırların okunmasında hata yapma oranını düşürmüş olursunuz. An-
+lamlar yükleme ve kavramlar oluşturmaya olan eğilimimiz, kavramı
+oluşturan ayrıntıları algılamamızı engeller. İnsanların sol beyin yarım-
+küresini uyarırsanız daha gerçekçi olur, daha iyi ve aslına daha yakın
+resim çizebilirler. Zihinleri, nesneleri olduğu gibi, yani kuramlardan,
+anlatılardan ve önyargılardan arınmış bir biçimde görmeye daha yat-
+kın hale gelir.
+
+- Olayları basitleştirip hikayeleştirerek veya modelleyerek beynimizde tutarız. Siyah Kuğu'lar genellikle bu sıkıştırmanın dışında kalır.
