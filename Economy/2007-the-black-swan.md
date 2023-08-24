@@ -167,7 +167,7 @@ Benim görüşüme göre kumar, kısır ve ehlileştirilmiş bir belirsizlik iç
 
 Daha yüksek, hayvanlardan mümkün mertebe uzak bir hayat bi- çimine basit bir adım atmak istiyorsanız, anlatıdan arınmanız, yani televizyonu kapatmanız, gazete okumaya ayırdığınız zamanı asgari düzeye indirgemeniz ve bloglara sırt çevirmeniz gerekir. Kararlarını- zı kontrol altında tutmak için mantık yürütme yeteneğinizi geliştirin; önemli olanlarında Sistem 1’i (buluşsal ya da deneyimsel sistemi) bir kenara bırakın. Sansasyonel olanla deneysel olan arasındaki farkı ayırt edebilmek için kendinizi eğitin. Dünyanın zehirleyiciliğinden bu tür bir arınmanın ek bir faydası da, sizi daha mutlu kılması olacaktır. Tüm soyut kavramların anası olan olasılık konusunda ne denli sığ olduğu- muzu aklınızdan çıkarmayın. Etrafınızda olup biten şeylere karşı al- gılamanızı artırmak için daha fazlasını yapmanıza gerek yoktur. Her şeyden önce “tünellemeden” (tek fikre saplı kalarak bakmak) kaçınmayı öğrenmeniz lazımdır.
 
-Sonraki bölüme bir köprüyle geçelim. Kumarhane hikâyesi ile orta- ya koyduğum Platonik körlüğün diğer bir tezahürü de odaklanmadır. Eğer saat tamircisi, beyin cerrahı ya da satranç oyuncusuysanız odak- lanabilmek büyük bir erdemdir. Fakat belirsizlikle ilgileniyorsanız yapmanız gereken son şey “odaklanmak”tır (odaklanmayı belirsizliğe bırakın, bize değil). Bu “odaklanma” sizi enayi durumuna düşürür, gelecek bölümde göreceğimiz üzere öngörü sorunlarına yol açar. Dün- yayı kavrayışımızın gerçek testi anlatı değil, öngörüdür.
+Sonraki bölüme bir köprüyle geçelim. Kumarhane hikâyesi ile ortaya koyduğum Platonik körlüğün diğer bir tezahürü de odaklanmadır. Eğer saat tamircisi, beyin cerrahı ya da satranç oyuncusuysanız odak- lanabilmek büyük bir erdemdir. Fakat belirsizlikle ilgileniyorsanız yapmanız gereken son şey “odaklanmak”tır (odaklanmayı belirsizliğe bırakın, bize değil). Bu “odaklanma” sizi enayi durumuna düşürür, gelecek bölümde göreceğimiz üzere öngörü sorunlarına yol açar. Dünyayı kavrayışımızın gerçek testi anlatı değil, öngörüdür.
 
 # İKİNCİ KISIM
 
@@ -176,3 +176,6 @@ Geleceği öngermek çok zordur ve bizler öngörebildiğimiz sanan enayileriz.
 
 ## Bölüm 10 - Öngörü Skandalı
 
+Saat başı radyodan haberleri dinlemek sizin için haftalık bir dergi okumaktan daha kötü olacaktır, çünkü zaman aralığının uzaması enformasyonun süzgeçten geçirilmesine imkân tanır. Parazitler azalır, enformasyonun oranı artar.
+
+“Kuant” olarak çalıştığım dönemde ben de aynı deneyimi yaşadım; gecelerini bilgisayar başında karmaşık matematik yöntemleriyle uğraşarak geçiren boğuk aksanlı, yabancı bir bilim adamı, en basit yöntemleri kullanan bir taksi şoföründen nadiren daha başarılı olur. Sorun, bu yöntemlerin işe yaradığı nadir durumlara odaklanmamız ve çok daha fazla sayıdaki başarısızlıklarına neredeyse hiçbir zaman dikkat göstermememizdir.
