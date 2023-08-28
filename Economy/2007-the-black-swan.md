@@ -135,3 +135,47 @@ sürecinin bir parçasıdır; artık nereye bakmayacağınızı bilirsiniz. Eğe
 “hiçbir şey bulamamanızı” bir bilgi olarak görüp yayınlayacak denli
 düşünceli bir dergi çıkarsa, diğer araştırmacılar da sonuçlarınızdan ha-
 berdar olup sizin deneyinizi yinelemek durumunda kalmayacaktır.
+
+Kişinin nadiren fakat büyük ka- zançlar sağlayacağı, öte yandan sık fakat küçük kayıplar verecek giri- şimler için, eğer başkaları enayiyse ve siz kişisel ve entelektüel dayanık- lılığa sahipseniz, riske girmeye değer. Fakat böyle bir dayanma gücüne kesinlikle ihtiyacınız vardır.
+
+
+## Bölüm 8 - Giacomo Casanova'nın Hiç Eksilmeyen Şansı: Sessiz Delil Sorunu
+
+Başarılı insanların özellikleri incelendiğinde şunları bulurlar: cesaret, risk alma ve iyimserlik. Halbuki bu özellikler başarısız olmuş nice insanın da özelliğidir. Ancak onların kitapları yayınlanmaz. Başarılı ve başarısız olanları büyük oranda belirleyen şey şanstır. Kör talih.
+
+Yayınlanan kitap sayısına oranla hiç yayınlanmamış daha fazla kitap, var olan türlere oranla çoktan yok olup gitmiş daha fazla tür gibi örnekler. Bunlar hesaba hiç katılmıyor. Bu da yanlış kanılara ve Siyah Kuğulara neden oluyor.
+
+Şu noktada ısrar ediyorum: şans eseri buraya kadar gelmiş olmamız aynı riskleri almaya devam etmeliyiz anlamına gelmiyor. Bunu anlayabilecek kadar mantıklı bir ırkız. Eli- mizdeki nimetlerin tadını çıkarıp, daha tedbirli davranarak şans eseri elde ettiklerimizi muhafaza etmeye çalışmalıyız. Şimdiye dek Rus ru- leti oynadık, artık durup doğru dürüst bir iş bulalım.
+
+Referans noktası argümanı şöyledir: olasılıkları, kazanan kumarba- zın (veya şanslı Casanova’nın veya her daim kendini toparlayan New York’un ya da yenilmez Kartaca’nın) açısından değil, grubun başlan- gıcında yer alan tüm bireylerin açısından hesaplayın. Tekrar kumarbaz örneğini ele alın. Acemi kumarbazlar nüfusunu bir bütün olarak ele aldığınızda içlerinden birinin (fakat hangisinin olduğunu peşinen bi- lemezsiniz) yalnızca şans eseri çok parlak sonuçlar elde edeceğinden neredeyse emin olabilirsiniz. Yani referans noktası başlangıçtaki acemi grubu olduğunda, bu olağanüstü bir durum değildir. Fakat referans noktası kazanan olduğunda (ve kaybedenler hesaba katılmadığında –ki kilit nokta da budur) uzun bir kazanımlar dizisi, yalnız şansla açıklanmayacak denli sıra dışı bir olgu olarak görünecektir. “Tarih” zaman içerisindeki bir sayı dizisinden ibarettir. Bu sayılar zenginliğin, sağlığın, kilonun, aklınıza gelebilecek her şeyin derecelerini temsil edebilir.
+
+6 . Kısım’da gazetelerin ho- şunuza gidecek anlatılar yaratmak için metinleri nedensellik bağlarıyla nasıl doldurduğundan bahsetmiştim.
+
+## Bölüm 9 - Oyunsal Yanıltmaca (Ludic Fallacy) veya Nerd'ün Belirsizliği
+
+NNT (yani ben): Elimde hilesiz bir madenî para olduğunu varsa- yın, yani havaya fırlattığımda her iki yüzünün de gelme ihtimali eşit. Doksan dokuz kere atıyorum, her seferinde tura geliyor. Bir sonraki atışımda yazı gelme olasılığı nedir?
+Dr. John: Çok basit. Yarı yarıya tabii, çünkü varsayımın, birbirin- den bağımsız her atış için her bir yüzüne % 50’lik bir olasılık tanıyor.
+NNT: Sen ne diyorsun, Tony?
+Şişko Tony: En fazla % 1 diyorum tabii.
+NNT: Neden? İlk varsayım hilesiz bir para, yani her bir yüzü için % 50 olasılık var.
+Şişko Tony: Şu “% 50” işine inanıyorsan ya zırvalıyorsun, ya da tam bir enayisin. Para hileli olmalı. Bu adil bir oyun olamaz. (Tercümesi: Paranın hilesiz olduğu varsayımının yanlış olma ihtimali, doksan do- kuz atışta da tura gelme ihtimalinden çok daha yüksek).
+NNT: Fakat Dr. John % 50 diyor.
+Şişko Tony (kulağıma fısıldayarak): Bu tür adamları bankacılık günlerimden tanıdığım nerd’lerden biliyorum. Fazla düşünürler. Fazla mallaşmışlardır. Kolay kazıklanırlar.
+New York’un (ya da Moğolistan’da Ulan Bator’un) Belediye Başkan- lığı görevine bu iki insandan hangisini uygun görürdünüz? Dr. John tümüyle kalıbın içinde düşünüyor –ona verilmiş olan kalıbın. Şişko Tony ise neredeyse tümüyle kalıbın dışında.
+
+Benim görüşüme göre kumar, kısır ve ehlileştirilmiş bir belirsizlik içerir. Kumarhanede kuralları bilirsiniz, olasılıkları hesaplayabilirsiniz; burada karşılaştığı- mız belirsizlik tipi, sonradan göreceğimiz üzere, ılımlıdır; Vasatistan’a özgüdür. Hazırladığım konuşma şuydu: “Kumarhane, olasılıkların bi- lindiği, Gauss’çu (yani çan eğrili) ve neredeyse ölçümlenebilir olduğu tek insanî girişimidir.
+
+Daha yüksek, hayvanlardan mümkün mertebe uzak bir hayat bi- çimine basit bir adım atmak istiyorsanız, anlatıdan arınmanız, yani televizyonu kapatmanız, gazete okumaya ayırdığınız zamanı asgari düzeye indirgemeniz ve bloglara sırt çevirmeniz gerekir. Kararlarını- zı kontrol altında tutmak için mantık yürütme yeteneğinizi geliştirin; önemli olanlarında Sistem 1’i (buluşsal ya da deneyimsel sistemi) bir kenara bırakın. Sansasyonel olanla deneysel olan arasındaki farkı ayırt edebilmek için kendinizi eğitin. Dünyanın zehirleyiciliğinden bu tür bir arınmanın ek bir faydası da, sizi daha mutlu kılması olacaktır. Tüm soyut kavramların anası olan olasılık konusunda ne denli sığ olduğu- muzu aklınızdan çıkarmayın. Etrafınızda olup biten şeylere karşı al- gılamanızı artırmak için daha fazlasını yapmanıza gerek yoktur. Her şeyden önce “tünellemeden” (tek fikre saplı kalarak bakmak) kaçınmayı öğrenmeniz lazımdır.
+
+Sonraki bölüme bir köprüyle geçelim. Kumarhane hikâyesi ile ortaya koyduğum Platonik körlüğün diğer bir tezahürü de odaklanmadır. Eğer saat tamircisi, beyin cerrahı ya da satranç oyuncusuysanız odak- lanabilmek büyük bir erdemdir. Fakat belirsizlikle ilgileniyorsanız yapmanız gereken son şey “odaklanmak”tır (odaklanmayı belirsizliğe bırakın, bize değil). Bu “odaklanma” sizi enayi durumuna düşürür, gelecek bölümde göreceğimiz üzere öngörü sorunlarına yol açar. Dünyayı kavrayışımızın gerçek testi anlatı değil, öngörüdür.
+
+# İKİNCİ KISIM
+
+Geleceği öngermek çok zordur ve bizler öngörebildiğimiz sanan enayileriz.
+
+
+## Bölüm 10 - Öngörü Skandalı
+
+Saat başı radyodan haberleri dinlemek sizin için haftalık bir dergi okumaktan daha kötü olacaktır, çünkü zaman aralığının uzaması enformasyonun süzgeçten geçirilmesine imkân tanır. Parazitler azalır, enformasyonun oranı artar.
+
+“Kuant” olarak çalıştığım dönemde ben de aynı deneyimi yaşadım; gecelerini bilgisayar başında karmaşık matematik yöntemleriyle uğraşarak geçiren boğuk aksanlı, yabancı bir bilim adamı, en basit yöntemleri kullanan bir taksi şoföründen nadiren daha başarılı olur. Sorun, bu yöntemlerin işe yaradığı nadir durumlara odaklanmamız ve çok daha fazla sayıdaki başarısızlıklarına neredeyse hiçbir zaman dikkat göstermememizdir.
