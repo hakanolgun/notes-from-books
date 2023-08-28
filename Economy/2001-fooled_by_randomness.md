@@ -11,10 +11,23 @@ Bu kitabın amacı her şey rastlantısal demek değil, her şey sandığınızd
 
 Bu kitap beceri zannedilen ama aslında şans olan şeyler ve deterministik zannedilen ama aslında rastlantısal olan şeyler hakkındadır.
 
+Bu kitap birbirine karıştırılan şeyler hakkında, şansı beceri ile, inanç ve tahmini bilgi ve eminlik ile karıştırırız. Başarılı yatırımcıların çoğu aslında şanslı budalalardır. Piyasanın üzerinde performans çoğu zaman hayatta kalma önyargısındandır.
+
+Bir tarafta akılcı ve mantıkçı olarak bilinen, rasyonel kararlar alabileceğimizi düşünen, insan doğasını kendi kendimize değişirebileceğimize inanan Rousseau gibi kuralcılar var.
+
+Diğer tarafta kuşkucu, kesin konuşmayan, insan doğasının yanlılıklarının ve tutarsızlıklarının farkında olan Kahneman, Karl Popper, Adam Smith gibiler var. Bu kitap bu grubu savunuyor. Şunu söylüyor: ***Kusurluyuz ve kusurlarımızı düzeltmeye çalışarak canımızı sıkmamalıyız*** Belki de eksik insanlığımızdan kurtulmak mümkün değil, sadece yanından dolanacağımız hileler bulabiliriz.
+
+Bu sebeple ahlak dersi vermeyi, öğüt vermeyi hor görüyorum. Çünkü öğüt vermek insanın duygularını bastırıp tamamen mantıkla karar alabileceğine inanmaktır. Bunun nasıl tamamen yanlış olduğunu göreceğiz.
+
+Basitleştirme de aldatıcı rastlantısallığa neden oluyor.
 
 # 1.KISIM SOLON'UN UYARISI
+Lidya kralı ve dünyanın en zengin adamı Karun, yunan bilge Solon'a sormuş: Benden daha mutlu bir insan var mı? Solon cevap vermiş, Biz mutlulukla beraber gelen nice talihsiz şeyleri görmüş bir milletiz. İşin sonu gelmeden kime ne olacağı belli olmaz. Tanrının garanti vermediği kimsenin mutluluğu kesin değildir demiş. Buradan çıkan dersler:
+1. Şansla gelen şeyler yine şansla hızla gidebilir.
+2. Şansla gelmeyen şeyler rastlantısallığa karşı daha dirençlidir, hemen çöküp yokolmaz.
+3. Solon asimetri problemini de anlamış. Tek bir başarısızlığın bedeli çok ağır ise, başarıların sayısı çok önemli değildir.
+
 ## 1. MADEM O KADAR ZENGINSIN NEDEN O KADAR AKILLI DEGİLSİN?
-Zıt tavırlı iki karakter üzerinden rastlantısallığın toplumdaki etkisinin gösterilmesi. Gizli nadir olay üzerine.
 
 
 ## 2. TUHAF BİR HESAPLAMA YÖNTEMİ
