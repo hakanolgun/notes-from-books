@@ -121,3 +121,6 @@ Ben istatistiği ve tümevarım yöntemlerini saldırganca yatırım yapmak içi
 ## 9. ALMAK VE SATMAK YUMURTA KIZARTMAKTAN KOLAYDIR
 
 ## 10. KAZANAN HER ŞEYİ ALIR - HAYATIN DOĞRUAL OLMAMA DURUMLARI ÜZERİNE
+
+## 11. RASTLANTISALLIK VE ZİHMİNİZ: OLASILIK KÖRÜYÜZ
+Beynimizin kestirme yollar olmadan çalışamayacağı bir gerçektir. Bunu ortaya çıkaran ilk düşünür Herbert Simon'du. Ona göre hayatın her aşamasında en uygun eylemi düşünmemiz gerekseydi, bunun maliyeti sonsuz bir zaman ve enerji kaybı olurdu. "Yetinmecilik" onun fikriydi. Az çok tatmin eden bir çözüm bulduğunuzda durursunuz. Bizler "sınırlı rasyonel"iz derdi.
