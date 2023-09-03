@@ -2,9 +2,9 @@ Avustralya’nın keşfinden önce, Eski Dünya’da, bütün kuğuların beyaz 
 
 Bu kitapta Siyah Kuğu olarak bahsedeceğim olayın üç temel özelliği vardır:
 
-1. olağan beklentilerin dışında kalmasından dolayı sıradışı olmasıdır; çünkü geçmişte olabilirliğine işaret edecek hiçbir şey görülmemiştir.
-2. olağanüstü bir etki gücüne sahiptir
-3. beklenmedik olmasına rağmen insan doğası bizi, söz konusu olguyu ortaya çıkışından _sonra_ açıklanabilir ve öngörülebilir hale getirecek birtakım açıklamalar bulmaya yöneltir.
+1. Beklentilerin dışında kalmasından dolayı sıradışı olmasıdır; çünkü geçmişte olabilirliğine işaret edecek hiçbir şey görülmemiştir.
+2. Olağanüstü bir etki gücüne sahiptir
+3. Beklenmedik olmasına rağmen insan doğası bizi, söz konusu olguyu ortaya çıkışından _sonra_ açıklanabilir ve öngörülebilir hale getirecek açıklamalar bulmaya yöneltir.
 
 Az sayıda Siyah Kuğu, fikirlerin ve dinlerin başarılarından tarihi olayların dinamiklerine, hatta kendi özel yaşamımızı oluşturan unsurlara dek dünyamızdaki neredeyse her şeyi açıklamaktadır.
 
@@ -23,6 +23,8 @@ Verimli piyasalar fikrinden çok etkilendim. Bu fikre göre, borsada işlem gör
 Öncesinde tanınmayan ama hiç beklenmedik şekilde çok satan bir roman yazarı olan yevgenia'nın hikayesi. Yevgenia'nın kitabı bir siyah kuğudur.
 
 ## Bölüm 3 - Spekülator ve Fahişe
+Arkadaşım bana ölçeklenebilir bir mesleği seçmemi tavsiye etmişti ama ben birine tavsiye verecek olsam ölçeklenebilir olmayan bir mesleği seçmesini söylerdim. Çünkü ölçeklenebilir meslekler sadece başarılıysanız ve doğru zamanda doğru yerde olacak kadar şanslıysanız iyidir.
+
 Ölçeklenebilir meslekler, ancak başarılıysanız iyidir; daha fazla rekabet içerir, korkunç eşitsizlikler yaratır, harcanan çabalarla karşılıkları arasında büyük farklar barındırdığından çok daha rastlantısaldır. Pastanın büyük payını birkaç kişi paylaşırken, ötekiler hiçbir hataları olmadığı halde dışarıda bırakılır. 
 
 Daha da ileri gidip bu gezegende biyolojik bakımdan mümkün olan en kilolu (yine de insan diyebileceğiniz) birini seçerseniz, toplam ağırlıktaki payı azıcık bir artışla ancak yüzde 0,6 olacaktır. Kişi sayısını on bine yükselttiğinizde ise katkısı yok denecek kadar azalacaktır. Ütopya ülkesi Vasatistan’da özel olayların tek başlarına pek bir katkıları olmaz; ancak kolektif olarak katkıda bulunabilirler. Vasatistan’a özgü bu temel kuralı şu şekilde ifade edebilirim: Örnek grubunuz büyükse, tek bir örnek bütünü veya toplamı önemli oranda değiştirmeyecektir. Gözlemlenen en büyük olgu etkileyiciliğini koruyacak, fakat sonunda toplam açısından önemsiz olacaktır.
@@ -44,6 +46,7 @@ Yemi her gün aksatmadan verilen bir hindi düşünün. Önüne konan her yem, p
 Sonraki 5 bölümde Siyah Kuğu körlüğümüzün nedeni olan 5 şeyi açıklayacağım
 
 ## Bölüm 5 - Teyit, Meyit
+Teyit yani doğrulama yanılgısı, bizim işimize gelen verileri görüp fikrimizin doğru olduğuna dair bir inanca girmemizdir.
 Teyit, düşünme alışkanlıklarımıza ve genel kanımıza işlediği ölçüde tehlikeli bir hata olabilir.
 
 Popper'ın ortaya koyduğu varsayım ve çürütme mekanizması şu şekilde işler: Bir varsayımda bulunur ve yanıldığınızı kanıtlayacak gözlemi aramaya başlarsınız. Bu onaylayıcı örnekler arayaşımızın alternatifidir. Kolay bir iş değildir.
@@ -62,7 +65,7 @@ Sydney’li beyin bilimci Alan Snyder şunu saptamıştır: Sağ elini kullanan 
 
 Olayları basitleştirip hikayeleştirerek veya modelleyerek beynimizde tutarız. Siyah Kuğu'lar genellikle bu sıkıştırmanın dışında kalır.
 
-Siyah Kuğuları anlayamamızın bir nedeni de genellikle Sistem 1'i kullanmamızdan kaynaklanır.
+Siyah Kuğuları anlayamamızın bir nedeni de Sistem 2'yi kullanıdğımız zannederken aslında Sistem 1'i kullanmamızdan kaynaklanır. Çünkü onu kullandığımızın farkında olmayız.
 
 ## Bölüm 7 - Umudun Kıyısında Yaşamak
 Kişinin nadiren fakat büyük kazançlar sağlayacağı, öte yandan sık fakat küçük kayıplar verecek girişimler için, eğer başkaları enayiyse ve siz kişisel ve entelektüel dayanıklılığa sahipseniz, riske girmeye değer. Fakat böyle bir dayanma gücüne kesinlikle ihtiyacınız vardır.
@@ -89,7 +92,7 @@ New York’un Belediye Başkanlığı görevine bu iki insandan hangisini uygun 
 
 Benim görüşüme göre kumar, kısır ve ehlileştirilmiş bir belirsizlik içerir. Kumarhanede kuralları bilirsiniz, olasılıkları hesaplayabilirsiniz; burada karşılaştığı- mız belirsizlik tipi, sonradan göreceğimiz üzere, ılımlıdır; Vasatistan’a özgüdür. Hazırladığım konuşma şuydu: “Kumarhane, olasılıkların bilindiği, Gauss’çu (yani çan eğrili) ve neredeyse ölçümlenebilir olduğu tek insanî girişimidir.
 
-Daha yüksek, hayvanlardan mümkün mertebe uzak bir hayat biçimine basit bir adım atmak istiyorsanız, anlatıdan arınmanız, yani televizyonu kapatmanız, gazete okumaya ayırdığınız zamanı asgari düzeye indirgemeniz ve bloglara sırt çevirmeniz gerekir. Kararlarınızı kontrol altında tutmak için mantık yürütme yeteneğinizi geliştirin; önemli olanlarında Sistem 1’i (buluşsal ya da deneyimsel sistemi) bir kenara bırakın. Sansasyonel olanla deneysel olan arasındaki farkı ayırt edebilmek için kendinizi eğitin. Dünyanın zehirleyiciliğinden bu tür bir arınmanın ek bir faydası da, sizi daha mutlu kılması olacaktır. Tüm soyut kavramların anası olan olasılık konusunda ne denli sığ olduğumuzu aklınızdan çıkarmayın. Etrafınızda olup biten şeylere karşı algılamanızı artırmak için daha fazlasını yapmanıza gerek yoktur. Her şeyden önce “tünellemeden” (tek fikre saplı kalarak bakmak) kaçınmayı öğrenmeniz lazımdır.
+Daha yüksek, bir hayat biçimine basit bir adım atmak istiyorsanız, anlatıdan arınmanız, yani televizyonu kapatmanız, gazete okumaya ayırdığınız zamanı asgari düzeye indirgemeniz ve bloglara sırt çevirmeniz gerekir. Kararlarınızı kontrol altında tutmak için mantık yürütme yeteneğinizi geliştirin; önemli olanlarında Sistem 1’i (buluşsal ya da deneyimsel sistemi) bir kenara bırakın. Sansasyonel olanla deneysel olan arasındaki farkı ayırt edebilmek için kendinizi eğitin. Dünyanın zehirleyiciliğinden bu tür bir arınmanın ek bir faydası da, sizi daha mutlu kılması olacaktır. Tüm soyut kavramların anası olan olasılık konusunda ne denli sığ olduğumuzu aklınızdan çıkarmayın. Etrafınızda olup biten şeylere karşı algılamanızı artırmak için daha fazlasını yapmanıza gerek yoktur. Her şeyden önce “tünellemeden” (tek fikre saplı kalarak bakmak) kaçınmayı öğrenmeniz lazımdır.
 
 Sonraki bölüme bir köprüyle geçelim. Kumarhane hikâyesi ile ortaya koyduğum Platonik körlüğün diğer bir tezahürü de odaklanmadır. Eğer saat tamircisi, beyin cerrahı ya da satranç oyuncusuysanız odaklanabilmek büyük bir erdemdir. Fakat belirsizlikle ilgileniyorsanız yapmanız gereken son şey “odaklanmak”tır (odaklanmayı belirsizliğe bırakın, bize değil). Bu “odaklanma” sizi enayi durumuna düşürür, gelecek bölümde göreceğimiz üzere öngörü sorunlarına yol açar. Dünyayı kavrayışımızın gerçek testi anlatı değil, öngörüdür.
 
