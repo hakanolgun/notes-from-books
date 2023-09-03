@@ -5,7 +5,7 @@ Montaigne'in denemeci ve kuşkucu eleştirel tarzı yerine Descart'ın kesinliğ
 
 Gerçek hayattaki olasılık zar oyunundan, ders kitaplarından veya kumarhanelerdekilerden farklıdır. Size oyunda kaç kart olduğu söylenmez.
 
-Bu kitabın amacı her şey rastlantısal demek değil, her şey sandığınızdan daha rastlantısal demek. Ancak insanlar ya hep ya hiç mantığıyla düşünmek kolay olduğu için öyle düşünürler.
+Bu kitabın amacı her şey rastlantısal demek değil, her şey sandığınızdan daha rastlantısal demek. 
 
 Şans elbette hazırlıklı olanın yüzüne güler. İkramiyeyi kazanmak için gidip bilet almış olmak gerekir.
 
@@ -21,13 +21,12 @@ Bu sebeple ahlak dersi vermeyi, öğüt vermeyi hor görüyorum. Çünkü öğü
 
 Basitleştirme de aldatıcı rastlantısallığa neden oluyor.
 
-# 1.KISIM SOLON'UN UYARISI
 Lidya kralı ve dünyanın en zengin adamı Karun, yunan bilge Solon'a sormuş: Benden daha mutlu bir insan var mı? Solon cevap vermiş, Biz mutlulukla beraber gelen nice talihsiz şeyleri görmüş bir milletiz. İşin sonu gelmeden kime ne olacağı belli olmaz. Tanrının garanti vermediği kimsenin mutluluğu kesin değildir demiş. Buradan çıkan dersler:
 1. Şansla gelen şeyler yine şansla hızla gidebilir.
 2. Şansla gelmeyen şeyler rastlantısallığa karşı daha dirençlidir, hemen çöküp yokolmaz.
 3. Solon asimetri problemini de anlamış. Tek bir başarısızlığın bedeli çok ağır ise, başarıların sayısı çok önemli değildir.
 
-## 1. MADEM O KADAR ZENGINSIN NEDEN O KADAR AKILLI DEGİLSİN?
+## 1
 Nero riskin farkında olarak çok çalışma ve disiplin ile rahat bir yaşam olasılığının büyük oranda arttığına inanıyordu. Bunun ötesindekiler rastlantıya dayanıyordu: ya çok büyük ve bilinçsiz riskler almaya ya da çok şanslı olmaya. Orta düzey başarı çalışkanlık ve beceri ile açıklanabilirdi. Yüksek başarı ise rastlantının işiydi.
 
 Neronun hali vakti yerinde ama çok zengin olmadığını unutmayın. Yine de başka bir hesaplamaya göre Nero sürdürebileceği yaşamların ortalaması açısından son derece zengin biriydi.
@@ -36,14 +35,14 @@ Bir dişçinin, özel jet koleksiyonu yapan bir girişimciden çok daha zengin o
 
 John Doe dünyaya bir milyon kez gelse neredeyse her seferinde kapıcılık yapar ve milyonda bir kez piyangoyu kazanıp zengin olurdu. Hem gözlenen hem de gözlenmeyen olası sonuçları hesaba katmak.
 
-## 2. TUHAF BİR HESAPLAMA YÖNTEMİ
+## 2 
 Birisi rus ruleti oynamanız karşılığında size 10 milyon usd teklif etse. 6 alternatif olasılıktan 5'inde milyoner, birinde ölü olursunuz. 25 yaşından itibaren her yıl bu oyunu bir kez oynasanız 50 yaşınızı görme ihtimaliniz çok düşük olacaktır. Ancak yeteri kadar, mesela binlerce 25 yaşında oyuncu varsa işin sonunda bir avuç multimilyoner ve binlerce ölü görmeyi bekleriz.
 
 Rus ruletinden kazanılan 10 milyonun değeri ile dişçinin yıllar sonunda kazandığı 10 milyonun değeri benim gözümde aynı değildir. Biri diğerinden daha rastlantısaldır.
 
 Gerçek hayat rus ruletinden de kötüdür. Altı değil yüzlerce hazne vardır, kurşunun gelme olasılığı düşüktür. Bu da size sahte bir güven verir ve kurşunun varlığını unutup devam edersiniz. Gerçek hayatta namluyu da görmezsiniz. Rulet oynadığnızın farkında bile olmayabilirsiniz. Böylece ruleti düşük riskli yatırım olarak bile görebilirsiniz!
 
-## 3. TARİH ÜZERİNE MATEMATİKSEL BİR MEDİTASYON
+## 3 
 Monte Carlo yöntemleri adını verdiğim yöntemler şöyledir:
 
 İlk olarak **örneklem patikası**ndan bahsedeyim. Örneklem patikası alternatif tarihlerin tümüdür. Yani bir kuşun yarın akşam konacağı dal değil, gidebileceği diğer tüm ihtimallerdir. Örneklem patikası deterministik te olabilir rastlantısal da.
@@ -66,9 +65,7 @@ Hazine bonosunda yatırım yapmış hayali bir dişçi örneği incelendiğinde 
 
 Bu nedenle gazete okumuyorum. Çünkü gürültü ile dolu. Bir şey yeterince önemli ise nasılsa kulağıma gelir.
 
-## 4. RASTLANTISALLIK, MANTIKSIZLIK VE BİLİMSEL ENTELEKTÜEL
-
-## 5. EN AZ GÜÇLÜNÜN HAYATTA KALMASI - RASTLANTISALLIK EVRİMİ OYUNA GETİREBİLİR Mİ?
+## 5 
 Tesadüfün oyununa gelip batan traderların sabit özellikleri:
 1. Ya ekonomi ya da istatistik bilgilerini abartmaları. Herhangi bir zaman kesitini açıklayan bir ekonomik teori bulunabilir sonuçta.
 2. Zaten şans nedeniyle yükselmişlerdi. Aynı şeyleri başka zamanda yapanlar o kadar kazanamamıştı.
@@ -78,7 +75,7 @@ Tesadüfün oyununa gelip batan traderların sabit özellikleri:
 
 Traderları işlerini iyi yaptıkları için başarılı zannederiz. Halbuki sadece şansla da finans dünyasında para kazanılabilir.
 
-## 6. ÇARPIKLIK VE ASİMETRİ
+## 6 
 Asimetrik veri olasılığın her olay için %50 olmadığı bir taraftaki olasılığın daha yüksek olduğu durumlardır.
 
 Bir kumar oyunu düşünün bu oyunda 1 dolar kazanma olasılığı 1000'de 999 ve 10000 dolar kaybetme olasılığı 1000'de 1 olsun. Bu oyunu oynamalı mısınız? Hayır. Eğer 1000 defa oynarsanız 999 dolar kazanır ama 10000 dolar kaybedersiniz. Yani nette -9000'lik olursunuz.
@@ -95,14 +92,12 @@ Nobel ödülü alan Rober Lucas ekonometriye bir darbe indirdi. Geçmişle ilgil
 
 Eğer pazartesi günleri yükselen bir ürün geçmişe dayanarak keşfedilirse traderlar onu cuma gününden almaya başlayıp zamanla pazartesi satacaktır. Bir borsa hesabı olan herkesin kullanabileceği modeller aramak anlamsızdır, bunlar bir kere tespit edilince kendi kendilerini iptal ederler.
 
-## 7. TÜMEVARIM SORUNU
+## 7 
 Popper'a göre bilim o kadar da ciddiye alınmamalıdır. İki tip teori vardır:
 1. Test edilip reddedilen. Yani yanlışlanmış teoriler.
 2. Yanlış olduğu henüz bilinmeyen, henüz yanlışlanmamış olan teoriler.
 
-Bir teori asla *doğru* değildir. Çünkü bütün kuğuların beyaz olduğunu asla bilemeyiz.
-
-Bununla birlikte; siyah kuğu vardır demek mümkündür. Bir teori *doğrulanamaz*.
+Bir teori asla *doğru* değildir. Çünkü bütün kuğuların beyaz olduğunu asla bilemeyiz. Bununla birlikte; siyah kuğu vardır demek mümkündür. Bir teori *doğrulanamaz*.
 
 Yanlışlanabileceği imkanlar vermeyen bir teori şarlatanlıktır. Einstein tarafından yanlışlanmış olan Newton fiziği ile astroloji arasındaki fark, Newton fiziğinin yanlışlanabilir ve dolayısıyla bilimsel olmasıdır.
 
@@ -114,13 +109,13 @@ Mantıklı ve rasyonel fikirler belirtmeyi severiz ama bunları uygulamaktan ho�
 
 Ben istatistiği ve tümevarım yöntemlerini saldırganca yatırım yapmak için kullanırım ama risklerimi yönetmek için kullanmam. Hangi durumda varsayımımın geçersiz olacağına karar verir ve o noktada kaybı durdururum. Stop loss yaparım.
 
-# 2.KISIM KLAVYE BAŞINDAKI MAYMUNLAR
-
-## 8. ÇOK FAZLA MİLYONER KOMŞU
-
-## 9. ALMAK VE SATMAK YUMURTA KIZARTMAKTAN KOLAYDIR
-
-## 10. KAZANAN HER ŞEYİ ALIR - HAYATIN DOĞRUAL OLMAMA DURUMLARI ÜZERİNE
-
-## 11. RASTLANTISALLIK VE ZİHMİNİZ: OLASILIK KÖRÜYÜZ
+## 11 
 Beynimizin kestirme yollar olmadan çalışamayacağı bir gerçektir. Bunu ortaya çıkaran ilk düşünür Herbert Simon'du. Ona göre hayatın her aşamasında en uygun eylemi düşünmemiz gerekseydi, bunun maliyeti sonsuz bir zaman ve enerji kaybı olurdu. "Yetinmecilik" onun fikriydi. Az çok tatmin eden bir çözüm bulduğunuzda durursunuz. Bizler "sınırlı rasyonel"iz derdi.
+
+Descartes'ın Yanılgısı kitabı şöyle bir tez öne sürüyor. Birisinin beynini zekasını duygularından ayıracak şekilde ameliyat ederseniz. Karşınıza artık mantıklı kararlar alan rasyonel bir insan olmaz. Gerçekte böyle bir adam en ufak bir karar almaktan aciz hale gelir. En ufak bir konuda bile günlerce hangi hareketin doğru olacağını düşünür. **Duygular olmadan karar veremeyiz**. Bilişsel kısayollar bu yüzden var. En gelişmiş beyin bile bu kadar değişkenin olduğu hayatı analiz edip en doğru kararı vermekte zorlanır.
+
+Duygusal Beyin adlı kitaba göre önce duygularımız karar verir, sonra beynimi bunu kendimize açıklar.
+
+İnsanlara nasıl davranacakları konusunda nasihat vermek boş iştir. Birçok insan zaten doğru olanın ne olduğunu bilir ama yapamaz. Aynı sigara içenler gibi.
+
+Mutlu bir hayatı olan insanların genelde yetinmeci olduklarını biliriz. Hayattan ne istediklerini bilirler ve tatmin olduklarında durabilirler. En iyiyi hedefleyen biri ise sırf vergisini biraz azaltmak için memleketini terkedebilir. Buradaki nedensellik açık değildir. En iyi hedefleyen insanların mı mutsuz olacak hareketlere girdikleri yoksa zaten mutsuz insanların mı mutlu olmak için en iyiyi hedefledikleri.
