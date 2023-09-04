@@ -77,7 +77,7 @@ Yayınlanan kitap sayısına oranla hiç yayınlanmamış daha fazla kitap, var 
 
 Şu noktada ısrar ediyorum: şans eseri buraya kadar gelmiş olmamız aynı riskleri almaya devam etmeliyiz anlamına gelmiyor. Bunu anlayabilecek kadar mantıklı bir ırkız. Elimizdeki nimetlerin tadını çıkarıp, daha tedbirli davranarak şans eseri elde ettiklerimizi muhafaza etmeye çalışmalıyız. Şimdiye dek Rus ruleti oynadık, artık durup doğru dürüst bir iş bulalım.
 
-Referans noktası argümanı şöyledir: olasılıkları, kazanan kumarbazın açısından değil, grubun başlangıcında yer alan tüm bireylerin açısından hesaplayın. Tekrar kumarbaz örneğini ele alın. Acemi kumarbazlar nüfusunu bir bütün olarak ele aldığınızda içlerinden birinin yalnızca şans eseri çok parlak sonuçlar elde edeceğinden neredeyse emin olabilirsiniz. Yani referans noktası başlangıçtaki acemi grubu olduğunda, bu olağanüstü bir durum değildir. Fakat referans noktası kazanan olduğunda uzun bir kazanımlar dizisi, yalnız şansla açıklanmayacak denli sıra dışı bir olgu olarak görünecektir. “Tarih” zaman içerisindeki bir sayı dizisinden ibarettir. Bu sayılar zenginliğin, sağlığın, kilonun, aklınıza gelebilecek her şeyin derecelerini temsil edebilir.
+Referans noktası argümanı şöyledir: olasılıkları, kazanan kumarbazın açısından değil, grubun başlangıcında yer alan tüm bireylerin açısından hesaplayın. Tekrar kumarbaz örneğini ele alın. Acemi kumarbazlar nüfusunu bir bütün olarak ele aldığınızda içlerinden birinin yalnızca şans eseri çok parlak sonuçlar elde edeceğinden neredeyse emin olabilirsiniz. Yani referans noktası başlangıçtaki acemi grubu olduğunda, bu olağanüstü bir durum değildir. Fakat referans noktası kazanan olduğunda uzun bir kazanımlar dizisi, yalnız şansla açıklanmayacak denli sıra dışı bir olgu olarak görünecektir. 
 
 ## Bölüm 9 - Oyunsal Yanıltmaca (Ludic Fallacy) veya Nerd'ün Belirsizliği
 NNT (yani ben): Elimde hilesiz bir madenî para olduğunu varsayın, yani havaya fırlattığımda her iki yüzünün de gelme ihtimali eşit. Doksan dokuz kere atıyorum, her seferinde tura geliyor. Bir sonraki atışımda yazı gelme olasılığı nedir?
@@ -88,18 +88,23 @@ NNT: Neden? İlk varsayım hilesiz bir para, yani her bir yüzü için % 50 olas
 Şişko Tony: Şu “% 50” işine inanıyorsan ya zırvalıyorsun, ya da tam bir enayisin. Para hileli olmalı. Bu adil bir oyun olamaz. (Tercümesi: Paranın hilesiz olduğu varsayımının yanlış olma ihtimali, doksan dokuz atışta da tura gelme ihtimalinden çok daha yüksek).
 NNT: Fakat Dr. John % 50 diyor.
 Şişko Tony : Bu tür adamları bankacılık günlerimden tanıdığım nerd’lerden biliyorum. Fazla düşünürler. Fazla mallaşmışlardır. Kolay kazıklanırlar.
-New York’un Belediye Başkanlığı görevine bu iki insandan hangisini uygun görürdünüz? Dr. John tümüyle kalıbın içinde düşünüyor –ona verilmiş olan kalıbın. Şişko Tony ise neredeyse tümüyle kalıbın dışında.
 
-Benim görüşüme göre kumar, kısır ve ehlileştirilmiş bir belirsizlik içerir. Kumarhanede kuralları bilirsiniz, olasılıkları hesaplayabilirsiniz; burada karşılaştığı- mız belirsizlik tipi, sonradan göreceğimiz üzere, ılımlıdır; Vasatistan’a özgüdür. Hazırladığım konuşma şuydu: “Kumarhane, olasılıkların bilindiği, Gauss’çu (yani çan eğrili) ve neredeyse ölçümlenebilir olduğu tek insanî girişimidir.
+John ve Tony platonikleşmiş ve özgür düşünceyi temsil eder. Platonikleşmiş, belli kalıplara uydurulmuş düşünceler Siyah Kuğu'lara neden olur.
 
-Daha yüksek, bir hayat biçimine basit bir adım atmak istiyorsanız, anlatıdan arınmanız, yani televizyonu kapatmanız, gazete okumaya ayırdığınız zamanı asgari düzeye indirgemeniz ve bloglara sırt çevirmeniz gerekir. Kararlarınızı kontrol altında tutmak için mantık yürütme yeteneğinizi geliştirin; önemli olanlarında Sistem 1’i (buluşsal ya da deneyimsel sistemi) bir kenara bırakın. Sansasyonel olanla deneysel olan arasındaki farkı ayırt edebilmek için kendinizi eğitin. Dünyanın zehirleyiciliğinden bu tür bir arınmanın ek bir faydası da, sizi daha mutlu kılması olacaktır. Tüm soyut kavramların anası olan olasılık konusunda ne denli sığ olduğumuzu aklınızdan çıkarmayın. Etrafınızda olup biten şeylere karşı algılamanızı artırmak için daha fazlasını yapmanıza gerek yoktur. Her şeyden önce “tünellemeden” (tek fikre saplı kalarak bakmak) kaçınmayı öğrenmeniz lazımdır.
+Oyunlaştırma hatası, platonikleştirilmiş, şablonlaştırılmış uygulamalar ile gerçek hayatı karıştırmaktır. Gerçek hayat kumarhanelerdeki olasılık hesaplarına uymaz. Hesaplamadığınız sonsuz sayıda değiken vardır.
+
+Daha yüksek, bir hayat biçimine basit bir adım atmak istiyorsanız, anlatıdan arınmanız, yani televizyonu kapatmanız, gazete okumaya ayırdığınız zamanı asgari düzeye indirgemeniz ve bloglara sırt çevirmeniz gerekir. Kararlarınızı kontrol altında tutmak için mantık yürütme yeteneğinizi geliştirin; önemli olanlarında Sistem 1’i bir kenara bırakın. Sansasyonel olanla deneysel olan arasındaki farkı ayırt edebilmek için kendinizi eğitin. Dünyanın zehirleyiciliğinden bu tür bir arınmanın ek bir faydası da, sizi daha mutlu kılması olacaktır. Tüm soyut kavramların anası olan olasılık konusunda ne denli sığ olduğumuzu aklınızdan çıkarmayın. Etrafınızda olup biten şeylere karşı algılamanızı artırmak için daha fazlasını yapmanıza gerek yoktur. Her şeyden önce “tünellemeden” (tek fikre saplı kalarak bakmak) kaçınmayı öğrenmeniz lazımdır.
 
 Sonraki bölüme bir köprüyle geçelim. Kumarhane hikâyesi ile ortaya koyduğum Platonik körlüğün diğer bir tezahürü de odaklanmadır. Eğer saat tamircisi, beyin cerrahı ya da satranç oyuncusuysanız odaklanabilmek büyük bir erdemdir. Fakat belirsizlikle ilgileniyorsanız yapmanız gereken son şey “odaklanmak”tır (odaklanmayı belirsizliğe bırakın, bize değil). Bu “odaklanma” sizi enayi durumuna düşürür, gelecek bölümde göreceğimiz üzere öngörü sorunlarına yol açar. Dünyayı kavrayışımızın gerçek testi anlatı değil, öngörüdür.
 
 # İKİNCİ KISIM
-Geleceği öngermek çok zordur ve bizler öngörebildiğimiz sanan enayileriz.
+Elektrik, bilgisayar, internet gibi gelişmelerin hepsi Siyah Kuğu'lardı. Beklenmedikti ve ilk çıktıklarında ne kadar etkili olacakları farkedilemiyordu.
+
+Geleceği öngermek çok zordur ve bizler öngörebildiğimizi sanan enayileriz.
 
 ## Bölüm 10 - Öngörü Skandalı
 Saat başı radyodan haberleri dinlemek sizin için haftalık bir dergi okumaktan daha kötü olacaktır, çünkü zaman aralığının uzaması enformasyonun süzgeçten geçirilmesine imkân tanır. Parazitler azalır, enformasyonun oranı artar.
 
 “Kuant” olarak çalıştığım dönemde ben de aynı deneyimi yaşadım; gecelerini bilgisayar başında karmaşık matematik yöntemleriyle uğraşarak geçiren boğuk aksanlı, yabancı bir bilim adamı, en basit yöntemleri kullanan bir taksi şoföründen nadiren daha başarılı olur. Sorun, bu yöntemlerin işe yaradığı nadir durumlara odaklanmamız ve çok daha fazla sayıdaki başarısızlıklarına neredeyse hiçbir zaman dikkat göstermememizdir.
+
+
