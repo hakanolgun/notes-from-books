@@ -105,6 +105,11 @@ Geleceği öngermek çok zordur ve bizler öngörebildiğimizi sanan enayileriz.
 ## Bölüm 10 - Öngörü Skandalı
 Saat başı radyodan haberleri dinlemek sizin için haftalık bir dergi okumaktan daha kötü olacaktır, çünkü zaman aralığının uzaması enformasyonun süzgeçten geçirilmesine imkân tanır. Parazitler azalır, enformasyonun oranı artar.
 
-“Kuant” olarak çalıştığım dönemde ben de aynı deneyimi yaşadım; gecelerini bilgisayar başında karmaşık matematik yöntemleriyle uğraşarak geçiren boğuk aksanlı, yabancı bir bilim adamı, en basit yöntemleri kullanan bir taksi şoföründen nadiren daha başarılı olur. Sorun, bu yöntemlerin işe yaradığı nadir durumlara odaklanmamız ve çok daha fazla sayıdaki başarısızlıklarına neredeyse hiçbir zaman dikkat göstermememizdir.
+Bazı mesleklerin uzmanları olur ama bazılarının uzmanları normal bir insan kadar bile doğru öngörüye sahip olmayabilir. Mesela veterinerlik, satranç oyuncusu gibi işlerin uzmanı olur. Ancak ekonomist, klinik psikolog, psikaytr gibi mesleklerin uzmanları pek uzman gibi değildir.
+
+Siyah Kuğuların pek olmadığı vasatisdanda uzmanlık olabiliyor ama Aşıristanda uzmanlık hikaye.
+
+Saygın ekonomi kurumlarının gelecek yıla dair tahminleri ile taksi şöförlerinin tahminlerini inceleyen bir deney yapılsa o kurumlara kimse itibar etmez.
+
 
 
