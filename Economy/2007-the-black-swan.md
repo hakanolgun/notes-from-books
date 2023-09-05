@@ -111,5 +111,12 @@ Siyah Kuğuların pek olmadığı vasatisdanda uzmanlık olabiliyor ama Aşıris
 
 Saygın ekonomi kurumlarının gelecek yıla dair tahminleri ile taksi şöförlerinin tahminlerini inceleyen bir deney yapılsa o kurumlara kimse itibar etmez.
 
+Ortalama yaşam süresinin 79 yıl olduğu bir ülkede yaşınız 79 olmuşsa bir 10 yıl daha yaşamanız beklenir. Yaşınız 90 olduğunda bir 5 yıl daha yaşamanız beklenir. Çünkü ortalamadan önce ölüp ortalamayı düşürenler vardır.
 
+Ortalama derinliği 1 metre olan nehirden geçmeyin. Tahminin kendisinden çok artı eksi sapma miktarı önemlidir. Özellikle negatif sapma miktarı yani en kötü senaryonun ne olduğu önemlidir. Hayattaki tahminlerin, olaylarında BigO'suna bakılmalı.
+
+## Bölüm 11 - Kuş pisliği nasıl aranır?
+Popper'ın temel argümanı, tarihsel olayları öngörebilmemiz için gelecekteki teknolojik gelişmeleri de öngörebilmek gerekir ki bu oldukça öngörülemez bir şeydir.
+
+Peki öngörü ve tahminlerimiz bu kadar kötü ise niye bunlara meyilliyiz? Filozof Daniel Dennett'e göre evrimsel bir sebebi var. Herhangi bir durumda başımıza geleceklerin projeksiyonunu yaparak olası sonuçların bizi belaya sokup sokmayacağına bakıyoruz.
 
