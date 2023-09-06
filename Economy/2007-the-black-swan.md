@@ -109,14 +109,47 @@ Bazı mesleklerin uzmanları olur ama bazılarının uzmanları normal bir insan
 
 Siyah Kuğuların pek olmadığı vasatisdanda uzmanlık olabiliyor ama Aşıristanda uzmanlık hikaye.
 
-Saygın ekonomi kurumlarının gelecek yıla dair tahminleri ile taksi şöförlerinin tahminlerini inceleyen bir deney yapılsa o kurumlara kimse itibar etmez.
+Saygın ekonomi kurumlarının gelecek yıla dair leri ile taksi şöförlerinin lerini inceleyen bir deney yapılsa o kurumlara kimse itibar etmez.
 
 Ortalama yaşam süresinin 79 yıl olduğu bir ülkede yaşınız 79 olmuşsa bir 10 yıl daha yaşamanız beklenir. Yaşınız 90 olduğunda bir 5 yıl daha yaşamanız beklenir. Çünkü ortalamadan önce ölüp ortalamayı düşürenler vardır.
 
-Ortalama derinliği 1 metre olan nehirden geçmeyin. Tahminin kendisinden çok artı eksi sapma miktarı önemlidir. Özellikle negatif sapma miktarı yani en kötü senaryonun ne olduğu önemlidir. Hayattaki tahminlerin, olaylarında BigO'suna bakılmalı.
+Ortalama derinliği 1 metre olan nehirden geçmeyin. Tahminin kendisinden çok artı eksi sapma miktarı önemlidir. Özellikle negatif sapma miktarı yani en kötü senaryonun ne olduğu önemlidir. Hayattaki lerin, olaylarında BigO'suna bakılmalı.
 
 ## Bölüm 11 - Kuş pisliği nasıl aranır?
 Popper'ın temel argümanı, tarihsel olayları öngörebilmemiz için gelecekteki teknolojik gelişmeleri de öngörebilmek gerekir ki bu oldukça öngörülemez bir şeydir.
 
-Peki öngörü ve tahminlerimiz bu kadar kötü ise niye bunlara meyilliyiz? Filozof Daniel Dennett'e göre evrimsel bir sebebi var. Herhangi bir durumda başımıza geleceklerin projeksiyonunu yaparak olası sonuçların bizi belaya sokup sokmayacağına bakıyoruz.
+Peki öngörü ve lerimiz bu kadar kötü ise niye bunlara meyilliyiz? Filozof Daniel Dennett'e göre evrimsel bir sebebi var. Herhangi bir durumda başımıza geleceklerin projeksiyonunu yaparak olası sonuçların bizi belaya sokup sokmayacağına bakıyoruz.
+
+## Bölüm 12 
+
+Geriye dönük kahinlik. Yani olmuş olaya bakıp öncesinde neler olduğunu  etmek, geleceği  etmekten çok daha zordur.
+
+Tarih gereken dikkat gösterilmedikçe kesinlikle teori oluşturulacak veya genel bilgi türetilecek bir alan değildir. Hindi örneğini hatırlayın.
+
+
+## Bölüm 13 - Öngöremezseniz ne yaparsınız?
+
+Bu bölüm peki ne yapacağız sorusuna cevap olarak yazılmıştır. İlk cevabım sorunu anlamanızdır. Sorunu anlamışsanız cevabı bulmanız kolaydır.
+
+Tüm beklenmedik olaylara karşı hazırlıklı olun.
+
+Çevrenizdeki beklenmedik fırsatları bulma yeteneğinizi azamiye çıkarın.
+
+Halter stratejisi. Stratejiniz ılımlı girişken veya muhafazakar değil, hiper-girişken ya da hiper-muhafazakar olmalıdır.
+
+Örneğin paranızın %85-90'ı ile ABD hazine tahvillerine yatırın. Gezegendeki en güvenli yatırım aracıdır. Kalan %10-15 ile ise olabilince kaldıraçlı, spekülatif yatırımlara girebilirsiniz.
+
+1. Pozitif ve negatif siyah kuğuları ayırt edin. 
+Hayatta bazı alanlar pozitif siyah kuğulara açıktır. Örneğin sinemacılık, yayıncılık, bilimsel araştırmalar ve risk sermayesi fonları gibi. Burada işler ya normaldir ya da bazen büyük başarılar elde edilir. 
+
+Birde negatif siyah kuğulara açık olan alanlar vardır. Ordu, afet sigortaları gibi. Burada hayat ya normaldir ya da bir felaket olmuştur.
+
+2. Her fırsatı veya fırsat gibi görünen şeyi yakalayın.
+Pozitif siyah kuğuları yakalamak için kendinizi onlara açık bırakmalısınız. Eğer önemli veya gelecek vaadeden birinden randevu isteği alırsanız kesinlikle gidin. Bir daha aynı fırsatı bulamayabilirsiniz. 
+
+Çok çalışın, ama sıradan işlerde değil, fırsatları kovalamak ve kendinizi onlara azami düzeyde açık tutmak için çalışın. Partilere, etkinliklere katılın.
+
+Tüm bu önerilerin ortak noktası şudur: Asimetri. Kendinizi lehinize olan sonuçların aleyhte olanlara kıyasla daha çok olduğu pozisyonlara sokun.
+
+Nadir bir olayın gerçekleşme olasılığını bilemeyebilirim, ama eğer gerçekleşirse neler olabileceğini tahmin edebilirim. Örneğin İstanbulda ne zaman deprem olacağını bilemeyebilirim ama olursa neler olabileceğini tahmin edebilirim ve buna göre pozisyon alabilirim.
 
