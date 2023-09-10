@@ -128,28 +128,34 @@ Tarih gereken dikkat gösterilmedikçe kesinlikle teori oluşturulacak veya gene
 
 
 ## Bölüm 13 - Öngöremezseniz ne yaparsınız?
-
 Bu bölüm peki ne yapacağız sorusuna cevap olarak yazılmıştır. İlk cevabım sorunu anlamanızdır. Sorunu anlamışsanız cevabı bulmanız kolaydır.
 
 Tüm beklenmedik olaylara karşı hazırlıklı olun.
 
 Çevrenizdeki beklenmedik fırsatları bulma yeteneğinizi azamiye çıkarın.
 
-Halter stratejisi. Stratejiniz ılımlı girişken veya muhafazakar değil, hiper-girişken ya da hiper-muhafazakar olmalıdır.
+Halter stratejisi. Stratejiniz ılımlı girişken veya muhafazakar değil, hiper-girişken ve hiper-muhafazakar olmalıdır.
 
 Örneğin paranızın %85-90'ı ile ABD hazine tahvillerine yatırın. Gezegendeki en güvenli yatırım aracıdır. Kalan %10-15 ile ise olabilince kaldıraçlı, spekülatif yatırımlara girebilirsiniz.
 
 1. Pozitif ve negatif siyah kuğuları ayırt edin. 
-Hayatta bazı alanlar pozitif siyah kuğulara açıktır. Örneğin sinemacılık, yayıncılık, bilimsel araştırmalar ve risk sermayesi fonları gibi. Burada işler ya normaldir ya da bazen büyük başarılar elde edilir. 
+Hayatta bazı alanlar pozitif siyah kuğulara açıktır. Örneğin sinemacılık, yayıncılık, bilimsel araştırmalar ve risk sermayesi fonları gibi. Burada işler ya normaldir ya da bazen büyük başarılar elde edilir. Birde negatif siyah kuğulara açık olan alanlar vardır. Ordu, afet sigortaları gibi. Burada hayat ya normaldir ya da bir felaket olmuştur.
 
-Birde negatif siyah kuğulara açık olan alanlar vardır. Ordu, afet sigortaları gibi. Burada hayat ya normaldir ya da bir felaket olmuştur.
+2. Fırsatlara karşı gözü açık olun. Her zaman karşınıza çıkmazlar.
+Eğer önemli veya potansiyeli olan birinden randevu isteği alırsanız kesinlikle gidin. Bir daha aynı fırsatı bulamayabilirsiniz. 
 
-2. Her fırsatı veya fırsat gibi görünen şeyi yakalayın.
-Pozitif siyah kuğuları yakalamak için kendinizi onlara açık bırakmalısınız. Eğer önemli veya gelecek vaadeden birinden randevu isteği alırsanız kesinlikle gidin. Bir daha aynı fırsatı bulamayabilirsiniz. 
-
-Çok çalışın, ama sıradan işlerde değil, fırsatları kovalamak ve kendinizi onlara azami düzeyde açık tutmak için çalışın. Partilere, etkinliklere katılın.
+Çok çalışın, ama sıradan işlerde değil, fırsatları kovalamak ve kendinizi onlara azami düzeyde açık tutmak için çalışın. Partilere, etkinliklere katılın. Tanınır ve ulaşılabilir olun.
 
 Tüm bu önerilerin ortak noktası şudur: Asimetri. Kendinizi lehinize olan sonuçların aleyhte olanlara kıyasla daha çok olduğu pozisyonlara sokun.
 
-Nadir bir olayın gerçekleşme olasılığını bilemeyebilirim, ama eğer gerçekleşirse neler olabileceğini tahmin edebilirim. Örneğin İstanbulda ne zaman deprem olacağını bilemeyebilirim ama olursa neler olabileceğini tahmin edebilirim ve buna göre pozisyon alabilirim.
+Nadir bir olayın gerçekleşme olasılığını bilemeyebilirim, ama eğer gerçekleşirse neler olabileceğini hayal edebilirim. Örneğin İstanbulda ne zaman deprem olacağını bilemeyebilirim ama olursa neler olabileceğini  edebilirim ve buna göre pozisyon alabilirim.
+
+# EK DENEME
+
+Borç tehlikelidir. Geleceğe dair iyimserlik ve siyah kuğu körlüğü yaratabilir. İşler tersine dönerse borçlarınızı kapatabilecek misiniz?
+
+Küreselleşmenin zararları da vardır. Sistemin genelini riske atar. Küçük adalarda büyüklerden daha fazla tür çeşitliliği vardır. Çünkü büyük adada bazı türler yayılıp rakipleri yok etmiştir. Küreselliştikçe panik dalgaları daha fazla zarar veren bir boyutta olacak. Mesela salgın hastalıklar veya bankalara hücum gibi.
+
+
+
 
