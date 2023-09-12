@@ -156,6 +156,9 @@ Borç tehlikelidir. Geleceğe dair iyimserlik ve siyah kuğu körlüğü yaratab
 
 Küreselleşmenin zararları da vardır. Sistemin genelini riske atar. Küçük adalarda büyüklerden daha fazla tür çeşitliliği vardır. Çünkü büyük adada bazı türler yayılıp rakipleri yok etmiştir. Küreselliştikçe panik dalgaları daha fazla zarar veren bir boyutta olacak. Mesela salgın hastalıklar veya bankalara hücum gibi.
 
+Başarının esası kar etmeye çalışmak değil, zarardan kaçınmaktır.
 
+Dördüncü kare'den çıkmanın yolu sigorta satın almak ve halter stratejisi uygulayarak riskleri budamaktır. Ancak bunları uygulayamıyorsanız:
 
-
+Fiziki yatırım ve yastık altı sizi belirsizliğe karşı daha iyi korur.
+Aşırı uzmanlaşma iyidir ama riskiniz artırır, ya işiniz kaybolursa? B planı olması olmamasından iyidir.
