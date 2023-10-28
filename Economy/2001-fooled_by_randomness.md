@@ -45,7 +45,7 @@ Gerçek hayat rus ruletinden de kötüdür. Altı değil yüzlerce hazne vardır
 ## 3 
 Monte Carlo yöntemleri adını verdiğim yöntemler şöyledir:
 
-İlk olarak **örneklem patikası**ndan bahsedeyim. Örneklem patikası alternatif tarihlerin tümüdür. Yani bir kuşun yarın akşam konacağı dal değil, gidebileceği diğer tüm ihtimallerdir. Örneklem patikası deterministik te olabilir rastlantısal da.
+İlk olarak **örneklem patikası**ndan bahsedeyim. Örneklem patikası alternatif tarihlerin tümüdür. Yani bir kuşun yarın akşam konacağı dal değil, gidebileceği diğer tüm ihtimallerdir. Örneklem patikası deterministik de olabilir rastlantısal da.
 
 Rastlantısal != aynı derecede olası. Bazı sonuçların olasılık değerleri ötekilerden yüksektir.
 
