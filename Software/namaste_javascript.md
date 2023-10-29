@@ -24,6 +24,12 @@ Think of Call Stack as a glass. GEC sits bottom of it. Every time a function inv
 
 You can see Call Stack, Global Execution Context and function context on developer tools in a browser.
 
+##
 
+Whenever a JS program runs Global Execution Context is created with global Window object and this keyword. this == window.
+
+Global space is all codes that not inside a function.
+
+All variables in global space attached to window object.
 
 
