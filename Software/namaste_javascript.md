@@ -20,6 +20,10 @@ After Hoisting phase, Code execution phase starts. Code executed line by line an
 
 Call Stack maintains the order of execution of Execution Contexts.
 
-Think of Call Stack as a glass. GEC sits bottom of it. Every time a function invokes, another EC sits top of the GEC or previous EC.
+Think of Call Stack as a glass. GEC sits bottom of it. Every time a function invokes, another Execution Context sits top of the GEC or previous EC.
+
+You can see Call Stack, Global Execution Context and function context on developer tools in a browser.
+
+
 
 
