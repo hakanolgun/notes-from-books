@@ -24,7 +24,7 @@ Think of Call Stack as a glass. GEC sits bottom of it. Every time a function inv
 
 You can see Call Stack, Global Execution Context and function context on developer tools in a browser.
 
-##
+## undefined vs not defined
 
 Whenever a JS program runs Global Execution Context is created with global Window object and this keyword. this == window.
 
@@ -32,4 +32,22 @@ Global space is all codes that not inside a function.
 
 All variables in global space attached to window object.
 
+undefined is a special placeholder for variables in memory creation phase. You can use undefined in your program but it is  a bad practice.
 
+## Scope Chain & Lexical Environment
+
+Lexical Environment == scope.
+
+Scope is where a variable can be accessed. 
+
+Variable inside of a function can be accessable in that function and oll children functions.
+
+Variable inside of global scoope can be accessable from anywhere.
+
+Variable inside of a function cannot be accessable from parent and global scopes.
+
+Whenever an Execution Context is created a Lexical Environment also created.
+
+In memory creation phase EC has local variables and reference to lexical env of its parent EC.
+
+## let and const. Temporal Dead Zone
