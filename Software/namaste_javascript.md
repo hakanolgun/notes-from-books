@@ -40,7 +40,7 @@ Lexical Environment == scope.
 
 Scope is where a variable can be accessed. 
 
-Variable inside of a function can be accessable in that function and oll children functions.
+Variable inside of a function can be accessable in that function and all children functions.
 
 Variable inside of global scoope can be accessable from anywhere.
 
@@ -51,3 +51,18 @@ Whenever an Execution Context is created a Lexical Environment also created.
 In memory creation phase EC has local variables and reference to lexical env of its parent EC.
 
 ## let and const. Temporal Dead Zone
+
+Inside of execution context, in memory creation phase let also hoisted. It gots 
+undefined value like var. But the difference is that context keeps it in a seperate place. That 
+place is TDZ. 
+
+You cannot access it before its initialization with a value. When you try that with var you get 
+undefined but when you try that with let you'll get an error.
+
+Var variables attached on global object in global scope. But it is not the case for let.
+
+# Block Scope & Shadowing
+
+Block is a place which between curly braces.
+
+Shadowing
