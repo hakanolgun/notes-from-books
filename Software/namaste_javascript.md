@@ -1,3 +1,5 @@
+# Call Stack, Execution Context, Memory Phase, Hoisting
+
 Everything in JS happens inside an Execution Context
 
 Global Execution Context is like a box has two parts in it.
@@ -65,4 +67,33 @@ Var variables attached on global object in global scope. But it is not the case 
 
 Block is a place which between curly braces.
 
-Shadowing
+Shadowing is when more than one variables with the same name exist, the inner
+scoped variables shadows and hides the outer scoped variable. so you cannot
+access the outer scoped variable once inner scope variable declared.
+
+# Closures
+
+Function along with its lexical environment(scope) forms a closure.
+
+When a function is returned from another function it still maintains its lexical scope.
+
+So when you return a function you are also returning its scope with it.
+
+```js
+function outer(){
+    const age = 27;
+    function inner(){
+        console.log(age);
+    }
+    return inner;
+}
+
+const z = outer();
+console.log(z); // function inner(){...}
+
+x(); // prints 27 
+```
+
+It prints 27 so can access variable age even the outer function removed from call stack.
+Function inner still can see variables within its lexical scope.
+
