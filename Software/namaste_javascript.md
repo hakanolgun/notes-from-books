@@ -14,7 +14,7 @@ When you run a JS program an Execution Context is created.
 
 Global Execution Context is created in two phases. First is Memory Creation Phase. In memory creation phase all variables are declared as undefined. And all functions declared as is. Also known as Hoisting phase.
 
-Second phase is Code Execution Phase. 
+Second phase is Code Execution Phase.
 
 When you run a JS program a Global Execution Context is created. In Memory Creation Phase all global variables and functions created. Variables with var declared as undefined, variable with let and const declared also as undefined but in Temporal Dead Zone.
 
@@ -34,13 +34,13 @@ Global space is all codes that not inside a function.
 
 All variables in global space attached to window object.
 
-undefined is a special placeholder for variables in memory creation phase. You can use undefined in your program but it is  a bad practice.
+undefined is a special placeholder for variables in memory creation phase. You can use undefined in your program but it is a bad practice.
 
 ## Scope Chain & Lexical Environment
 
 Lexical Environment == scope.
 
-Scope is where a variable can be accessed. 
+Scope is where a variable can be accessed.
 
 Variable inside of a function can be accessable in that function and all children functions.
 
@@ -54,16 +54,16 @@ In memory creation phase EC has local variables and reference to lexical env of 
 
 ## let and const. Temporal Dead Zone
 
-Inside of execution context, in memory creation phase let also hoisted. It gots 
-undefined value like var. But the difference is that context keeps it in a seperate place. That 
-place is TDZ. 
+Inside of execution context, in memory creation phase let also hoisted. It gots
+undefined value like var. But the difference is that context keeps it in a seperate place. That
+place is TDZ.
 
-You cannot access it before its initialization with a value. When you try that with var you get 
+You cannot access it before its initialization with a value. When you try that with var you get
 undefined but when you try that with let you'll get an error.
 
 Var variables attached on global object in global scope. But it is not the case for let.
 
-# Block Scope & Shadowing
+## Block Scope & Shadowing
 
 Block is a place which between curly braces.
 
