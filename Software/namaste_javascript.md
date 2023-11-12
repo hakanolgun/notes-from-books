@@ -1,4 +1,4 @@
-# Call Stack, Execution Context, Memory Phase, Hoisting
+## Execution Context, Memory Phase - Hoisting
 
 Everything in JS happens inside an Execution Context
 
@@ -54,12 +54,9 @@ In memory creation phase EC has local variables and reference to lexical env of 
 
 ## let and const. Temporal Dead Zone
 
-Inside of execution context, in memory creation phase let also hoisted. It gots
-undefined value like var. But the difference is that context keeps it in a seperate place. That
-place is TDZ.
+Inside of execution context, in memory creation phase let also hoisted. It gots undefined value like var. But the difference is that context keeps it in a seperate place. That place is TDZ.
 
-You cannot access it before its initialization with a value. When you try that with var you get
-undefined but when you try that with let you'll get an error.
+You cannot access it before its initialization with a value. When you try that with var you get undefined but when you try that with let you'll get an error.
 
 Var variables attached on global object in global scope. But it is not the case for let.
 
@@ -67,11 +64,9 @@ Var variables attached on global object in global scope. But it is not the case 
 
 Block is a place which between curly braces.
 
-Shadowing is when more than one variables with the same name exist, the inner
-scoped variables shadows and hides the outer scoped variable. so you cannot
-access the outer scoped variable once inner scope variable declared.
+Shadowing is when more than one variables with the same name exist, the inner scoped variables shadows and hides the outer scoped variable. So you cannot access the outer scoped variable once inner scope variable declared.
 
-# Closures
+## Closures
 
 Function along with its lexical environment(scope) forms a closure.
 
@@ -80,20 +75,75 @@ When a function is returned from another function it still maintains its lexical
 So when you return a function you are also returning its scope with it.
 
 ```js
-function outer(){
-    const age = 27;
-    function inner(){
-        console.log(age);
-    }
-    return inner;
+function outer() {
+  const age = 27;
+  function inner() {
+    console.log(age);
+  }
+  return inner;
 }
 
 const z = outer();
 console.log(z); // function inner(){...}
 
-x(); // prints 27 
+x(); // prints 27
 ```
 
-It prints 27 so can access variable age even the outer function removed from call stack.
+It prints 27 so can access variable age even the outer function removed from the call stack.
 Function inner still can see variables within its lexical scope.
+
+## First Class Functions
+
+Function Declaration - Function Statement:
+```js
+function sayHello() {
+  console.log("Hello")
+}
+```
+
+Function Expression:
+```js
+const sayHello = function (){ // anonymous function can be used here
+  console.log("Hello")
+}
+```
+First Class Citizens === First Class Functions
+First Class Functions: Ability to pass a function as an argument and return a function from another function.
+
+## Callback Functions & Event Listeners
+
+Why we clear eventListeners? Because they take memory. Why they take memory? Because they are closures. They keep their scope.
+
+## Event Loop
+
+JS engine creates a call stack.
+
+Browser > JS Engine > Call Stack > Global Execution Context > Hoisting and Execution Phases
+
+Event Loop, checks wether Call Stack is empty or not if empty it checks microtask queue and then callback queue. If find sth it push it to call stack.
+
+Microtask queue: Promises and mutation observers (Higher Priority)
+Callback queue: Any other callbacks (timeouts, event listeners ...)
+
+If there are a lot of task in the microtask queue, callbacks inside the callback queue have to wait for all microtask to be executed. If tasks inside callback queue waits to long it called **starvation**.
+
+## JS Engine
+
+JS Engine: Parsing > Compilation > Execution > ByteCode
+
+Parsing: Takes code and converts it to AST
+Compilation: Interpreter and Compiler together (JIT Compilation)
+Execution : Memory Heap and Call Stack (and also GC)
+
+## Trust Issues With setTimeout
+
+If call stack is not empty, callback from a setTimeout cannot be executed even the time in timeout already passed. It has to wait to callstack become empty.
+
+So don't block the main thread.
+
+## Higher Order Functions & Functional Programming
+
+Higher Order Function: A function takes a callback parameter.
+
+Nice trick to write better DRY code on the video.
 
