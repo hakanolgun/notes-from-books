@@ -147,3 +147,15 @@ Higher Order Function: A function takes a callback parameter.
 
 Nice trick to write better DRY code on the video.
 
+
+# CORE JS CONCEPTS
+
+**call, apply, bind methods:**
+
+**Currying :** Pass one argument to parent function, pass another argument to child function so you divide arguments to multiple levels.
+
+**async and defer keywords:** Async script will be load parallel to html parsing and once it loads html parsing stops and script executes. Defer keyword makes script will be executed only when html parsing completed.
+
+**Events bubling up & capturing down :** If event bubbling is true When you click inner div, if first call inner divs callback, then parent div's callback. If Capturing is true when you click inner div, firstly outer divs callback will be call.
+
+**Event delegation :** When you have a parent div and a lot of child elements, instead of attaching event listeners to all child element, you attach only one eventListener to parent and detect which child is being clicked by e.target property. So you save a lot of memory because eventListeners are memory heavy.
