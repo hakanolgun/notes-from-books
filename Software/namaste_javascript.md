@@ -95,18 +95,22 @@ Function inner still can see variables within its lexical scope.
 ## First Class Functions
 
 Function Declaration - Function Statement:
+
 ```js
 function sayHello() {
-  console.log("Hello")
+  console.log("Hello");
 }
 ```
 
 Function Expression:
+
 ```js
-const sayHello = function (){ // anonymous function can be used here
-  console.log("Hello")
-}
+const sayHello = function () {
+  // anonymous function can be used here
+  console.log("Hello");
+};
 ```
+
 First Class Citizens === First Class Functions
 First Class Functions: Ability to pass a function as an argument and return a function from another function.
 
@@ -147,10 +151,10 @@ Higher Order Function: A function takes a callback parameter.
 
 Nice trick to write better DRY code on the video.
 
-
 # CORE JS CONCEPTS
 
-**call, apply, bind methods:**
+**call, apply, bind methods:** call can be used for function borrowing. we can call a method from an object and pass another object as a propt to call method so this refers to the object which we pass. Apply method is also same. Only difference is that you can pass arguments as an array to apply method.
+Bind method also same but it does not call the method it binds the method to the object and returns the method so you can call it later.
 
 **Currying :** Pass one argument to parent function, pass another argument to child function so you divide arguments to multiple levels.
 
