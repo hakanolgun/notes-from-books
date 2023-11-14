@@ -163,3 +163,39 @@ Bind method also same but it does not call the method it binds the method to the
 **Events bubling up & capturing down :** If event bubbling is true When you click inner div, if first call inner divs callback, then parent div's callback. If Capturing is true when you click inner div, firstly outer divs callback will be call.
 
 **Event delegation :** When you have a parent div and a lot of child elements, instead of attaching event listeners to all child element, you attach only one eventListener to parent and detect which child is being clicked by e.target property. So you save a lot of memory because eventListeners are memory heavy.
+
+**Debouncing and Throttling** : When multiple function calls happens very often you need to limit them.Debouncing is make a call when the duration between two calls exceed certain duration.Throttling means use interval and only call the function every xxx miliseconds.
+
+```js
+// Debouncing
+function debounce(func, delay) {
+  let timeoutId;
+
+  return function (...args) {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
+const betterFunction = debounce(getData, 300);
+
+// Throttling
+function throttle(func, limit) {
+  let inThrottle;
+
+  return function (...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+
+      setTimeout(() => {
+        inThrottle = false;
+      }, limit);
+    }
+  };
+}
+const betterFunction = throttle(getData, 1000);
+```
