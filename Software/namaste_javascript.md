@@ -1,3 +1,5 @@
+# NAMASTE JS SEASON 1
+
 ## Execution Context, Memory Phase - Hoisting
 
 Everything in JS happens inside an Execution Context
@@ -167,7 +169,7 @@ Bind method also same but it does not call the method it binds the method to the
 **Debouncing and Throttling** : When multiple function calls happens very often you need to limit them.Debouncing is make a call when the duration between two calls exceed certain duration.Throttling means use interval and only call the function every xxx miliseconds.
 
 ```js
-// Debouncing
+
 function debounce(func, delay) {
   let timeoutId;
 
@@ -182,7 +184,6 @@ function debounce(func, delay) {
 
 const betterFunction = debounce(getData, 300);
 
-// Throttling
 function throttle(func, limit) {
   let inThrottle;
 
@@ -198,4 +199,17 @@ function throttle(func, limit) {
   };
 }
 const betterFunction = throttle(getData, 1000);
+
 ```
+
+# NAMASTE JS SEASON 2
+
+## Promises
+
+The problems with callbacks are they are hard to read and maintain. Addditionaly
+you have inversion of control problem because you have to trust to service will call your
+callback function.
+
+Promise is an object which represent eventually completion or failure of an asyn operation.
+
+## Promise Chaining & Error Handling
