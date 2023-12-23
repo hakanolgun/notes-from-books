@@ -29,7 +29,7 @@
 ### 08 - Optimize your app’s JavaScript bundle
 - Issue: Metro, the default JS bundler for React Native, produces a bundle that’s too large.
 - Solution: Use different bundlers like Re.Pack, ESBuild etc.
-- Benefits: Ship less JavaScript to your users. Save devel- opers’ time when bundling.
+- Benefits: Ship less JavaScript to your users. Save developers’ time when bundling.
 
 ## PART 2
 
@@ -56,7 +56,7 @@
 • other files.
 
 - Solution: Flip the boolean flag enableProguardInReleaseBuilds to true, adjust the Proguard rules to your needs, and test release builds for crashes. Also, flip enableSeparateBuildPerCPUArchitecture to true.
-- Android is an operating system that runs on plenty of devices with dif- ferent architectures, so your build must support most of them. React Native supports four: armeabi-v7a, arm64-v8a, x86, and x86_64. Use aab instead of apk to solve that issue.
+- Android is an operating system that runs on plenty of devices with different architectures, so your build must support most of them. React Native supports four: armeabi-v7a, arm64-v8a, x86, and x86_64. Use aab instead of apk to solve that issue.
 - Another way of decreasing the build size is by enabling Proguard. Proguard works in a similar way to dead code elimination from JavaScript - it gets rid of the unused code from third-party SDKs and minifies the codebase.
 - `def enableProguardInReleaseBuilds = true `
 - Another good practice is keeping your eye on resources optimization. Each application contains some svg or png graphics that can be optimized using free web tools.
@@ -79,7 +79,7 @@ Fabric allows us to take advantage of the features introduced in React 18. Inste
 
 - **Codegen** - A code generation tool that makes JS a source of truth by automating the compatibility between the JS and native sides. It allows for writing statically typed JS (called JS Spec) which is then used to generate the interface files needed by Fabric native components and TurboMod- ules. Spec consists of a set of types written in TypeScript or Flow that defines all the APIs provided by the native module. Codegen ensures type-safety as well as compile-time type safety, which means smaller code and faster execution as both realms can trust each other around validating the data every time. To find out more about it, refer to the docs.
 
-- **JSI** - JSI is the foundation of the New Architecture, a C++ API for interacting with any JS engine. In contrast to the bridge which was asynchronous, JSI is synchronous which allows for invoking native functions faster. It lets JavaScript to hold references to C++ host objects and invoke methods directly on them. This removes the major overhead of asyn- chronous communication between JS and native by serializing objects using the bridge.
+- **JSI** - JSI is the foundation of the New Architecture, a C++ API for interacting with any JS engine. In contrast to the bridge which was asynchronous, JSI is synchronous which allows for invoking native functions faster. It lets JavaScript to hold references to C++ host objects and invoke methods directly on them. This removes the major overhead of asynchronous communication between JS and native by serializing objects using the bridge.
 
 ## PART 3
 ### 1 - Run tests for key pieces of your app
@@ -90,9 +90,9 @@ Fabric allows us to take advantage of the features introduced in React 18. Inste
 
 ### 3 - Don’t be afraid to ship fast with Continuous Deployment
 - Issue: Building and distributing your apps manually is a complex and time-consuming process.
-- Continuous Deployment is a strategy in which software is released fre- quently through a set of automated scripts. It aims at building, testing, and releasing software with greater speed and frequency. The approach helps reduce the cost, time, and risk of delivering changes by allowing for more incremental updates to applications in production.
+- Continuous Deployment is a strategy in which software is released frequently through a set of automated scripts. It aims at building, testing, and releasing software with greater speed and frequency. The approach helps reduce the cost, time, and risk of delivering changes by allowing for more incremental updates to applications in production.
 - Solution: Establish a continuous deployment setup (based on **Fastlane**) that makes the build and generates the changelog. Ship to your users instantly.
-- **AppCenter** is a cloud service with tooling for the automation and de- ployment of your application. Its biggest advantage is that many of the settings can be configured from the graphical interface. It is much easier to set up the App Store and Play Store deployments this way, rather than working with uploads from the command line.
+- **AppCenter** is a cloud service with tooling for the automation and deployment of your application. Its biggest advantage is that many of the settings can be configured from the graphical interface. It is much easier to set up the App Store and Play Store deployments this way, rather than working with uploads from the command line.
 
 ### 4 - Ship OTA (Over-The-Air) when in an emergency
 - There are two popular ways to implement OTA into your app. The first and most popular tool for OTA updates is CodePush, a service that is a part of Microsoft’s App Center suite. The second tool is created by the Expo team and it’s called EAS Update.

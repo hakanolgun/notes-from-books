@@ -20,7 +20,7 @@ Second phase is Code Execution Phase.
 
 When you run a JS program a Global Execution Context is created. In Memory Creation Phase all global variables and functions created. Variables with var declared as undefined, variable with let and const declared also as undefined but in Temporal Dead Zone.
 
-After Hoisting phase, Code execution phase starts. Code executed line by line and if it shows a variable it updates its value with actual value. If it sees a function invocation another execution context is created with hoisting and execution parts.
+After Hoisting phase, Code execution phase starts. Code executed line by line and if it reads a variable it updates its value with actual value. If it sees a function invocation another execution context is created with hoisting and execution parts.
 
 Call Stack maintains the order of execution of Execution Contexts.
 
@@ -52,7 +52,7 @@ Variable inside of a function cannot be accessable from parent and global scopes
 
 Whenever an Execution Context is created a Lexical Environment also created.
 
-In memory creation phase EC has local variables and reference to lexical env of its parent EC.
+In memory creation phase EC has local variables and reference to lexical environment of its parent EC.
 
 ## let and const. Temporal Dead Zone
 

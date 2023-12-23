@@ -10,8 +10,7 @@
 - Satmayı öğrenin. Yapmayı öğrenin. Her ikisini de yapabilirseniz
   durdurulamaz olursunuz
 
-- Kendinizi spesifik bilgi, sorumluluk ve kaldıraçlarla donatın. Spesifik bilgi, eğitimle edinemeyeceğiniz bilgidir. Eğer toplum sizi o
-  konuda eğitebilirse sizin yerinize bir başkasını da eğitebilir. Spesifik bilgi satış becerileri, müzikal yetenekler, takıntılı kişilik, çok oyun oynamak, dedikodu yapmak vs.
+- Kendinizi spesifik bilgi, sorumluluk ve kaldıraçlarla donatın. Spesifik bilgi, eğitimle edinemeyeceğiniz bilgidir. Eğer toplum sizi o konuda eğitebilirse sizin yerinize bir başkasını da eğitebilir. Spesifik bilgi satış becerileri, müzikal yetenekler, takıntılı kişilik, çok oyun oynamak, dedikodu yapmak vs.
 
 - Zenginlik, kaldıraçlarla gelir. İş dünyasında kaldıraç, sermayeden,
   insandan ve çoğaltma maliyeti olmayan (kod ve iletişim araçları
