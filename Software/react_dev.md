@@ -113,3 +113,714 @@ If some data changes in the middle of rendering a deep component tree, React can
 Every new React feature we’re building takes advantage of purity. From data fetching to animations to performance, keeping components pure unlocks the power of the React paradigm.
 
 # Adding Interactivity
+## State: A Component's Memory
+
+```js
+export default function Gallery() {
+  let index = 0;
+
+  function handleClick() {
+    index = index + 1;
+  }
+
+  let sculpture = sculptureList[index];
+  return (
+    <>
+      <button onClick={handleClick}>
+        Next
+      </button>
+      // ...
+  )
+}
+```
+
+The handleClick event handler is updating a local variable, index. But two things prevent that change from being visible:
+1. Local variables don’t persist between renders. When React renders this component a second time, it renders it from scratch—it doesn’t consider any changes to the local variables.
+2. Changes to local variables won’t trigger renders. React doesn’t realize it needs to render the component again with the new data.
+
+To update a component with new data, two things need to happen:
+1. Retain the data between renders.
+2. Trigger React to render the component with new data (re-rendering).
+
+**How does React know which state to return?** 
+You might have noticed that the useState call does not receive any information about which state variable it refers to. There is no “identifier” that is passed to useState, so how does it know which of the state variables to return? Does it rely on some magic like parsing your functions? The answer is no.
+
+Instead, to enable their concise syntax, Hooks rely on a stable call order on every render of the same component. This works well in practice because if you follow the rule above (“only call Hooks at the top level”), Hooks will always be called in the same order. Additionally, a linter plugin catches most mistakes.
+
+Internally, React holds an array of state pairs for every component. It also maintains the current pair index, which is set to 0 before rendering. Each time you call useState, React gives you the next state pair and increments the index. You can read more about this mechanism in React Hooks: Not Magic, Just Arrays.
+
+This example doesn’t use React but it gives you an idea of how useState works internally:
+```js
+let componentHooks = [];
+let currentHookIndex = 0;
+
+// How useState works inside React (simplified).
+function useState(initialState) {
+  let pair = componentHooks[currentHookIndex];
+  if (pair) {
+    // This is not the first render,
+    // so the state pair already exists.
+    // Return it and prepare for next Hook call.
+    currentHookIndex++;
+    return pair;
+  }
+
+  // This is the first time we're rendering,
+  // so create a state pair and store it.
+  pair = [initialState, setState];
+
+  function setState(nextState) {
+    // When the user requests a state change,
+    // put the new value into the pair.
+    pair[0] = nextState;
+    updateDOM();
+  }
+
+  // Store the pair for future renders
+  // and prepare for the next Hook call.
+  componentHooks[currentHookIndex] = pair;
+  currentHookIndex++;
+  return pair;
+}
+
+function Gallery() {
+  // Each useState() call will get the next pair.
+  const [index, setIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
+
+  function handleNextClick() {
+    setIndex(index + 1);
+  }
+
+  function handleMoreClick() {
+    setShowMore(!showMore);
+  }
+
+  let sculpture = sculptureList[index];
+  // This example doesn't use React, so
+  // return an output object instead of JSX.
+  return {
+    onNextClick: handleNextClick,
+    onMoreClick: handleMoreClick,
+    header: `${sculpture.name} by ${sculpture.artist}`,
+    counter: `${index + 1} of ${sculptureList.length}`,
+    more: `${showMore ? 'Hide' : 'Show'} details`,
+    description: showMore ? sculpture.description : null,
+    imageSrc: sculpture.url,
+    imageAlt: sculpture.alt
+  };
+}
+
+function updateDOM() {
+  // Reset the current Hook index
+  // before rendering the component.
+  currentHookIndex = 0;
+  let output = Gallery();
+
+  // Update the DOM to match the output.
+  // This is the part React does for you.
+  nextButton.onclick = output.onNextClick;
+  header.textContent = output.header;
+  moreButton.onclick = output.onMoreClick;
+  moreButton.textContent = output.more;
+  image.src = output.imageSrc;
+  image.alt = output.imageAlt;
+  if (output.description !== null) {
+    description.textContent = output.description;
+    description.style.display = '';
+  } else {
+    description.style.display = 'none';
+  }
+}
+
+let nextButton = document.getElementById('nextButton');
+let header = document.getElementById('header');
+let moreButton = document.getElementById('moreButton');
+let description = document.getElementById('description');
+let image = document.getElementById('image');
+let sculptureList = [{
+  name: 'Homenaje a la Neurocirugía',
+  artist: 'Marta Colvin Andrade',
+  description: 'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
+  url: 'https://i.imgur.com/Mx7dA2Y.jpg',
+  alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.'  
+}, {
+  name: 'Floralis Genérica',
+  artist: 'Eduardo Catalano',
+  description: 'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
+  url: 'https://i.imgur.com/ZF6s192m.jpg',
+  alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.'
+}, {
+  name: 'Eternal Presence',
+  artist: 'John Woodrow Wilson',
+  description: 'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
+  url: 'https://i.imgur.com/aTtVpES.jpg',
+  alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.'
+}, {
+  name: 'Moai',
+  artist: 'Unknown Artist',
+  description: 'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
+  url: 'https://i.imgur.com/RCwLEoQm.jpg',
+  alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.'
+}, {
+  name: 'Blue Nana',
+  artist: 'Niki de Saint Phalle',
+  description: 'The Nanas are triumphant creatures, symbols of femininity and maternity. Initially, Saint Phalle used fabric and found objects for the Nanas, and later on introduced polyester to achieve a more vibrant effect.',
+  url: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  alt: 'A large mosaic sculpture of a whimsical dancing female figure in a colorful costume emanating joy.'
+}, {
+  name: 'Ultimate Form',
+  artist: 'Barbara Hepworth',
+  description: 'This abstract bronze sculpture is a part of The Family of Man series located at Yorkshire Sculpture Park. Hepworth chose not to create literal representations of the world but developed abstract forms inspired by people and landscapes.',
+  url: 'https://i.imgur.com/2heNQDcm.jpg',
+  alt: 'A tall sculpture made of three elements stacked on each other reminding of a human figure.'
+}, {
+  name: 'Cavaliere',
+  artist: 'Lamidi Olonade Fakeye',
+  description: "Descended from four generations of woodcarvers, Fakeye's work blended traditional and contemporary Yoruba themes.",
+  url: 'https://i.imgur.com/wIdGuZwm.png',
+  alt: 'An intricate wood sculpture of a warrior with a focused face on a horse adorned with patterns.'
+}, {
+  name: 'Big Bellies',
+  artist: 'Alina Szapocznikow',
+  description: "Szapocznikow is known for her sculptures of the fragmented body as a metaphor for the fragility and impermanence of youth and beauty. This sculpture depicts two very realistic large bellies stacked on top of each other, each around five feet (1,5m) tall.",
+  url: 'https://i.imgur.com/AlHTAdDm.jpg',
+  alt: 'The sculpture reminds a cascade of folds, quite different from bellies in classical sculptures.'
+}, {
+  name: 'Terracotta Army',
+  artist: 'Unknown Artist',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
+}, {
+  name: 'Lunar Landscape',
+  artist: 'Louise Nevelson',
+  description: 'Nevelson was known for scavenging objects from New York City debris, which she would later assemble into monumental constructions. In this one, she used disparate parts like a bedpost, juggling pin, and seat fragment, nailing and gluing them into boxes that reflect the influence of Cubism’s geometric abstraction of space and form.',
+  url: 'https://i.imgur.com/rN7hY6om.jpg',
+  alt: 'A black matte sculpture where the individual elements are initially indistinguishable.'
+}, {
+  name: 'Aureole',
+  artist: 'Ranjani Shettar',
+  description: 'Shettar merges the traditional and the modern, the natural and the industrial. Her art focuses on the relationship between man and nature. Her work was described as compelling both abstractly and figuratively, gravity defying, and a "fine synthesis of unlikely materials."',
+  url: 'https://i.imgur.com/okTpbHhm.jpg',
+  alt: 'A pale wire-like sculpture mounted on concrete wall and descending on the floor. It appears light.'
+}, {
+  name: 'Hippos',
+  artist: 'Taipei Zoo',
+  description: 'The Taipei Zoo commissioned a Hippo Square featuring submerged hippos at play.',
+  url: 'https://i.imgur.com/6o5Vuyu.jpg',
+  alt: 'A group of bronze hippo sculptures emerging from the sett sidewalk as if they were swimming.'
+}];
+
+// Make UI match the initial state.
+updateDOM();
+```
+
+## Render and Commit
+There are two reasons for a component to render:
+
+1. It’s the component’s initial render.
+2. The component’s (or one of its ancestors’) state has been updated.
+
+Initial render 
+When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it’s done by calling createRoot with the target DOM node, and then calling its render method with your component:
+```js
+const root = createRoot(document.getElementById('root'))
+root.render(<Image />);
+```
+
+Re-renders when state updates 
+Once the component has been initially rendered, you can trigger further renders by updating its state with the set function. Updating your component’s state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
+
+Step 2: React renders your components 
+After you trigger a render, React calls your components to figure out what to display on screen. “Rendering” is React calling your components.
+
+- On initial render, React will call the root component.
+- For subsequent renders, React will call the function component whose state update triggered the render.
+
+This process is recursive: if the updated component returns some other component, React will render that component next, and if that component also returns something, it will render that component next, and so on. The process will continue until there are no more nested components and React knows exactly what should be displayed on screen.
+
+During a re-render, React will calculate which of their properties, if any, have changed since the previous render. It won’t do anything with that information until the next step, the commit phase.
+
+The default behavior of rendering all components nested within the updated component is not optimal for performance if the updated component is very high in the tree. If you run into a performance issue, there are several opt-in ways to solve it described in the Performance section. Don’t optimize prematurely!
+
+Step 3: React commits changes to the DOM 
+After rendering (calling) your components, React will modify the DOM.
+
+For the initial render, React will use the appendChild() DOM API to put all the DOM nodes it has created on screen.
+For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+React only changes the DOM nodes if there’s a difference between renders.
+
+## State as a Snapshot
+State variables might look like regular JavaScript variables that you can read and write to. However, state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render.
+
+When React re-renders a component:
+
+1. React calls your function again.
+2. Your function returns a new JSX snapshot.
+3. React then updates the screen to match the snapshot your function returned.
+ 
+ Notice that number only increments once per click!
+
+Setting state only changes it for the next render. During the first render, number was 0. This is why, in that render’s onClick handler, the value of number is still 0 even after setNumber(number + 1) was called:
+
+<button onClick={() => {
+  setNumber(number + 1);
+  setNumber(number + 1);
+  setNumber(number + 1);
+}}>+3</button>
+
+**React batches state updates**
+But there is one other factor at play here. React waits until all code in the event handlers has run before processing your state updates. This is why the re-render only happens after all these setNumber() calls.
+
+This might remind you of a waiter taking an order at the restaurant. A waiter doesn’t run to the kitchen at the mention of your first dish! Instead, they let you finish your order, let you make changes to it, and even take orders from other people at the table.
+
+This lets you update multiple state variables—even from multiple components—without triggering too many re-renders. But this also means that the UI won’t be updated until after your event handler, and any code in it, completes. This behavior, also known as batching, makes your React app run much faster. It also avoids dealing with confusing “half-finished” renders where only some of the variables have been updated.
+
+React does not batch across multiple intentional events like clicks—each click is handled separately. Rest assured that React only does batching when it’s generally safe to do. This ensures that, for example, if the first button click disables a form, the second click would not submit it again.
+
+**Updating the same state multiple times before the next render**
+It is an uncommon use case, but if you would like to update the same state variable multiple times before the next render, instead of passing the next state value like setNumber(number + 1), you can pass a function that calculates the next state based on the previous one in the queue, like setNumber(n => n + 1). It is a way to tell React to “do something with the state value” instead of just replacing it.
+
+ <button onClick={() => {
+        setNumber(n => n + 1);
+        setNumber(n => n + 1);
+        setNumber(n => n + 1);
+      }}>+3</button>
+
+| queued update | n | returns |
+|n => n + 1|0|0 + 1 = 1|
+|n => n + 1|1|1 + 1 = 2|
+|n => n + 1|2|2 + 1 = 3|
+
+## Updating Objects In State
+export default function Form() {
+  const [person, setPerson] = useState({
+    firstName: 'Barbara',
+    lastName: 'Hepworth',
+    email: 'bhepworth@sculpture.com'
+  });
+
+  function handleChange(e) {
+    setPerson({
+      ...person,
+      [e.target.name]: e.target.value
+    });
+  }
+
+**Objects are not really nested**
+An object like this appears “nested” in code:
+```js
+let obj = {
+  name: 'Niki de Saint Phalle',
+  artwork: {
+    title: 'Blue Nana',
+    city: 'Hamburg',
+    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  }
+};
+```
+However, “nesting” is an inaccurate way to think about how objects behave. When the code executes, there is no such thing as a “nested” object. You are really looking at two different objects:
+```js
+let obj1 = {
+  title: 'Blue Nana',
+  city: 'Hamburg',
+  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+};
+
+let obj2 = {
+  name: 'Niki de Saint Phalle',
+  artwork: obj1
+};
+```
+The obj1 object is not “inside” obj2. For example, obj3 could “point” at obj1 too:
+```js
+let obj1 = {
+  title: 'Blue Nana',
+  city: 'Hamburg',
+  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+};
+
+let obj2 = {
+  name: 'Niki de Saint Phalle',
+  artwork: obj1
+};
+
+let obj3 = {
+  name: 'Copycat',
+  artwork: obj1
+};
+```
+If you were to mutate obj3.artwork.city, it would affect both obj2.artwork.city and obj1.city. This is because obj3.artwork, obj2.artwork, and obj1 are the same object. This is difficult to see when you think of objects as “nested”. Instead, they are separate objects “pointing” at each other with properties.
+
+## Updating Arrays In State
+|           | avoid (mutates the array)           | prefer (returns a new array)                                        |
+| --------- | ----------------------------------- | ------------------------------------------------------------------- |
+| adding    | `push`, `unshift`                   | `concat`, `[...arr]` spread syntax ([example](#adding-to-an-array)) |
+| removing  | `pop`, `shift`, `splice`            | `filter`, `slice` ([example](#removing-from-an-array))              |
+| replacing | `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))                     |
+| sorting   | `reverse`, `sort`                   | copy the array first ([example](#making-other-changes-to-an-array)) |
+
+The following code is NOT OK:
+```js
+function handleClick() {
+    const nextList = [...list];
+    nextList.reverse();
+    setList(nextList);
+  }
+```
+even if you copy an array, you can’t mutate existing items inside of it directly. This is because copying is shallow—the new array will contain the same items as the original one. So if you modify an object inside the copied array, you are mutating the existing state. For example, code like this is a problem.
+
+const nextList = [...list];
+nextList[0].seen = true; // Problem: mutates list[0]
+setList(nextList);
+
+Although nextList and list are two different arrays, nextList[0] and list[0] point to the same object. So by changing nextList[0].seen, you are also changing list[0].seen. This is a state mutation, which you should avoid! You can solve this issue in a similar way to updating nested JavaScript objects—by copying individual items you want to change instead of mutating them. Here’s how.You can use map to substitute an old item with its updated version without mutation.
+
+```js
+setMyList(myList.map(artwork => {
+  if (artwork.id === artworkId) {
+    // Create a *new* object with changes
+    return { ...artwork, seen: nextSeen };
+  } else {
+    // No changes
+    return artwork;
+  }
+}));
+```
+
+# Managing State
+## Choosing The State Structure
+When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:
+
+1. **Group related state.** If you always update two or more state variables at the same time, consider merging them into a single state variable.
+2. **Avoid contradictions in state.** When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.
+3. **Avoid redundant state.** If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.
+4. **Avoid duplication in state.** When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.
+5. **Avoid deeply nested state.** Deeply hierarchical state is not very convenient to update. When possible, prefer to structure state in a flat way. 
+
+**Don’t mirror props in state**
+A common example of redundant state is code like this:
+
+```js
+function Message({ messageColor }) {
+  const [color, setColor] = useState(messageColor);
+```
+
+Here, a `color` state variable is initialized to the `messageColor` prop. The problem is that **if the parent component passes a different value of `messageColor` later (for example, `'red'` instead of `'blue'`), the `color` *state variable* would not be updated!** The state is only initialized during the first render.
+
+This is why "mirroring" some prop in a state variable can lead to confusion. Instead, use the `messageColor` prop directly in your code. If you want to give it a shorter name, use a constant:
+
+```js
+function Message({ messageColor }) {
+  const color = messageColor;
+```
+
+This way it won't get out of sync with the prop passed from the parent component.
+
+"Mirroring" props into state only makes sense when you *want* to ignore all updates for a specific prop. By convention, start the prop name with `initial` or `default` to clarify that its new values are ignored:
+
+```js
+function Message({ initialColor }) {
+  // The `color` state variable holds the *first* value of `initialColor`.
+  // Further changes to the `initialColor` prop are ignored.
+  const [color, setColor] = useState(initialColor);
+```
+## Avoid duplication in state {/*avoid-duplication-in-state*/}
+
+This menu list component lets you choose a single travel snack out of several:
+
+<Sandpack>
+
+```js
+import { useState } from 'react';
+
+const initialItems = [
+  { title: 'pretzels', id: 0 },
+  { title: 'crispy seaweed', id: 1 },
+  { title: 'granola bar', id: 2 },
+];
+
+export default function Menu() {
+  const [items, setItems] = useState(initialItems);
+  const [selectedItem, setSelectedItem] = useState(
+    items[0]
+  );
+
+  return (
+    <>
+      <h2>What's your travel snack?</h2>
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            {item.title}
+            {' '}
+            <button onClick={() => {
+              setSelectedItem(item);
+            }}>Choose</button>
+          </li>
+        ))}
+      </ul>
+      <p>You picked {selectedItem.title}.</p>
+    </>
+  );
+}
+```
+
+```css
+button { margin-top: 10px; }
+```
+
+</Sandpack>
+
+Currently, it stores the selected item as an object in the `selectedItem` state variable. However, this is not great: **the contents of the `selectedItem` is the same object as one of the items inside the `items` list.** This means that the information about the item itself is duplicated in two places.
+
+Why is this a problem? Let's make each item editable:
+
+<Sandpack>
+
+```js
+import { useState } from 'react';
+
+const initialItems = [
+  { title: 'pretzels', id: 0 },
+  { title: 'crispy seaweed', id: 1 },
+  { title: 'granola bar', id: 2 },
+];
+
+export default function Menu() {
+  const [items, setItems] = useState(initialItems);
+  const [selectedItem, setSelectedItem] = useState(
+    items[0]
+  );
+
+  function handleItemChange(id, e) {
+    setItems(items.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          title: e.target.value,
+        };
+      } else {
+        return item;
+      }
+    }));
+  }
+
+  return (
+    <>
+      <h2>What's your travel snack?</h2> 
+      <ul>
+        {items.map((item, index) => (
+          <li key={item.id}>
+            <input
+              value={item.title}
+              onChange={e => {
+                handleItemChange(item.id, e)
+              }}
+            />
+            {' '}
+            <button onClick={() => {
+              setSelectedItem(item);
+            }}>Choose</button>
+          </li>
+        ))}
+      </ul>
+      <p>You picked {selectedItem.title}.</p>
+    </>
+  );
+}
+```
+
+```css
+button { margin-top: 10px; }
+```
+
+</Sandpack>
+
+Notice how if you first click "Choose" on an item and *then* edit it, **the input updates but the label at the bottom does not reflect the edits.** This is because you have duplicated state, and you forgot to update `selectedItem`.
+
+Although you could update `selectedItem` too, an easier fix is to remove duplication. In this example, instead of a `selectedItem` object (which creates a duplication with objects inside `items`), you hold the `selectedId` in state, and *then* get the `selectedItem` by searching the `items` array for an item with that ID:
+
+<Sandpack>
+
+```js
+import { useState } from 'react';
+
+const initialItems = [
+  { title: 'pretzels', id: 0 },
+  { title: 'crispy seaweed', id: 1 },
+  { title: 'granola bar', id: 2 },
+];
+
+export default function Menu() {
+  const [items, setItems] = useState(initialItems);
+  const [selectedId, setSelectedId] = useState(0);
+
+  const selectedItem = items.find(item =>
+    item.id === selectedId
+  );
+
+  function handleItemChange(id, e) {
+    setItems(items.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          title: e.target.value,
+        };
+      } else {
+        return item;
+      }
+    }));
+  }
+
+  return (
+    <>
+      <h2>What's your travel snack?</h2>
+      <ul>
+        {items.map((item, index) => (
+          <li key={item.id}>
+            <input
+              value={item.title}
+              onChange={e => {
+                handleItemChange(item.id, e)
+              }}
+            />
+            {' '}
+            <button onClick={() => {
+              setSelectedId(item.id);
+            }}>Choose</button>
+          </li>
+        ))}
+      </ul>
+      <p>You picked {selectedItem.title}.</p>
+    </>
+  );
+}
+```
+
+```css
+button { margin-top: 10px; }
+```
+
+</Sandpack>
+
+(Alternatively, you may hold the selected index in state.)
+
+The state used to be duplicated like this:
+
+* `items = [{ id: 0, title: 'pretzels'}, ...]`
+* `selectedItem = {id: 0, title: 'pretzels'}`
+
+But after the change it's like this:
+
+* `items = [{ id: 0, title: 'pretzels'}, ...]`
+* `selectedId = 0`
+
+The duplication is gone, and you only keep the essential state!
+
+Now if you edit the *selected* item, the message below will update immediately. This is because `setItems` triggers a re-render, and `items.find(...)` would find the item with the updated title. You didn't need to hold *the selected item* in state, because only the *selected ID* is essential. The rest could be calculated during render.
+
+**Controlled and uncontrolled components**
+It is common to call a component with some local state “uncontrolled”. For example, the original Panel component with an isActive state variable is uncontrolled because its parent cannot influence whether the panel is active or not.
+
+In contrast, you might say a component is “controlled” when the important information in it is driven by props rather than its own local state. This lets the parent component fully specify its behavior. The final Panel component with the isActive prop is controlled by the Accordion component.
+
+Uncontrolled components are easier to use within their parents because they require less configuration. But they’re less flexible when you want to coordinate them together. Controlled components are maximally flexible, but they require the parent components to fully configure them with props.
+
+In practice, “controlled” and “uncontrolled” aren’t strict technical terms—each component usually has some mix of both local state and props. However, this is a useful way to talk about how components are designed and what capabilities they offer.
+
+When writing a component, consider which information in it should be controlled (via props), and which information should be uncontrolled (via state). But you can always change your mind and refactor later.
+
+## Preserving And Resetting State
+These are two separate counters because each is rendered at its own position in the tree. You don’t usually have to think about these positions to use React, but it can be useful to understand how it works.
+
+In React, each component on the screen has fully isolated state. For example, if you render two Counter components side by side, each of them will get its own, independent, score and hover states.
+
+When React removes a component, it destroys its state.
+
+React preserves a component’s state for as long as it’s being rendered at its position in the UI tree. If it gets removed, or a different component gets rendered at the same position, React discards its state.
+
+Remember that it’s the position in the UI tree—not in the JSX markup—that matters to React! This component has two return clauses with different <Counter /> JSX tags inside and outside the if:
+
+```js
+import { useState } from 'react';
+
+export default function App() {
+  const [isFancy, setIsFancy] = useState(false);
+  if (isFancy) {
+    return (
+      <div>
+        <Counter isFancy={true} />
+        <label>
+          <input
+            type="checkbox"
+            checked={isFancy}
+            onChange={e => {
+              setIsFancy(e.target.checked)
+            }}
+          />
+          Use fancy styling
+        </label>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <Counter isFancy={false} />
+      <label>
+        <input
+          type="checkbox"
+          checked={isFancy}
+          onChange={e => {
+            setIsFancy(e.target.checked)
+          }}
+        />
+        Use fancy styling
+      </label>
+    </div>
+  );
+}
+
+function Counter({ isFancy }) {
+  const [score, setScore] = useState(0);
+  const [hover, setHover] = useState(false);
+
+  let className = 'counter';
+  if (hover) {
+    className += ' hover';
+  }
+  if (isFancy) {
+    className += ' fancy';
+  }
+
+  return (
+    <div
+      className={className}
+      onPointerEnter={() => setHover(true)}
+      onPointerLeave={() => setHover(false)}
+    >
+      <h1>{score}</h1>
+      <button onClick={() => setScore(score + 1)}>
+        Add one
+      </button>
+    </div>
+  );
+}
+```
+You might expect the state to reset when you tick checkbox, but it doesn’t! This is because both of these <Counter /> tags are rendered at the same position. React doesn’t know where you place the conditions in your function. All it “sees” is the tree you return.
+
+In both cases, the App component returns a <div> with <Counter /> as a first child. To React, these two counters have the same “address”: the first child of the first child of the root. This is how React matches them up between the previous and next renders, regardless of how you structure your logic.
+
+Also, when you render a different component in the same position, it resets the state of its entire subtree. To see how this works, increment the counter and then tick the checkbox:
+
+Option 2: Resetting state with a key 
+There is also another, more generic, way to reset a component’s state.
+
+You might have seen keys when rendering lists. Keys aren’t just for lists! You can use keys to make React distinguish between any components. By default, React uses order within the parent (“first counter”, “second counter”) to discern between components. But keys let you tell React that this is not just a first counter, or a second counter, but a specific counter—for example, Taylor’s counter. This way, React will know Taylor’s counter wherever it appears in the tree!
+
+Specifying a key tells React to use the key itself as part of the position, instead of their order within the parent. This is why, even though you render them in the same place in JSX, React sees them as two different counters, and so they will never share state. Every time a counter appears on the screen, its state is created. Every time it is removed, its state is destroyed. Toggling between them resets their state over and over.
+
+# Escape Hatches
+## Referencing Values with Refs
+
