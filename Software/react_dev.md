@@ -1394,3 +1394,121 @@ These issues apply to any UI library, not just React. Solving them is not trivia
 In general, whenever you have to resort to writing Effects, keep an eye out for when you can extract a piece of functionality into a custom Hook with a more declarative and purpose-built API like useData above. The fewer raw useEffect calls you have in your components, the easier you will find to maintain your application.
 
 ## Lifecycle of Reactive Effects
+
+Intuitively, you might think that React would start synchronizing when your component mounts and stop synchronizing when your component unmounts. However, this is not the end of the story! Sometimes, it may also be necessary to start and stop synchronizing multiple times while the component remains mounted.
+
+Some Effects don’t return a cleanup function at all. More often than not, you’ll want to return one—but if you don’t, React will behave as if you returned an empty cleanup function.
+
+always focus on a single start/stop cycle at a time. It shouldn’t matter whether a component is mounting, updating, or unmounting. All you need to do is to describe how to start synchronization and how to stop it. If you do it well, your Effect will be resilient to being started and stopped as many times as it’s needed.
+
+On the other hand, if your component re-renders but roomId has not changed, your Effect will remain connected to the same room.
+
+
+### Each Effect represents a separate synchronization process
+
+Resist adding unrelated logic to your Effect only because this logic needs to run at the same time as an Effect you already wrote. For example, let's say you want to send an analytics event when the user visits the room. You already have an Effect that depends on `roomId`, so you might feel tempted to add the analytics call there:
+
+```js {3}
+function ChatRoom({ roomId }) {
+  useEffect(() => {
+    logVisit(roomId);
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, [roomId]);
+  // ...
+}
+```
+
+But imagine you later add another dependency to this Effect that needs to re-establish the connection. If this Effect re-synchronizes, it will also call `logVisit(roomId)` for the same room, which you did not intend. Logging the visit **is a separate process** from connecting. Write them as two separate Effects:
+
+```js {2-4}
+function ChatRoom({ roomId }) {
+  useEffect(() => {
+    logVisit(roomId);
+  }, [roomId]);
+
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    // ...
+  }, [roomId]);
+  // ...
+}
+```
+
+**Each Effect in your code should represent a separate and independent synchronization process.**
+
+In the above example, deleting one Effect wouldn’t break the other Effect's logic. This is a good indication that they synchronize different things, and so it made sense to split them up. On the other hand, if you split up a cohesive piece of logic into separate Effects, the code may look "cleaner" but will be [more difficult to maintain.](/learn/you-might-not-need-an-effect#chains-of-computations) This is why you should think whether the processes are same or separate, not whether the code looks cleaner.
+
+All values inside the component (including props, state, and variables in your component’s body) are reactive. Any reactive value can change on a re-render, so you need to include reactive values as Effect’s dependencies.
+
+**Can global or mutable values be dependencies?**
+Mutable values (including global variables) aren’t reactive.
+
+A mutable value like location.pathname can’t be a dependency. It’s mutable, so it can change at any time completely outside of the React rendering data flow. Changing it wouldn’t trigger a re-render of your component. Therefore, even if you specified it in the dependencies, React wouldn’t know to re-synchronize the Effect when it changes. This also breaks the rules of React because reading mutable data during rendering (which is when you calculate the dependencies) breaks purity of rendering. Instead, you should read and subscribe to an external mutable value with useSyncExternalStore.
+
+A mutable value like ref.current or things you read from it also can’t be a dependency. The ref object returned by useRef itself can be a dependency, but its current property is intentionally mutable. It lets you keep track of something without triggering a re-render. But since changing it doesn’t trigger a re-render, it’s not a reactive value, and React won’t know to re-run your Effect when it changes.
+
+As you’ll learn below on this page, a linter will check for these issues automatically.
+
+**What to do when you don’t want to re-synchronize**
+
+First way:
+```js
+const serverUrl = 'https://localhost:1234'; // serverUrl is not reactive
+const roomId = 'general'; // roomId is not reactive
+
+function ChatRoom() {
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, []); // ✅ All dependencies declared
+  // ...
+}
+```
+
+Second way. You can also move them inside the Effect. They aren’t calculated during rendering, so they’re not reactive:
+```js
+function ChatRoom() {
+  useEffect(() => {
+    const serverUrl = 'https://localhost:1234'; // serverUrl is not reactive
+    const roomId = 'general'; // roomId is not reactive
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, []); // ✅ All dependencies declared
+  // ...
+}
+```
+
+**Effects are reactive blocks of code.** They re-synchronize when the values you read inside of them change. Unlike event handlers, which only run once per interaction, Effects run whenever synchronization is necessary.
+
+**You can't "choose" your dependencies.** Your dependencies must include every [reactive value](#all-variables-declared-in-the-component-body-are-reactive) you read in the Effect. The linter enforces this. Sometimes this may lead to problems like infinite loops and to your Effect re-synchronizing too often. Don't fix these problems by suppressing the linter! Here's what to try instead:
+
+* **Check that your Effect represents an independent synchronization process.** If your Effect doesn't synchronize anything, [it might be unnecessary.](/learn/you-might-not-need-an-effect) If it synchronizes several independent things, [split it up.](#each-effect-represents-a-separate-synchronization-process)
+
+* **If you want to read the latest value of props or state without "reacting" to it and re-synchronizing the Effect,** you can split your Effect into a reactive part (which you'll keep in the Effect) and a non-reactive part (which you'll extract into something called an _Effect Event_). [Read about separating Events from Effects.](/learn/separating-events-from-effects)
+
+* **Avoid relying on objects and functions as dependencies.** If you create objects and functions during rendering and then read them from an Effect, they will be different on every render. This will cause your Effect to re-synchronize every time. [Read more about removing unnecessary dependencies from Effects.](/learn/removing-effect-dependencies)
+
+```js
+useEffect(() => {
+    function handleMove(e) {
+      setPosition({ x: e.clientX, y: e.clientY });
+    }
+    if (canMove) {
+      window.addEventListener('pointermove', handleMove);
+      return () => window.removeEventListener('pointermove', handleMove);
+    }
+  }, [canMove]);
+  ```
+
+  ## Separating Events from Effects
+
