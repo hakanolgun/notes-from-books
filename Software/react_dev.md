@@ -1193,6 +1193,7 @@ This section describes an experimental API that has not yet been released in a s
 5. **Does some reactive value change unintentionally?**
 In JavaScript, each newly created object and function is considered distinct from all the others. It doesn’t matter that the contents inside of them may be the same!
 
+```js
 // During the first render
 const options1 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
@@ -1201,22 +1202,36 @@ const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
 // These are two different objects!
 console.log(Object.is(options1, options2)); // false
+```
 Object and function dependencies can make your Effect re-synchronize more often than you need.
 
 This is why, whenever possible, you should try to avoid objects and functions as your Effect’s dependencies. Instead, try moving them outside the component, inside the Effect, or extracting primitive values out of them.
 **Read primitive values from objects**
 Sometimes, you may receive an object from props:
 
-function ChatRoom({ options }) {
+`function ChatRoom({ options }) {..}`
 
 The risk here is that the parent component will create the object during rendering:
 
+```js
 <ChatRoom
-  roomId={roomId}
   options={{
     serverUrl: serverUrl,
     roomId: roomId
   }}
 />
-
+```
 ## Reusing Logic with Custom Hooks
+If your function doesn’t call any Hooks, avoid the use prefix. Instead, write it as a regular function without the use prefix. For example, useSorted below doesn’t call Hooks, so call it getSorted instead. This ensures that your code can call this regular function anywhere, including conditions.
+
+Custom Hooks let you share stateful logic, not state itself. Each call to a Hook is completely independent from every other call to the same Hook.
+
+Passing event handlers to custom Hooks : under construction
+
+You can pass reactive values from one Hook to another, and they stay up-to-date
+
+All Hooks re-run every time your component re-renders.
+
+The useShowInAppReview hook is called only once when the CompleteWriteComplaintScreen component is mounted. This is because hooks in React are called unconditionally on every render, but they do not re-execute the function defined by the hook on every render. Instead, they manage the state of the hook across renders.
+So, when the CompleteWriteComplaintScreen component re-renders, React will not call useShowInAppReview again unless the values of its dependencies (expectedTestGroup or isShow) change. If these values don't change, React will reuse the existing state and not call the useShowInAppReview function again.
+
