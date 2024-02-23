@@ -1167,3 +1167,56 @@ After useEffectEvent becomes a stable part of React, we recommend never suppress
 
 ## Removing Effect Dependencies
 
+Do not supress missing dependency warnings. Change your code.
+
+To find the right solution, you’ll need to answer a few questions about your Effect. Let’s walk through them.
+
+1. **Should this code move to an event handler?**
+2. **Is your Effect doing several unrelated things?**
+3. **Are you reading some state to calculate the next state?**
+```js
+function ChatRoom({ roomId }) {
+  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    const connection = createConnection();
+    connection.connect();
+    connection.on('message', (receivedMessage) => {
+      setMessages(msgs => [...msgs, receivedMessage]); // instead of using state value, use updater function so you dont need to put old state to dependency array
+    });
+    return () => connection.disconnect();
+  }, [roomId]); // ✅ All dependencies declared
+}
+```
+React puts your updater function in a queue and will provide the msgs argument to it during the next render. This is why the Effect itself doesn’t need to depend on messages anymore.
+4. **Do you want to read a value without “reacting” to its changes?**
+This section describes an experimental API that has not yet been released in a stable version of React. useEffectEvent
+5. **Does some reactive value change unintentionally?**
+In JavaScript, each newly created object and function is considered distinct from all the others. It doesn’t matter that the contents inside of them may be the same!
+
+// During the first render
+const options1 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
+
+// During the next render
+const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
+
+// These are two different objects!
+console.log(Object.is(options1, options2)); // false
+Object and function dependencies can make your Effect re-synchronize more often than you need.
+
+This is why, whenever possible, you should try to avoid objects and functions as your Effect’s dependencies. Instead, try moving them outside the component, inside the Effect, or extracting primitive values out of them.
+**Read primitive values from objects**
+Sometimes, you may receive an object from props:
+
+function ChatRoom({ options }) {
+
+The risk here is that the parent component will create the object during rendering:
+
+<ChatRoom
+  roomId={roomId}
+  options={{
+    serverUrl: serverUrl,
+    roomId: roomId
+  }}
+/>
+
+## Reusing Logic with Custom Hooks
