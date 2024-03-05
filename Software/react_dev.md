@@ -4,7 +4,7 @@ Each copy of the same component remembers it's own state.
 
 ## Tutorial:Tic-tac-toe
 
-There is also another benefit of immutability. By default, all child components re-render automatically when the state of a parent component changes. This includes even the child components that weren’t affected by the change. Immutability makes it very cheap for components to compare whether their data has changed or not. 
+There is also another benefit of immutability. By default, all child components re-render automatically when the state of a parent component changes. This includes even the child components that weren’t affected by the change. Immutability makes it very cheap for components to compare whether their data has changed or not.
 
 When a list is re-rendered, React takes each list item’s key and searches the previous list’s items for a matching key. If the current list has a key that didn’t exist before, React creates a component. If the current list is missing a key that existed in the previous list, React destroys the previous component. If two keys match, the corresponding component is moved.
 
@@ -32,53 +32,50 @@ For historical reasons, aria-_ and data-_ attributes are written as in HTML with
 
 ## Passing Props to a Component
 
-function Avatar({ person, size = 100 }) {
-// ...
-}
+```js
+function Avatar({ person, size = 100 }) {...}
+```
 
-The default value is only used if the size prop is missing or if you pass size={undefined}. But if you pass size={null} or size={0}, the default value will not be used.
+The default value is only used if the size prop is missing or if you pass size={undefined}. **But if you pass size={null} or size={0}, the default value will not be used.**
 
 Some components forward all of their props to their children, like how this Profile does with Avatar. Because they don’t use any of their props directly, it can make sense to use a more concise “spread” syntax:
 
 ```js
 function Profile(props) {
-return (
-  <div className="card">
-    <Avatar {...props} />
-  </div>
-)};
+  return (
+    <div className="card">
+      <Avatar {...props} />
+    </div>
+  );
+}
 ```
 
 However, props are immutable. When a component needs to change its props (for example, in response to a user interaction or new data), it will have to “ask” its parent component to pass it different props—a new object! Its old props will then be cast aside, and eventually the JavaScript engine will reclaim the memory taken by them.
 
-Don’t try to “change props”. Use setState instead. 
+**Don’t try to “change props”. Use setState instead.**
 
 ## Conditional Rendering
 
-In some situations, you won’t want to render anything at all. For example, say you don’t want to show packed items at all. A component must return something. In this case, you can return **null**. In practice, returning null from a component isn’t common because it might surprise a developer trying to render it. More often, you would conditionally include or exclude the component in the parent component’s JSX. 
+In some situations, you won’t want to render anything at all. For example, say you don’t want to show packed items at all. A component must return something. In this case, you can return **null**. In practice, returning null from a component isn’t common because it might surprise a developer trying to render it. More often, you would conditionally include or exclude the component in the parent component’s JSX.
 
 ```js
 // Instead of this:
 if (isPacked) {
-return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✔</li>;
 }
 return <li className="item">{name}</li>;
 
 // You can write this:
-return (
-  <li className="item">
-    {isPacked ? name + ' ✔' : name}
-  </li>
-);
+return <li className="item">{isPacked ? name + " ✔" : name}</li>;
 ```
 
-If you’re coming from an object-oriented programming background, you might assume that the two examples above are subtly different because one of them may create two different “instances” of <li>. But JSX elements aren’t “instances” because they don’t hold any internal state and aren’t real DOM nodes. They’re lightweight descriptions, like blueprints. So these two examples, in fact, are completely equivalent. Preserving and Resetting State goes into detail about how this works.
+If you’re coming from an object-oriented programming background, you might assume that the two examples above are subtly different because one of them may create two different “instances” of `<li>`. But JSX elements aren’t “instances” because they don’t hold any internal state and aren’t real DOM nodes. They’re lightweight descriptions, like blueprints. So these two examples, in fact, are completely equivalent. Preserving and Resetting State goes into detail about how this works.
 
 Don’t put numbers on the left side of &&. To test the condition, JavaScript converts the left side to a boolean automatically. However, if the left side is 0, then the whole expression gets that value (0), and React will happily render 0 rather than nothing.
 
 ## Rendering Lists
 
-Note that your components won’t receive key as a prop. It’s only used as a hint by React itself. If your component needs an ID, you have to pass it as a separate prop: <Profile key={id} userId={id} />.
+Note that your components won’t receive key as a prop. It’s only used as a hint by React itself. If your component needs an ID, you have to pass it as a separate prop: `<Profile key={id} userId={id} />`
 
 ## Keeping Components Pure
 
@@ -161,15 +158,6 @@ function updateDOM() {
   nextButton.onclick = output.onNextClick;
   header.textContent = output.header;
   moreButton.onclick = output.onMoreClick;
-  moreButton.textContent = output.more;
-  image.src = output.imageSrc;
-  image.alt = output.imageAlt;
-  if (output.description !== null) {
-    description.textContent = output.description;
-    description.style.display = "";
-  } else {
-    description.style.display = "none";
-  }
 }
 // Make UI match the initial state.
 updateDOM();
@@ -190,10 +178,8 @@ const root = createRoot(document.getElementById("root"));
 root.render(<Image />);
 ```
 
-Re-renders when state updates
 Once the component has been initially rendered, you can trigger further renders by updating its state with the set function. Updating your component’s state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
 
-Step 2: React renders your components
 After you trigger a render, React calls your components to figure out what to display on screen. “Rendering” is React calling your components.
 
 - On initial render, React will call the root component.
@@ -212,7 +198,8 @@ For the initial render, React will use the appendChild() DOM API to put all the 
 For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
 React only changes the DOM nodes if there’s a difference between renders.
 
-## State as a Snapshot
+## State as a Snapshot
+
 State behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render.
 
 When React re-renders a component:
@@ -223,11 +210,13 @@ When React re-renders a component:
 
 Setting state only changes it for the next render. During the first render, number was 0. This is why, in that render’s onClick handler, the value of number is still 0 even after setNumber(number + 1) was called:
 
+```html
 <button onClick={() => {
 setNumber(number + 1);
 setNumber(number + 1);
 setNumber(number + 1);
 }}>+3</button>
+```
 
 **React batches state updates**
 But there is one other factor at play here. React waits until all code in the event handlers has run before processing your state updates. This is why the re-render only happens after all these setNumber() calls.
@@ -241,15 +230,20 @@ React does not batch across multiple intentional events like clicks—each click
 **Updating the same state multiple times before the next render**
 It is an uncommon use case, but if you would like to update the same state variable multiple times before the next render, instead of passing the next state value like setNumber(number + 1), you can pass a function that calculates the next state based on the previous one in the queue, like setNumber(n => n + 1). It is a way to tell React to “do something with the state value” instead of just replacing it.
 
+```html
 <button onClick={() => {
 setNumber(n => n + 1);
 setNumber(n => n + 1);
 setNumber(n => n + 1);
 }}>+3</button>
+```
 
-| queued update | n | returns |
+| queued | n | returns |
+
 |n => n + 1|0|0 + 1 = 1|
+
 |n => n + 1|1|1 + 1 = 2|
+
 |n => n + 1|2|2 + 1 = 3|
 
 ## Updating Objects In State
@@ -323,12 +317,12 @@ If you were to mutate obj3.artwork.city, it would affect both obj2.artwork.city 
 
 ## Updating Arrays In State
 
-|           | avoid (mutates the array)           | prefer (returns a new array)                                        |
-| --------- | ----------------------------------- | ------------------------------------------------------------------- |
-| adding    | `push`, `unshift`                   | `concat`, `[...arr]` spread syntax ([example](#adding-to-an-array)) |
-| removing  | `pop`, `shift`, `splice`            | `filter`, `slice` ([example](#removing-from-an-array))              |
-| replacing | `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))                     |
-| sorting   | `reverse`, `sort`                   | copy the array first ([example](#making-other-changes-to-an-array)) |
+|           | avoid (mutates the array)           | prefer (returns a new array)       |
+| --------- | ----------------------------------- | ---------------------------------- |
+| adding    | `push`, `unshift`                   | `concat`, `[...arr]` spread syntax |
+| removing  | `pop`, `shift`, `splice`            | `filter`, `slice`                  |
+| replacing | `splice`, `arr[i] = ...` assignment | `map`                              |
+| sorting   | `reverse`, `sort`                   | copy the array first               |
 
 The following code is NOT OK:
 
@@ -342,9 +336,11 @@ function handleClick() {
 
 even if you copy an array, you can’t mutate existing items inside of it directly. This is because copying is shallow—the new array will contain the same items as the original one. So if you modify an object inside the copied array, you are mutating the existing state. For example, code like this is a problem.
 
+```js
 const nextList = [...list];
 nextList[0].seen = true; // Problem: mutates list[0]
 setList(nextList);
+```
 
 Although nextList and list are two different arrays, nextList[0] and list[0] point to the same object. So by changing nextList[0].seen, you are also changing list[0].seen. This is a state mutation, which you should avoid! You can solve this issue in a similar way to updating nested JavaScript objects—by copying individual items you want to change instead of mutating them. Here’s how.You can use map to substitute an old item with its updated version without mutation.
 
@@ -402,62 +398,6 @@ This menu list component lets you choose a single travel snack out of several:
 Currently, it stores the selected item as an object in the `selectedItem` state variable. However, this is not great: **the contents of the `selectedItem` is the same object as one of the items inside the `items` list.** This means that the information about the item itself is duplicated in two places.
 
 Why is this a problem? Let's make each item editable:
-
-```js
-import { useState } from "react";
-
-const initialItems = [
-  { title: "pretzels", id: 0 },
-  { title: "crispy seaweed", id: 1 },
-  { title: "granola bar", id: 2 },
-];
-
-export default function Menu() {
-  const [items, setItems] = useState(initialItems);
-  const [selectedItem, setSelectedItem] = useState(items[0]);
-
-  function handleItemChange(id, e) {
-    setItems(
-      items.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            title: e.target.value,
-          };
-        } else {
-          return item;
-        }
-      })
-    );
-  }
-
-  return (
-    <>
-      <h2>What's your travel snack?</h2>
-      <ul>
-        {items.map((item, index) => (
-          <li key={item.id}>
-            <input
-              value={item.title}
-              onChange={(e) => {
-                handleItemChange(item.id, e);
-              }}
-            />{" "}
-            <button
-              onClick={() => {
-                setSelectedItem(item);
-              }}
-            >
-              Choose
-            </button>
-          </li>
-        ))}
-      </ul>
-      <p>You picked {selectedItem.title}.</p>
-    </>
-  );
-}
-```
 
 Notice how if you first click "Choose" on an item and _then_ edit it, **the input updates but the label at the bottom does not reflect the edits.** This is because you have duplicated state, and you forgot to update `selectedItem`.
 
@@ -590,14 +530,11 @@ function Counter({ isFancy }) {
 
 You might expect the state to reset when you tick checkbox, but it doesn’t! This is because both of these <Counter /> tags are rendered at the same position. React doesn’t know where you place the conditions in your function. All it “sees” is the tree you return.
 
-In both cases, the App component returns a <div> with <Counter /> as a first child. To React, these two counters have the same “address”: the first child of the first child of the root. This is how React matches them up between the previous and next renders, regardless of how you structure your logic.
+In both cases, the App component returns a `<div>` with `<Counter />` as a first child. To React, these two counters have the same “address”: the first child of the first child of the root. This is how React matches them up between the previous and next renders, regardless of how you structure your logic.
 
 Also, when you render a different component in the same position, it resets the state of its entire subtree. To see how this works, increment the counter and then tick the checkbox:
 
-Option 2: Resetting state with a key
-There is also another, more generic, way to reset a component’s state.
-
-You might have seen keys when rendering lists. Keys aren’t just for lists! You can use keys to make React distinguish between any components. By default, React uses order within the parent (“first counter”, “second counter”) to discern between components. But keys let you tell React that this is not just a first counter, or a second counter, but a specific counter—for example, Taylor’s counter. This way, React will know Taylor’s counter wherever it appears in the tree!
+There is also another, more generic, way to reset a component’s state. You might have seen keys when rendering lists. Keys aren’t just for lists! You can use keys to make React distinguish between any components. By default, React uses order within the parent (“first counter”, “second counter”) to discern between components. But keys let you tell React that this is not just a first counter, or a second counter, but a specific counter—for example, Taylor’s counter. This way, React will know Taylor’s counter wherever it appears in the tree!
 
 Specifying a key tells React to use the key itself as part of the position, instead of their order within the parent. This is why, even though you render them in the same place in JSX, React sees them as two different counters, and so they will never share state. Every time a counter appears on the screen, its state is created. Every time it is removed, its state is destroyed. Toggling between them resets their state over and over.
 
@@ -621,7 +558,7 @@ const ref = useRef(0);
 
 You can access the current value of that ref through the `ref.current` property. This value is intentionally mutable, meaning you can both read and write to it. It's like a secret pocket of your component that React doesn't track.
 
-The ref points to a number, but, like [state], you could point to anything: a string, an object, or even a function. Unlike state, ref is a plain JavaScript object with the `current` property that you can read and modify.
+The ref points to a number, but, like state, you could point to anything: a string, an object, or even a function. Unlike state, ref is a plain JavaScript object with the `current` property that you can read and modify.
 
 Note that **the component doesn't re-render with every increment.** Like state, refs are retained by React between re-renders. However, setting state re-renders a component. Changing a ref does not!
 
@@ -643,7 +580,7 @@ During the first render, `useRef` returns `{ current: initialValue }`. This obje
 
 React provides a built-in version of `useRef` because it is common enough in practice. But you can think of it as a regular state variable without a setter. If you're familiar with object-oriented programming, refs might remind you of instance fields--but instead of `this.something` you write `somethingRef.current`.
 
-### When to use refs 
+### When to use refs
 
 Typically, you will use a ref when your component needs to "step outside" React and communicate with external APIs—often a browser API that won't impact the appearance of the component. Here are a few of these rare situations:
 
@@ -653,7 +590,7 @@ Typically, you will use a ref when your component needs to "step outside" React 
 
 If your component needs to store some value, but it doesn't impact the rendering logic, choose refs.
 
-### Best practices for refs 
+### Best practices for refs
 
 Following these principles will make your components more predictable:
 
@@ -671,9 +608,9 @@ This is because **the ref itself is a regular JavaScript object,** and so it beh
 
 You also don't need to worry about [avoiding mutation] when you work with a ref. As long as the object you're mutating isn't used for rendering, React doesn't care what you do with the ref or its contents.
 
-### Refs and the DOM 
+### Refs and the DOM
 
-You can point a ref to any value. However, the most common use case for a ref is to access a DOM element. For example, this is handy if you want to focus an input programmatically. When you pass a ref to a `ref` attribute in JSX, like `<div ref={myRef}>`, React will put the corresponding DOM element into `myRef.current`. Once the element is removed from the DOM, React will update `myRef.current` to be `null`. 
+You can point a ref to any value. However, the most common use case for a ref is to access a DOM element. For example, this is handy if you want to focus an input programmatically. When you pass a ref to a `ref` attribute in JSX, like `<div ref={myRef}>`, React will put the corresponding DOM element into `myRef.current`. Once the element is removed from the DOM, React will update `myRef.current` to be `null`.
 
 ## Manipulating DOM with refs
 
@@ -726,6 +663,7 @@ export default function Form() {
   );
 }
 ```
+
 Here, `realInputRef` inside `MyInput` holds the actual input DOM node. However, `useImperativeHandle` instructs React to provide your own special object as the value of a ref to the parent component. So `inputRef.current` inside the `Form` component will only have the `focus` method. In this case, the ref "handle" is not the DOM node, but the custom object you create inside `useImperativeHandle` call.
 
 In general, you don’t want to access refs during rendering. That goes for refs holding DOM nodes as well. During the first render, the DOM nodes have not yet been created, so ref.current will be null. And during the rendering of updates, the DOM nodes haven’t been updated yet. So it’s too early to read them.
@@ -735,7 +673,7 @@ React sets ref.current during the commit. Before updating the DOM, React sets th
 
 Usually, you will access refs from event handlers. If you want to do something with a ref, but there is no particular event to do it in, you might need an Effect. We will discuss effects on the next pages.
 
-#### Flushing state updates synchronously with flushSync 
+#### Flushing state updates synchronously with flushSync
 
 Consider code like this, which adds a new todo and scrolls the screen down to the last child of the list. Notice how, for some reason, it always scrolls to the todo that was _just before_ the last added one:
 
@@ -802,13 +740,13 @@ listRef.current.lastChild.scrollIntoView();
 
 This will instruct React to update the DOM synchronously right after the code wrapped in `flushSync` executes. As a result, the last todo will already be in the DOM by the time you try to scroll to it:
 
-## Best practices for DOM manipulation with refs 
+## Best practices for DOM manipulation with refs
 
 Refs are an escape hatch. You should only use them when you have to "step outside React". Common examples of this include managing focus, scroll position, or calling browser APIs that React does not expose.
 
 If you stick to non-destructive actions like focusing and scrolling, you shouldn't encounter any problems. However, if you try to **modify** the DOM manually, you can risk conflicting with the changes React is making.
 
-To illustrate this problem, this example includes a welcome message and two buttons. The first button toggles its presence using [conditional rendering] and [state], as you would usually do in React. The second button uses the [`remove()` DOM API] to forcefully remove it from the DOM outside of React's control.
+To illustrate this problem, this example includes a welcome message and two buttons. The first button toggles its presence using conditional rendering and state, as you would usually do in React. The second button uses the `remove()` to forcefully remove it from the DOM outside of React's control.
 
 Try pressing "Toggle with setState" a few times. The message should disappear and appear again. Then press "Remove from the DOM". This will forcefully remove it. Finally, press "Toggle with setState":
 
@@ -857,11 +795,11 @@ Effects run at the end of a commit after the screen updates. This is a good time
 
 Every time your component renders, React will update the screen and then run the code inside useEffect. In other words, useEffect “delays” a piece of code from running until that render is reflected on the screen.
 
-Notice that you can’t “choose” your dependencies. You will get a lint error if the dependencies you specified don’t match what React expects based on the code inside your Effect. This helps catch many bugs in your code. If you don’t want some code to re-run, edit the Effect code itself to not “need” that dependency.
+Notice that you can’t “choose” your dependencies. If you don’t want some code to re-run, edit the Effect code itself to not “need” that dependency.
 
-### Fetching data 
+### Fetching data
 
-If your Effect fetches something, the cleanup function should either [abort the fetch] or ignore its result:
+If your Effect fetches something, the cleanup function should either abort the fetch or ignore its result:
 
 ```js {2,6,13-15}
 useEffect(() => {
@@ -896,7 +834,7 @@ function TodoList() {
 
 This will not only improve the development experience, but also make your application feel faster. For example, the user pressing the Back button won't have to wait for some data to load again because it will be cached. You can either build such a cache yourself or use one of the many alternatives to manual fetching in Effects.
 
-#### What are good alternatives to data fetching in Effects? 
+#### What are good alternatives to data fetching in Effects?
 
 Writing `fetch` calls inside Effects is a [popular way to fetch data], especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:
 
@@ -907,13 +845,12 @@ Writing `fetch` calls inside Effects is a [popular way to fetch data], especiall
 
 This list of downsides is not specific to React. It applies to fetching data on mount with any library. Like with routing, data fetching is not trivial to do well, so we recommend the following approaches:
 
-- **If you use a [framework](/learn/start-a-new-react-project#production-grade-react-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
-- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood, but add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+- **If you use a framework, use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include React Query, useSWR, and React Router 6.4+. You can build your own solution too, in which case you would use Effects under the hood, but add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
 
 You can continue fetching data directly in Effects if neither of these approaches suit you.
 
-Each render has its own Effects
-Three seconds later, you should see a sequence of logs (a, ab, abc, abcd, and abcde) rather than five abcde logs. Each Effect “captures” the text value from its corresponding render. It doesn’t matter that the text state changed: an Effect from the render with text = 'ab' will always see 'ab'. In other words, Effects from each render are isolated from each other. If you’re curious how this works, you can read about closures.
+Each render has its own Effects. Three seconds later, you should see a sequence of logs (a, ab, abc, abcd, and abcde) rather than five abcde logs. Each Effect “captures” the text value from its corresponding render. It doesn’t matter that the text state changed: an Effect from the render with text = 'ab' will always see 'ab'. In other words, Effects from each render are isolated from each other. If you’re curious how this works, you can read about closures.
 
 ## You Might Not Need an Effect
 
@@ -921,8 +858,10 @@ If there is no external system involved (for example, if you want to update a co
 
 **You don’t need Effects to transform data for rendering.** For example, let’s say you want to filter a list before displaying it. You might feel tempted to write an Effect that updates a state variable when the list changes. However, this is inefficient. When you update the state, React will first call your component functions to calculate what should be on the screen. Then React will “commit” these changes to the DOM, updating the screen. Then React will run your Effects. If your Effect also immediately updates the state, this restarts the whole process from scratch! To avoid the unnecessary render passes, transform all the data at the top level of your components. That code will automatically re-run whenever your props or state change.
 
-### Caching expensive calculations
+### Caching expensive calculations
+
 `const visibleTodos = useMemo(() => getFilteredTodos(todos, filter), [todos, filter]);`
+
 **How to tell if a calculation is expensive?**
 
 In general, unless you're creating or looping over thousands of objects, it's probably not expensive. If you want to get more confidence, you can add a console log to measure the time spent in a piece of code:
@@ -1006,6 +945,7 @@ function List({ items }) {
 Now there is no need to “adjust” the state at all. If the item with the selected ID is in the list, it remains selected. If it’s not, the selection calculated during rendering will be null because no matching item was found. This behavior is different, but arguably better because most changes to items preserve the selection.
 
 ### Subscribing to an external store
+
 useSyncExternalStore
 
 ### Fetching data
@@ -1025,8 +965,6 @@ useEffect(() => {
   };
 }, [query, page]);
 ```
-
-These issues apply to any UI library, not just React. Solving them is not trivial, which is why modern frameworks provide more efficient built-in data fetching mechanisms than fetching data in Effects.
 
 In general, whenever you have to resort to writing Effects, keep an eye out for when you can extract a piece of functionality into a custom Hook with a more declarative and purpose-built API like useData above. The fewer raw useEffect calls you have in your components, the easier you will find to maintain your application.
 
@@ -1128,9 +1066,9 @@ function ChatRoom() {
 
 **Effects are reactive blocks of code.** They re-synchronize when the values you read inside of them change. Unlike event handlers, which only run once per interaction, Effects run whenever synchronization is necessary.
 
-**You can't "choose" your dependencies.** Your dependencies must include every [reactive value] you read in the Effect. The linter enforces this. Sometimes this may lead to problems like infinite loops and to your Effect re-synchronizing too often. Don't fix these problems by suppressing the linter! Here's what to try instead:
+**You can't "choose" your dependencies.** Your dependencies must include every reactive value you read in the Effect. The linter enforces this. Sometimes this may lead to problems like infinite loops and to your Effect re-synchronizing too often. Don't fix these problems by suppressing the linter! Here's what to try instead:
 
-- **Check that your Effect represents an independent synchronization process.** If your Effect doesn't synchronize anything, [it might be unnecessary.] If it synchronizes several independent things, split it up.
+- **Check that your Effect represents an independent synchronization process.** If your Effect doesn't synchronize anything, it might be unnecessary. If it synchronizes several independent things, split it up.
 
 - **If you want to read the latest value of props or state without "reacting" to it and re-synchronizing the Effect,** you can split your Effect into a reactive part (which you'll keep in the Effect) and a non-reactive part (which you'll extract into something called an _Effect Event_).
 
@@ -1149,6 +1087,7 @@ useEffect(() => {
 ```
 
 ## Separating Events from Effects
+
 Should you use event handlers or Effects? Every time you need to answer this question, consider why the code needs to run.
 
 This section explains useEffectEvent hook which is under construction at the moment.
@@ -1164,39 +1103,48 @@ To find the right solution, you’ll need to answer a few questions about your E
 1. **Should this code move to an event handler?**
 2. **Is your Effect doing several unrelated things?**
 3. **Are you reading some state to calculate the next state?**
+
 ```js
 function ChatRoom({ roomId }) {
   const [messages, setMessages] = useState([]);
   useEffect(() => {
     const connection = createConnection();
     connection.connect();
-    connection.on('message', (receivedMessage) => {
-      setMessages(msgs => [...msgs, receivedMessage]); // instead of using state value, use updater function so you dont need to put old state to dependency array
+    connection.on("message", (receivedMessage) => {
+      setMessages((msgs) => [...msgs, receivedMessage]); // instead of using state value, use updater function so you dont need to put old state to dependency array
     });
     return () => connection.disconnect();
   }, [roomId]); // ✅ All dependencies declared
 }
 ```
+
 React puts your updater function in a queue and will provide the msgs argument to it during the next render. This is why the Effect itself doesn’t need to depend on messages anymore.
+
 4. **Do you want to read a value without “reacting” to its changes?**
+
 This section describes an experimental API that has not yet been released in a stable version of React. useEffectEvent
+
 5. **Does some reactive value change unintentionally?**
+
 In JavaScript, each newly created object and function is considered distinct from all the others. It doesn’t matter that the contents inside of them may be the same!
 
 ```js
 // During the first render
-const options1 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
+const options1 = { serverUrl: "https://localhost:1234", roomId: "music" };
 
 // During the next render
-const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
+const options2 = { serverUrl: "https://localhost:1234", roomId: "music" };
 
 // These are two different objects!
 console.log(Object.is(options1, options2)); // false
 ```
+
 Object and function dependencies can make your Effect re-synchronize more often than you need.
 
 This is why, whenever possible, you should try to avoid objects and functions as your Effect’s dependencies. Instead, try moving them outside the component, inside the Effect, or extracting primitive values out of them.
+
 **Read primitive values from objects**
+
 Sometimes, you may receive an object from props:
 
 `function ChatRoom({ options }) {..}`
@@ -1207,11 +1155,13 @@ The risk here is that the parent component will create the object during renderi
 <ChatRoom
   options={{
     serverUrl: serverUrl,
-    roomId: roomId
+    roomId: roomId,
   }}
 />
 ```
+
 ## Reusing Logic with Custom Hooks
+
 If your function doesn’t call any Hooks, avoid the use prefix. Instead, write it as a regular function without the use prefix. For example, useSorted below doesn’t call Hooks, so call it getSorted instead. This ensures that your code can call this regular function anywhere, including conditions.
 
 Custom Hooks let you share stateful logic, not state itself. Each call to a Hook is completely independent from every other call to the same Hook.
@@ -1224,4 +1174,3 @@ All Hooks re-run every time your component re-renders.
 
 The useShowInAppReview hook is called only once when the CompleteWriteComplaintScreen component is mounted. This is because hooks in React are called unconditionally on every render, but they do not re-execute the function defined by the hook on every render. Instead, they manage the state of the hook across renders.
 So, when the CompleteWriteComplaintScreen component re-renders, React will not call useShowInAppReview again unless the values of its dependencies (expectedTestGroup or isShow) change. If these values don't change, React will reuse the existing state and not call the useShowInAppReview function again.
-
