@@ -2,7 +2,7 @@
 
 ## Execution Context, Memory Phase - Hoisting
 
-Everything in JS happens inside an Execution Context
+Everything in JS happens inside an Execution Context.
 
 Global Execution Context is like a box has two parts in it.
 
@@ -24,7 +24,7 @@ After Hoisting phase, Code execution phase starts. Code executed line by line an
 
 Call Stack maintains the order of execution of Execution Contexts.
 
-Think of Call Stack as a glass. GEC sits bottom of it. Every time a function invokes, another Execution Context sits top of the GEC or previous EC.
+Think of Call Stack as a glass. GEC sits bottom of it. Every time a function invokes, another Execution Context sits top of the GEC or previous Execution Context.
 
 You can see Call Stack, Global Execution Context and function context on developer tools in a browser.
 
@@ -155,21 +155,55 @@ Nice trick to write better DRY code on the video.
 
 # CORE JS CONCEPTS
 
-**call, apply, bind methods:** call can be used for function borrowing. we can call a method from an object and pass another object as a propt to call method so this refers to the object which we pass. Apply method is also same. Only difference is that you can pass arguments as an array to apply method.
+**call, apply, bind methods:** call can be used for function borrowing. we can call a method from an object and pass another object as a parameter to call method so this refers to the object which we pass. Apply method is also same. Only difference is that you can pass arguments as an array to apply method.
 Bind method also same but it does not call the method it binds the method to the object and returns the method so you can call it later.
 
-**Currying :** Pass one argument to parent function, pass another argument to child function so you divide arguments to multiple levels.
+```js
+// CALL
+let obj1 = {
+  firstName: "Ali",
+  lastName: "Yildiz",
+  print: function () {
+    console.info(this.firstName + " " + this.lastName);
+  },
+};
+
+name.print(); // Logs Ali Yıldız
+
+let obj2 = {
+  firstName: "Ahmet",
+  lastName: "Aslan",
+};
+
+obj1.print.call(obj2); // Logs Ahmet Aslan
+
+// ANOTHER WAY OF CALL
+let print = function () {
+  console.info(this.firstName + " " + this.lastName);
+};
+
+print.call(obj1);
+print.call(obj2);
+
+// APPLY
+print.apply(obj1, ["Parameter1", "Parameter2"]);
+
+// BIND
+let printMyName = print.bind(obj1, "parameter", "anotherparameter"); // returns a function, not call
+printMyName();
+```
+
+**Currying:** Pass one argument to parent function, pass another argument to child function so you divide arguments to multiple levels.
 
 **async and defer keywords:** Async script will be load parallel to html parsing and once it loads html parsing stops and script executes. Defer keyword makes script will be executed only when html parsing completed.
 
-**Events bubling up & capturing down :** If event bubbling is true When you click inner div, if first call inner divs callback, then parent div's callback. If Capturing is true when you click inner div, firstly outer divs callback will be call.
+**Events bubling up & capturing down:** If event bubbling is true When you click inner div, if first call inner divs callback, then parent div's callback. If Capturing is true when you click inner div, firstly outer divs callback will be call.
 
-**Event delegation :** When you have a parent div and a lot of child elements, instead of attaching event listeners to all child element, you attach only one eventListener to parent and detect which child is being clicked by e.target property. So you save a lot of memory because eventListeners are memory heavy.
+**Event delegation:** When you have a parent div and a lot of child elements, instead of attaching event listeners to all child element, you attach only one eventListener to parent and detect which child is being clicked by e.target property. So you save a lot of memory because eventListeners are memory heavy.
 
-**Debouncing and Throttling** : When multiple function calls happens very often you need to limit them.Debouncing is make a call when the duration between two calls exceed certain duration.Throttling means use interval and only call the function every xxx miliseconds.
+**Debouncing and Throttling:** When multiple function calls happens very often you need to limit them. Debouncing is make a call when the duration between two calls exceed certain duration. Throttling means use interval and only call the function every xxx miliseconds.
 
 ```js
-
 function debounce(func, delay) {
   let timeoutId;
 
@@ -199,7 +233,6 @@ function throttle(func, limit) {
   };
 }
 const betterFunction = throttle(getData, 1000);
-
 ```
 
 # NAMASTE JS SEASON 2
@@ -210,6 +243,11 @@ The problems with callbacks are they are hard to read and maintain. Addditionaly
 you have inversion of control problem because you have to trust to service will call your
 callback function.
 
-Promise is an object which represent eventually completion or failure of an asyn operation.
+Promise is an object which represent eventually completion or failure of an async operation.
 
 ## Promise Chaining & Error Handling
+
+## Promise API
+
+Promise.all();
+Promise.any();

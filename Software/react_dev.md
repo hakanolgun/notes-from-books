@@ -1074,18 +1074,6 @@ function ChatRoom() {
 
 - **Avoid relying on objects and functions as dependencies.** If you create objects and functions during rendering and then read them from an Effect, they will be different on every render. This will cause your Effect to re-synchronize every time.
 
-```js
-useEffect(() => {
-  function handleMove(e) {
-    setPosition({ x: e.clientX, y: e.clientY });
-  }
-  if (canMove) {
-    window.addEventListener("pointermove", handleMove);
-    return () => window.removeEventListener("pointermove", handleMove);
-  }
-}, [canMove]);
-```
-
 ## Separating Events from Effects
 
 Should you use event handlers or Effects? Every time you need to answer this question, consider why the code needs to run.
