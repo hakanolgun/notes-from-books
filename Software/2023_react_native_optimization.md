@@ -15,7 +15,9 @@
 - Be more selective and use smaller specialized library
 - instead `import moment from 'moment';` 67KB do `import dayjs from 'dayjs';` 2KB
 - instead `import { map } from 'lodash';` do `import map from 'lodash/map';`
-  It will reduce your final bundle size. Specially if you use tree shaking mechanism.
+  It will reduce your final bundle size. Specially if you use tree shaking mechanism. Unfortunately Metro does not support tree shaking. Hermes engine will solve this.
+
+**react-native-bundle-visualizer** is a tool to see your bundle's details.
 
 ### 04 - Always remember to use libraries which dedicated to mobile
 
@@ -32,7 +34,13 @@
 
 - Use rive for better performance while using animations
 
-### 08 - Optimize your app’s JavaScript bundle
+### 08 - Draw efficiently on a canvas with Skia
+
+ISSUE: CORE APPLICATION DESIGN IDEA IS DIFFICULT TO IMPLEMENT WITH THE TRADITIONAL APPROACHES
+Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms. It serves as the graphics engine for Google Chrome and ChromeOS, Android, Flutter, Mozilla Firefox and Firefox OS, and many other products.
+Rive also has some constraints like limited Blur, Glow, Shadow support and limited path effects.
+
+### 09 - Optimize your app’s JavaScript bundle
 
 - Issue: Metro, the default JS bundler for React Native, produces a bundle that’s too large.
 - Solution: Use different bundlers like Re.Pack, ESBuild etc.
