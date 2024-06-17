@@ -101,3 +101,34 @@ ${todos}
 My current progress is: ${progress}
 `;
 ```
+
+## Control flow and error handling
+
+Just about any object can be thrown in JS but it is more effective to use built-in exceptions for that. For example: throw new TypeError('Something');
+
+```js
+catch (exception) {
+  statements
+}
+```
+
+The catch block specifies an identifier (exception in the preceding syntax) that holds the value specified by the throw statement. You can use this identifier to get information about the exception that was thrown.
+
+JavaScript creates this identifier when the catch block is entered. The identifier lasts only for the duration of the catch block. Once the catch block finishes executing, the identifier no longer exists.
+
+**If the finally block returns a value, this value becomes the return value of the entire try…catch…finally production, regardless of any return statements in the try and catch blocks**
+
+If you are throwing your own exceptions you can use the Error constructor to get name and message props of the exception.
+
+```js
+function doSomethingErrorProne() {
+  throw new Error("The message");
+}
+
+try {
+  doSomethingErrorProne();
+} catch (e) {
+  console.error(e.name); // 'Error'
+  console.error(e.message); // 'The message', or a JavaScript error message
+}
+```
