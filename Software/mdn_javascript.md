@@ -284,7 +284,234 @@ Regular expressions are patterns used to match character combinations in strings
 
 ## Indexed collections
 
+Arrays and TypedArrays.
+
+```js
+// All the same
+const arr1 = new Array(arrayLength);
+const arr2 = Array(arrayLength);
+const arr3 = [];
+arr3.length = arrayLength;
+// arrayLength should be a Number otherwise created array has one element which is what passed as arrayLength.
+```
+
+Note: If you supply a non-integer value to the array operator in the code above, a property will be created in the object representing the array, instead of an array element.
+
+```js
+const arr = [];
+arr[3.4] = "Oranges";
+console.log(arr.length); // 0
+console.log(Object.hasOwn(arr, 3.4)); // true
+```
+
+At the implementation level, JavaScript's arrays actually store their elements as standard object properties, using the array index as the property name.
+
+```js
+const cats = ["Dusty", "Misty", "Twiggy"];
+console.log(cats.length); // 3
+
+cats.length = 2;
+console.log(cats); // [ 'Dusty', 'Misty' ] - Twiggy has been removed
+
+cats.length = 0;
+console.log(cats); // []; the cats array is empty
+
+cats.length = 3;
+console.log(cats); // [ <3 empty items> ]
+```
+
+f you know that none of the elements in your array evaluate to false in a boolean context—if your array consists only of DOM nodes, for example—you can use a more efficient idiom:
+
+```js
+const divs = document.getElementsByTagName("div");
+for (let i = 0, div; (div = divs[i]); i++) {
+  // Process div in some way
+}
+```
+
+This avoids the overhead of checking the length of the array, and ensures that the div variable is reassigned to the current item each time around the loop for added convenience.
+
+Note that the elements of an array that are omitted when the array is defined are not listed when iterating by forEach, but are listed when undefined has been manually assigned to the element.
+
+### Array transformations
+
+**Grouping the elements of an array**
+
+The Object.groupBy() method can be used to group the elements of an array, using a test function that returns a string indicating the group of the current element.
+
+Here we have a simple inventory array that contains "food" objects that have a name and a type.
+
+```js
+const inventory = [
+  { name: "asparagus", type: "vegetables" },
+  { name: "bananas", type: "fruit" },
+  { name: "goat", type: "meat" },
+  { name: "cherries", type: "fruit" },
+  { name: "fish", type: "meat" },
+];
+```
+
+To use Object.groupBy(), you supply a callback function that is called with the current element, and optionally the current index and array, and returns a string indicating the group of the element.
+
+The code below uses an arrow function to return the type of each array element (this uses object destructuring syntax for function arguments to unpack the type element from the passed object). The result is an object that has properties named after the unique strings returned by the callback. Each property is assigned an array containing the elements in the group.
+
+```js
+const result = Object.groupBy(inventory, ({ type }) => type);
+console.log(result);
+// Logs
+// {
+//   vegetables: [{ name: 'asparagus', type: 'vegetables' }],
+//   fruit: [
+//     { name: 'bananas', type: 'fruit' },
+//     { name: 'cherries', type: 'fruit' }
+//   ],
+//   meat: [
+//     { name: 'goat', type: 'meat' },
+//     { name: 'fish', type: 'meat' }
+//   ]
+// }
+```
+
+Note that the returned object references the same elements as the original array (not deep copies). Changing the internal structure of these elements will be reflected in both the original array and the returned object.
+
+If you can't use a string as the key, for example, if the information to group is associated with an object that might change, then you can instead use Map.groupBy(). This is very similar to Object.groupBy() except that it groups the elements of the array into a Map that can use an arbitrary value (object or primitive) as a key.
+
+### Working with array-like objects
+
+Some JavaScript objects, such as the NodeList returned by document.getElementsByTagName() or the arguments object made available within the body of a function, look and behave like arrays on the surface but do not share all of their methods. The arguments object provides a length attribute but does not implement array methods like forEach().
+
+Array methods cannot be called directly on array-like objects.
+
+```js
+function printArguments() {
+  arguments.forEach((item) => {
+    console.log(item);
+  }); // TypeError: arguments.forEach is not a function
+}
+```
+
+But you can call them indirectly using Function.prototype.call().
+
+```js
+function printArguments() {
+  Array.prototype.forEach.call(arguments, (item) => {
+    console.log(item);
+  });
+}
+```
+
+Array prototype methods can be used on strings as well, since they provide sequential access to their characters in a similar way to arrays:
+
+```js
+Array.prototype.forEach.call("a string", (chr) => {
+  console.log(chr);
+});
+```
+
 ## Keyed collections
+
+### Maps
+
+```js
+const sayings = new Map();
+sayings.set("dog", "woof");
+sayings.set("cat", "meow");
+sayings.set("elephant", "toot");
+sayings.size; // 3
+sayings.get("dog"); // woof
+sayings.get("fox"); // undefined
+sayings.has("bird"); // false
+sayings.delete("dog");
+sayings.has("dog"); // false
+
+for (const [key, value] of sayings) {
+  console.log(`${key} goes ${value}`);
+}
+// "cat goes meow"
+// "elephant goes toot"
+
+sayings.clear();
+sayings.size; // 0
+```
+
+**Object and Map compared**
+
+Traditionally, objects have been used to map strings to values. Objects allow you to set keys to values, retrieve those values, delete keys, and detect whether something is stored at a key. Map objects, however, have a few more advantages that make them better maps.
+
+- The keys of an Object are strings or symbols, whereas they can be of any value for a Map.
+- You can get the size of a Map easily, while you have to manually keep track of size for an Object.
+- The iteration of maps is in insertion order of the elements.
+- An Object has a prototype, so there are default keys in the map. (This can be bypassed using map = Object.create(null).)
+
+These three tips can help you to decide whether to use a Map or an Object:
+
+- Use maps over objects when keys are unknown until run time, and when all keys are the same type and all values are the same type.
+- Use maps if there is a need to store primitive values as keys because object treats each key as a string whether it's a number value, boolean value or any other primitive value.
+- Use objects when there is logic that operates on individual elements.
+
+**WeakMap**
+WeakMap is like Map but it is not enumerable and if it's keys are not referenced anywhere it will be garbage collected. There is no method to obtain a list of the keys in a WeakMap.
+
+```js
+const privates = new WeakMap();
+
+function Public() {
+  const me = {
+    // Private data goes here
+  };
+  privates.set(this, me);
+}
+
+Public.prototype.method = function () {
+  const me = privates.get(this);
+  // Do stuff with private data in `me`
+  // …
+};
+
+module.exports = Public;
+```
+
+### Sets
+
+Set objects are collections of unique values. You can iterate its elements in insertion order. A value in a Set may only occur once; it is unique in the Set's collection.
+
+```js
+const mySet = new Set();
+mySet.add(1);
+mySet.add("some text");
+mySet.add("foo");
+
+mySet.has(1); // true
+mySet.delete("foo");
+mySet.size; // 2
+
+for (const item of mySet) {
+  console.log(item);
+}
+// 1
+// "some text"
+```
+
+Array and Set compared
+
+Traditionally, a set of elements has been stored in arrays in JavaScript in a lot of situations. The Set object, however, has some advantages:
+
+- Deleting Array elements by value (arr.splice(arr.indexOf(val), 1)) is very slow.
+- Set objects let you delete elements by their value. With an array, you would have to splice based on an element's index.
+- The value NaN cannot be found with indexOf in an array.
+- Set objects store unique values. You don't have to manually keep track of duplicates.
+
+**WeakSet object**
+
+WeakSet objects are collections of garbage-collectable values, including objects and non-registered symbols. A value in the WeakSet may only occur once. It is unique in the WeakSet's collection.
+
+The main differences to the Set object are:
+
+- In contrast to Sets, WeakSets are collections of objects or symbols only, and not of arbitrary values of any type.
+- The WeakSet is weak: References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. That also means that there is no list of current objects stored in the collection.
+- WeakSets are not enumerable.
+
+The use cases of WeakSet objects are limited. They will not leak memory, so it can be safe to use DOM elements as a key and mark them for tracking purposes, for example.
 
 ## Working with objects
 
