@@ -132,3 +132,33 @@ try {
   console.error(e.message); // 'The message', or a JavaScript error message
 }
 ```
+
+## Loops and iteration
+
+## Functions
+
+### Defining Functions
+
+Parameters are essentially passed to functions by value — so if the code within the body of a function assigns a completely new value to a parameter that was passed to the function, the change is not reflected globally or in the code which called that function.
+
+When you pass an object as a parameter, if the function changes the object's properties, that change is visible outside the function, as shown in the following example. Same also with arrays.
+
+The scope of a function declaration is the function in which it is declared (or the entire program, if it is declared at the top level).
+
+### Arguments object
+
+Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function. You can use arguments.length to determine the number of arguments actually passed to the function, and then access each argument using the arguments object.
+
+The arguments variable is "array-like", but not an array. It is array-like in that it has a numbered index and a length property. However, it does not possess all of the array-manipulation methods.
+
+### Function parameters
+
+In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful to set a different default value. This is exactly what default parameters do.
+
+### Arrow functions
+
+An arrow function expression (also called a fat arrow to distinguish from a hypothetical -> syntax in future JavaScript) has a shorter syntax compared to function expressions and does not have its own this, arguments, super, or new.target. Arrow functions are always anonymous.
+
+Two factors influenced the introduction of arrow functions: shorter functions and non-binding of this.
+
+## Expressions and operators
