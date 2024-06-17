@@ -8,6 +8,63 @@ JavaScript is an
 
 As soon as a browser implements a feature MDN tries to document it.
 
+# COMPLETE BEGINNERS
+
+## Introducing JavaScript Objects
+
+### Object Prototypes
+
+Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.
+
+Note: The property of an object that points to its prototype is not called prototype. Its name is not standard, but in practice all browsers use **proto**. The standard way to access an object's prototype is the Object.getPrototypeOf() method.
+
+When you try to access a property of an object: if the property can't be found in the object itself, the prototype is searched for the property. If the property still can't be found, then the prototype's prototype is searched, and so on until either the property is found, or the end of the chain is reached, in which case undefined is returned.
+
+The prototype of Object.prototype is null, so it's at the end of the prototype chain:
+
+### Object-Oriented Programming
+
+if a method is defined on a constructor's prototype property, then all objects created using that constructor get that method via their prototype, and we don't need to define it in the constructor.
+
+First, in class-based OOP, classes and objects are two separate constructs, and objects are always created as instances of classes. Also, there is a distinction between the feature used to define a class (the class syntax itself) and the feature used to instantiate an object (a constructor). In JavaScript, we can and often do create objects without any separate class definition, either using a function or an object literal. This can make working with objects much more lightweight than it is in classical OOP.
+
+Second, although a prototype chain looks like an inheritance hierarchy and behaves like it in some ways, it's different in others. When a subclass is instantiated, a single object is created which combines properties defined in the subclass with properties defined further up the hierarchy. With prototyping, each level of the hierarchy is represented by a separate object, and they are linked together via the **proto** property. The prototype chain's behavior is less like inheritance and more like delegation. Delegation is a programming pattern where an object, when asked to perform a task, can perform the task itself or ask another object (its delegate) to perform the task on its behalf. In many ways, delegation is a more flexible way of combining objects than inheritance (for one thing, it's possible to change or completely replace the delegate at run time).
+
+That said, constructors and prototypes can be used to implement class-based OOP patterns in JavaScript. But using them directly to implement features like inheritance is tricky, so JavaScript provides extra features, layered on top of the prototype model, that map more directly to the concepts of class-based OOP.
+
+### Classes
+
+```js
+class Person {
+  name;
+
+  constructor(name) {
+    this.name = name;
+  }
+
+  introduceSelf() {
+    console.log(`Hi! I'm ${this.name}`);
+  }
+}
+```
+
+Note: If a subclass has any of its own initialization to do, it must first call the superclass constructor using super(), passing up any parameters that the superclass constructor is expecting.
+
+Private data properties must be declared in the class declaration, and their names start with #.You can have private methods as well as private data properties. Just like private data properties, their names start with #, and they can only be called by the object's own methods.
+
+### Working with JSON
+
+JSON is a text-based data format following JavaScript object syntax, which was popularized by Douglas Crockford. Even though it closely resembles JavaScript object literal syntax, it can be used independently from JavaScript, and many programming environments feature the ability to read (parse) and generate JSON.
+
+JSON exists as a string — useful when you want to transmit data across a network. It needs to be converted to a native JavaScript object when you want to access the data. This is not a big issue — JavaScript provides a global JSON object that has methods available for converting between the two.
+
+Note: Converting a string to a native object is called deserialization, while converting a native object to a string so it can be transmitted across the network is called serialization.
+
+But sometimes we aren't so lucky — sometimes we receive a raw JSON string, and we need to convert it to an object ourselves. And when we want to send a JavaScript object across the network, we need to convert it to JSON (a string) before sending it. Luckily, these two problems are so common in web development that a built-in JSON object is available in browsers, which contains the following two methods:
+
+- parse(): Accepts a JSON string as a parameter, and returns the corresponding JavaScript object.
+- stringify(): Accepts an object as a parameter, and returns the equivalent JSON string.
+
 # JAVASCRIPT GUIDE
 
 ## Introduction
@@ -174,3 +231,75 @@ Bitwise operators perform their operations on such binary representations, but t
 If the delete operator succeeds, it removes the property from the object. Trying to access it afterwards will yield undefined. The delete operator returns true if the operation is possible; it returns false if the operation is not possible.
 
 ## Numbers and Dates
+
+### Numbers
+
+In JavaScript, numbers are implemented in double-precision 64-bit binary format IEEE 754 (i.e., a number between ±2^−1022 and ±2^+1023, or about ±10^−308 to ±10^+308, with a numeric precision of 53 bits). Integer values up to ±2^53 − 1 can be represented exactly.
+
+In addition to being able to represent floating-point numbers, the number type has three symbolic values: +Infinity, -Infinity, and NaN (not-a-number).
+
+You can use four types of number literals: decimal, binary, octal, and hexadecimal.
+
+Decimal literals can start with a zero (0) followed by another decimal digit, but if all digits after the leading 0 are smaller than 8, the number is interpreted as an octal number. This is considered a legacy syntax, and number literals prefixed with 0, whether interpreted as octal or decimal, cause a syntax error in strict mode — so, use the 0o prefix instead.
+
+```js
+0888; // 888 parsed as decimal
+0777; // parsed as octal, 511 in decimal
+```
+
+Strict mode forbids this octal syntax.
+
+### BigInt
+
+```js
+const b1 = 123n;
+const b2 = BigInt(123);
+```
+
+Conceptually, a BigInt is just an arbitrarily long sequence of bits which encodes an integer. You can safely do any arithmetic operations without losing precision or over-/underflowing.
+
+Compared to numbers, BigInt values yield higher precision when representing large integers; however, they cannot represent floating-point numbers. For example, division would round to zero:
+
+```js
+const bigintDiv = 5n / 2n; // 2n, because there's no 2.5 in BigInt
+```
+
+## Text formatting
+
+JavaScript's String type is used to represent textual data. It is a set of "elements" of 16-bit unsigned integer values (UTF-16 code units).
+
+**Hexadecimal escape sequences:** The number after \x is interpreted as hexadecimal number. `"\xA9" is trademark icon.`
+
+**Unicode escape sequences:** At least four hexadecimal digits following \u. `"\u00A9" is trademark icon`
+
+You should use string literals unless you specifically need to use a String object, because String objects can have counterintuitive behavior.
+
+### Internationalization
+
+The Intl object is the namespace for the ECMAScript Internationalization API, which provides language sensitive string comparison, number formatting, and date and time formatting. The constructors for Intl.Collator, Intl.NumberFormat, and Intl.DateTimeFormat objects are properties of the Intl object.
+
+## Regular expressions
+
+Regular expressions are patterns used to match character combinations in strings. In JavaScript, regular expressions are also objects. These patterns are used with the exec() and test() methods of RegExp, and with the match(), matchAll(), replace(), replaceAll(), search(), and split() methods of String.
+
+## Indexed collections
+
+## Keyed collections
+
+## Working with objects
+
+## Using classes
+
+## Using promises
+
+## JavaScript types arrays
+
+## Iterators and generators
+
+## Meta programming
+
+## JavaScript modules
+
+# INTERMEDIATE
+
+# ADVANCED
