@@ -515,9 +515,76 @@ The use cases of WeakSet objects are limited. They will not leak memory, so it c
 
 ## Working with objects
 
+Array indices are, in fact, properties with string keys that contain integers.
+
 ## Using classes
 
+Unlike function declarations, class declarations are not hoisted (or, in some interpretations, hoisted but with the temporal dead zone restriction), which means you cannot use a class before it is declared.
+
+The this value will be automatically returned as the result of new. You are advised to not return any value from the constructor — because if you return a non-primitive value, it will become the value of the new expression, and the value of this is dropped. (You can read more about what new does in its description.)
+
+A private field is an identifier prefixed with # (the hash symbol). The hash is an integral part of the field's name, which means a private property can never have name clash with a public property. In order to refer to a private field anywhere in the class, you must declare it in the class body (you can't create a private property on the fly). Apart from this, a private field is pretty much equivalent to a normal property.
+
+Accessing private fields outside the class is an early syntax error. The language can guard against this because #privateField is a special syntax, so it can do some static analysis and find all usage of private fields before even evaluating the code.
+
+Static keyword
+
+With the Date example, we have also encountered the Date.now() method, which returns the current date. This method does not belong to any date instance — it belongs to the class itself. However, it's put on the Date class instead of being exposed as a global DateNow() function, because it's mostly useful when dealing with date instances.
+
+```js
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  static hello() {
+    // static method
+    return "Hello!!";
+  }
+}
+
+mycar = new Car("Ford");
+
+//Call 'hello()' on the class Car:
+document.getElementById("demo").innerHTML = Car.hello();
+
+//and NOT on the 'mycar' object:
+//document.getElementById("demo").innerHTML = mycar.hello();
+//this would raise an error.
+```
+
+There is also a special construct called a static initialization block, which is a block of code that runs when the class is first loaded.
+
+```js
+class MyClass {
+  static {
+    MyClass.myStaticProperty = "foo";
+  }
+}
+console.log(MyClass.myStaticProperty); // 'foo'
+```
+
+Static initialization blocks are almost equivalent to immediately executing some code after a class has been declared. The only difference is that they have access to static private properties.
+
+When you use extends, the static methods inherit from each other as well, so you can also override or enhance them.
+
 ## Using promises
+
+A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+
+It is important to always return promises from then callbacks, even if the promise always resolves to undefined. If the previous handler started a promise but did not return it, there's no way to track its settlement anymore, and the promise is said to be "floating".
+
+```js
+doSomething()
+  .then((url) => {
+    // Missing `return` keyword in front of fetch(url).
+    fetch(url);
+  })
+  .then((result) => {
+    // result is undefined, because nothing is returned from the previous
+    // handler. There's no way to know the return value of the fetch()
+    // call anymore, or whether it succeeded at all.
+  });
+```
 
 ## JavaScript types arrays
 
@@ -529,4 +596,24 @@ The use cases of WeakSet objects are limited. They will not leak memory, so it c
 
 # INTERMEDIATE
 
+## Client-side JS Frameworks
+
+## Client-side web APIs
+
+## Language overview
+
+## JS Data Structures
+
+## Equality comparisons and sameness
+
+## Enumerability and ownership of properties
+
+## Closures
+
 # ADVANCED
+
+## Inheritance and the prototype chain
+
+## Memory Management
+
+## Concurrency model and Event Loop
