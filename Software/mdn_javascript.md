@@ -162,3 +162,15 @@ An arrow function expression (also called a fat arrow to distinguish from a hypo
 Two factors influenced the introduction of arrow functions: shorter functions and non-binding of this.
 
 ## Expressions and operators
+
+Unary plus (+) attempts to convert the operand to a number if it's not already.
+Example: +true returns 1.
+
+A bitwise operator treats their operands as a set of 32 bits (zeros and ones).
+Bitwise operators perform their operations on such binary representations, but they return standard JavaScript numerical values.
+
+### Unary operators
+
+If the delete operator succeeds, it removes the property from the object. Trying to access it afterwards will yield undefined. The delete operator returns true if the operation is possible; it returns false if the operation is not possible.
+
+## Numbers and Dates
