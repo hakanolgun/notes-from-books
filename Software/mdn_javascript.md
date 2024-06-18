@@ -937,7 +937,104 @@ String, Array, TypedArray, Map and Set are all built-in iterables, because their
 
 ## Meta programming
 
+The Proxy and Reflect objects allow you to intercept and define custom behavior for fundamental language operations (e.g. property lookup, assignment, enumeration, function invocation, etc.). With the help of these two objects you are able to program at the meta level of JavaScript.
+
+### Proxies
+
+Proxy objects allow you to intercept certain operations and to implement custom behaviors.
+
+For example, getting a property on an object:
+js
+
+const handler = {
+get(target, name) {
+return name in target ? target[name] : 42;
+},
+};
+
+const p = new Proxy({}, handler);
+p.a = 1;
+console.log(p.a, p.b); // 1, 42
+
+The Proxy object defines a target (an empty object here) and a handler object, in which a get trap is implemented. Here, an object that is proxied will not return undefined when getting undefined properties, but will instead return the number 42.
+
+Additional examples are available on the Proxy reference page.
+
+### Handlers and traps
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Meta_programming#handlers_and_traps
+
+### Revocable Proxy
+
+The Proxy.revocable() method is used to create a revocable Proxy object. This means that the proxy can be revoked via the function revoke and switches the proxy off.
+
+### Reflection
+
+Reflect is a built-in object that provides methods for interceptable JavaScript operations. The methods are the same as those of the proxy handler's.
+
+Reflect is not a function object.
+
+Reflect helps with forwarding default operations from the handler to the target.
+
+With Reflect.has() for example, you get the in operator as a function:
+js
+
+Reflect.has(Object, "assign"); // true
+
 ## JavaScript modules
+
+However, we decided to keep using .js, at least for the moment. To get modules to work correctly in a browser, you need to make sure that your server is serving them with a Content-Type header that contains a JavaScript MIME type such as text/javascript. If you don't, you'll get a strict MIME type checking error along the lines of "The server responded with a non-JavaScript MIME type" and the browser won't run your JavaScript. Most servers already set the correct type for .js files, but not yet for .mjs files. Servers that already serve .mjs files correctly include GitHub Pages and http-server for Node.js.
+
+Note: In some module systems, you can use a module specifier like modules/square that isn't a relative or absolute path, and that doesn't have a file extension. This kind of specifier can be used in a browser environment if you first define an import map.
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "shapes": "./shapes/square.js",
+      "shapes/square": "./modules/shapes/square.js",
+      "https://example.com/shapes/square.js": "./shapes/square.js",
+      "https://example.com/shapes/": "/shapes/square/",
+      "../shapes/square": "./shapes/square.js"
+    }
+  }
+</script>
+```
+
+Note: The imported values are read-only views of the features that were exported. Similar to const variables, you cannot re-assign the variable that was imported, but you can still modify properties of object values. The value can only be re-assigned by the module exporting it. See the import reference for an example.
+
+Import maps allow modules to be imported using bare module names (as in Node.js), and can also simulate importing modules from packages, both with and without file extensions. While not shown above, they also allow particular versions of a library to be imported, based on the path of the script that is importing the module. Generally they let developers write more ergonomic import code, and make it easier to manage the different versions and dependencies of modules used by a site. This can reduce the effort required to use the same JavaScript libraries in both browser and server.
+
+In some JavaScript environments, such as Node.js, you can use bare names for the module specifier. This works because the environment can resolve module names to a standard location in the file system. For example, you might use the following syntax to import the "square" module.
+
+<script type="module">
+  // some code
+</script>
+
+or
+
+<script type="module" src="main.js"></script>
+
+You can only use import and export statements inside modules, not regular scripts. An error will be thrown if your <script> element doesn't have the type="module" attribute and attempts to import other modules. For example:
+
+```html
+<script>
+  import _ from "lodash"; // SyntaxError: import declarations may only appear at top level of a module
+  // ...
+</script>
+<script src="a-module-using-import-statements.js"></script>
+<!-- SyntaxError: import declarations may only appear at top level of a module -->
+```
+
+You should generally define all your modules in separate files. Modules declared inline in HTML can only import other modules, but anything they export will not be accessible by other modules (because they don't have a URL).
+
+Note: Modules and their dependencies can be preloaded by specifying them in **link** elements with rel="modulepreloaded". This can significantly reduce load time when the modules are used.
+
+There is no need to use the defer attribute when loading a module script; modules are deferred automatically.
+
+Last but not least, let's make this clear — module features are imported into the scope of a single script — they aren't available in the global scope. Therefore, you will only be able to access imported features in the script they are imported into, and you won't be able to access them from the JavaScript console, for example. You'll still get syntax errors shown in the DevTools, but you'll not be able to use some of the debugging techniques you might have expected to use.
+
+**Import declarations are hoisted**
 
 # INTERMEDIATE
 
