@@ -708,7 +708,232 @@ Callbacks added with then() will never be invoked before the completion of the c
 
 ## JavaScript types arrays
 
+JavaScript typed arrays are array-like objects that provide a mechanism for reading and writing raw binary data in memory buffers.
+
+Each entry in a JavaScript typed array is a raw binary value in one of a number of supported formats, from 8-bit integers to 64-bit floating-point numbers.
+
+Typed array objects share many of the same methods as arrays with similar semantics. However, typed arrays are not to be confused with normal arrays, as calling Array.isArray() on a typed array returns false. Moreover, not all methods available for normal arrays are supported by typed arrays (e.g. push and pop).
+
+To achieve maximum flexibility and efficiency, JavaScript typed arrays split the implementation into buffers and views. A buffer is an object representing a chunk of data; it has no format to speak of, and offers no mechanism for accessing its contents. In order to access the memory contained in a buffer, you need to use a view. A view provides a context — that is, a data type, starting offset, and number of elements.
+
+### Buffers
+
+There are two types of buffers: **ArrayBuffer** and **SharedArrayBuffer**. Both are low-level representations of a memory span. They have "array" in their names, but they don't have much to do with arrays — you cannot read or write to them directly. Instead, buffers are generic objects that just contain raw data. In order to access the memory represented by a buffer, you need to use a view.
+
+Buffers support the following actions:
+
+    Allocate: As soon as a new buffer is created, a new memory span is allocated and initialized to 0.
+    Copy: Using the slice() method, you can efficiently copy a portion of the memory without creating views to manually copy each byte.
+    Transfer: Using the transfer() and transferToFixedLength() methods, you can transfer ownership of the memory span to a new buffer object. This is useful when transferring data between different execution contexts without copying. After the transfer, the original buffer is no longer usable. A SharedArrayBuffer cannot be transferred (as the buffer is already shared by all execution contexts).
+    Resize: Using the resize() method, you can resize the memory span (either claim more memory space, as long as it doesn't pass the pre-set maxByteLength limit, or release some memory space). SharedArrayBuffer can only be grown but not shrunk.
+
+The difference between ArrayBuffer and SharedArrayBuffer is that the former is always owned by a single execution context at a time. If you pass an ArrayBuffer to a different execution context, it is transferred and the original ArrayBuffer becomes unusable. This ensures that only one execution context can access the memory at a time. A SharedArrayBuffer is not transferred when passed to a different execution context, so it can be accessed by multiple execution contexts at the same time. This may introduce race conditions when multiple threads access the same memory span, so operations such as Atomics methods become useful.
+
+### Views
+
+There are currently two main kinds of views: typed array views and **DataView**. Typed arrays provide utility methods that allow you to conveniently transform binary data. DataView is more low-level and allows granular control of how data is accessed. The ways to read and write data using the two views are very different.
+
+Both kinds of views cause ArrayBuffer.isView() to return true. They both have the following properties:
+
+buffer: The underlying buffer that the view references.
+
+byteOffset
+
+    The offset, in bytes, of the view from the start of its buffer.
+
+byteLength
+
+    The length, in bytes, of the view.
+
+Both constructors accept the above three as separate arguments, although typed array constructors accept length as the number of elements rather than the number of bytes.
+
+#### Types array views
+
+Typed array views have self-descriptive names and provide views for all the usual numeric types like Int8, Uint32, Float64 and so forth. There is one special typed array view, Uint8ClampedArray, which clamps the values between 0 and 255. This is useful for Canvas data processing, for example.
+
+| Type              | Value Range               | Size in bytes | Web IDL type        |
+| ----------------- | ------------------------- | ------------- | ------------------- |
+| Int8Array         | -128 to 127               | 1             | byte                |
+| Uint8Array        | 0 to 255                  | 1             | octet               |
+| Uint8ClampedArray | 0 to 255                  | 1             | octet               |
+| Int16Array        | -32768 to 32767           | 2             | short               |
+| Uint16Array       | 0 to 65535                | 2             | unsigned short      |
+| Int32Array        | -2147483648 to 2147483647 | 4             | long                |
+| Uint32Array       | 0 to 4294967295           | 4             | unsigned long       |
+| Float16Array      | -65504 to 65504           | 2             | N/A                 |
+| Float32Array      | -3.4e38 to 3.4e38         | 4             | unrestricted float  |
+| Float64Array      | -1.8e308 to 1.8e308       | 8             | unrestricted double |
+| BigInt64Array     | -2^63 to 2^63 - 1         | 8             | bigint              |
+| BigUint64Array    | 0 to 2^64 - 1             | 8             | bigint              |
+
+Typed arrays are, in principle, fixed-length, so array methods that may change the length of an array are not available. This includes pop, push, shift, splice, and unshift.
+
+On the other hand, TypedArray has the extra set and subarray methods that optimize working with multiple typed arrays that view the same buffer. The set() method allows setting multiple typed array indices at once, using data from another array or typed array. If the two typed arrays share the same underlying buffer, the operation may be more efficient as it's a fast memory move. The subarray() method creates a new typed array view that references the same buffer as the original typed array, but with a narrower span.
+
+There's no way to directly change the length of a typed array without changing the underlying buffer. However, when the typed array views a resizable buffer and does not have a fixed byteLength, it is length-tracking, and will automatically resize to fit the underlying buffer as the resizable buffer is resized.
+
+The corresponding bytes in the underlying buffer are retrieved and interpreted as a number. Any property access using a number (or the string representation of a number, since numbers are always converted to strings when accessing properties) will be proxied by the typed array — they never interact with the object itself. This means, for example:
+
+    Out-of-bounds index access always returns undefined, without actually accessing the property on the object.
+    Any attempt to write to such an out-of-bounds property has no effect: it does not throw an error but doesn't change the buffer or typed array either.
+    Typed array indices appear to be configurable and writable, but any attempt to change their attributes will fail.
+
+```js
+const uint8 = new Uint8Array([1, 2, 3]);
+console.log(uint8[0]); // 1
+
+// For illustrative purposes only. Not for production code.
+uint8[-1] = 0;
+uint8[2.5] = 0;
+uint8[NaN] = 0;
+console.log(Object.keys(uint8)); // ["0", "1", "2"]
+console.log(uint8[NaN]); // undefined
+
+// Non-numeric access still works
+uint8[true] = 0;
+console.log(uint8[true]); // 0
+
+Object.freeze(uint8); // TypeError: Cannot freeze array buffer views with elements
+```
+
+#### DataView
+
+The DataView is a low-level interface that provides a getter/setter API to read and write arbitrary data to the buffer. This is useful when dealing with different types of data, for example. Typed array views are in the native byte-order (see Endianness) of your platform. With a DataView, the byte-order can be controlled. By default, it's big-endian—the bytes are ordered from most significant to least significant. This can be reversed, with the bytes ordered from least significant to most significant (little-endian), using getter/setter methods.
+
+DataView does not require alignment; multi-byte read and write can be started at any specified offset. The setter methods work the same way.
+
+The following example uses a DataView to get the binary representation of any number:
+
+```js
+function toBinary(
+  x,
+  { type = "Float64", littleEndian = false, separator = " ", radix = 16 } = {}
+) {
+  const bytesNeeded = globalThis[`${type}Array`].BYTES_PER_ELEMENT;
+  const dv = new DataView(new ArrayBuffer(bytesNeeded));
+  dv[`set${type}`](0, x, littleEndian);
+  const bytes = Array.from({ length: bytesNeeded }, (_, i) =>
+    dv
+      .getUint8(i)
+      .toString(radix)
+      .padStart(8 / Math.log2(radix), "0")
+  );
+  return bytes.join(separator);
+}
+
+console.log(toBinary(1.1)); // 3f f1 99 99 99 99 99 9a
+console.log(toBinary(1.1, { littleEndian: true })); // 9a 99 99 99 99 99 f1 3f
+console.log(toBinary(20, { type: "Int8", radix: 2 })); // 00010100
+```
+
+#### Web APIs using typed arrays
+
+These are some examples of APIs that make use of typed arrays; there are others, and more are being added all the time.
+
+FileReader.prototype.readAsArrayBuffer()
+
+    The FileReader.prototype.readAsArrayBuffer() method starts reading the contents of the specified Blob or File.
+
+fetch()
+
+    The body option to fetch() can be a typed array or ArrayBuffer, enabling you to send these objects as the payload of a POST request.
+
+ImageData.data
+
+    Is a Uint8ClampedArray representing a one-dimensional array containing the data in the RGBA order, with integer values between 0 and 255 inclusive.
+
+##### Difference between Blob and File in JavaScript
+
+**Blob**
+
+- **Definition:** A `Blob` (Binary Large Object) represents raw binary data.
+- **Creation:** You can create a `Blob` using the `Blob` constructor or the `Blob()` factory function.
+- **Usage:** Typically used to handle binary data that may not necessarily have a file-like structure or metadata associated with it.
+- **Properties:**
+  - **`size`**: Represents the size of the data in bytes.
+  - **`type`**: Represents the MIME type of the data (e.g., `"image/jpeg"`).
+- **Example:**
+  ```javascript
+  const blob = new Blob(["Hello, world!"], { type: "text/plain" });
+  ```
+
+**File**
+
+- **Definition:** A `File` is a specific type of `Blob` that represents a file-like object with metadata such as name and last modified date.
+- **Creation:** Typically created as a result of user interaction, like selecting files in an `<input type="file">` element.
+- **Usage:** Used when dealing with files, where you need access to properties like filename, file size, and last modified date.
+- **Properties (in addition to Blob properties):**
+  - **`name`**: The name of the file.
+  - **`lastModified`**: The timestamp (in milliseconds since the Unix epoch) when the file was last modified.
+- **Example:**
+  ```javascript
+  const file = new File(["Hello, world!"], "hello.txt", {
+    type: "text/plain",
+    lastModified: Date.now(),
+  });
+  ```
+
+**Key Differences**:
+
+- **Metadata:** `File` includes additional metadata like filename and last modified date, which `Blob` does not inherently have.
+- **Source:** `Blob` can represent any kind of binary data, whereas `File` specifically represents files and is usually created from user input or drag-and-drop operations.
+- **Use Cases:** Use `Blob` for generic binary data handling, and use `File` when dealing with files and when you need access to file metadata.
+
+**Common Use Cases**:
+
+- **Blob:** Storing binary data, working with media streams, or handling large amounts of binary data where file metadata is not required.
+- **File:** Uploading files via AJAX, manipulating files selected by the user, or working with APIs that expect file objects.
+
+Understanding these differences helps in choosing the appropriate object (`Blob` or `File`) depending on whether you need file metadata or simply want to handle raw binary data.
+
 ## Iterators and generators
+
+### Iterators
+
+In JavaScript an iterator is an object which defines a sequence and potentially a return value upon its termination.
+Specifically, an iterator is any object which implements the Iterator protocol by having a next() method that returns an object with two properties:
+
+value
+
+    The next value in the iteration sequence.
+
+done
+
+    This is true if the last value in the sequence has already been consumed. If value is present alongside done, it is the iterator's return value.
+
+### Generator functions
+
+While custom iterators are a useful tool, their creation requires careful programming due to the need to explicitly maintain their internal state. Generator functions provide a powerful alternative: they allow you to define an iterative algorithm by writing a single function whose execution is not continuous. Generator functions are written using the function\* syntax.
+
+While custom iterators are a useful tool, their creation requires careful programming due to the need to explicitly maintain their internal state. Generator functions provide a powerful alternative: they allow you to define an iterative algorithm by writing a single function whose execution is not continuous. Generator functions are written using the function\* syntax.
+
+When called, generator functions do not initially execute their code. Instead, they return a special type of iterator, called a Generator. When a value is consumed by calling the generator's next method, the Generator function executes until it encounters the yield keyword.
+
+The function can be called as many times as desired, and returns a new Generator each time. Each Generator may only be iterated once.
+
+We can now adapt the example from above. The behavior of this code is identical, but the implementation is much easier to write and read.
+js
+
+function\* makeRangeIterator(start = 0, end = Infinity, step = 1) {
+let iterationCount = 0;
+for (let i = start; i < end; i += step) {
+iterationCount++;
+yield i;
+}
+return iterationCount;
+}
+
+### Iterables
+
+An object is iterable if it defines its iteration behavior, such as what values are looped over in a for...of construct. Some built-in types, such as Array or Map, have a default iteration behavior, while other types (such as Object) do not.
+
+In order to be iterable, an object must implement the @@iterator method. This means that the object (or one of the objects up its prototype chain) must have a property with a Symbol.iterator key.
+
+It may be possible to iterate over an iterable more than once, or only once. It is up to the programmer to know which is the case.
+
+Iterables which can iterate only once (such as Generators) customarily return this from their @@iterator method, whereas iterables which can be iterated many times must return a new iterator on each invocation of @@iterator.
+
+String, Array, TypedArray, Map and Set are all built-in iterables, because their prototype objects all have a Symbol.iterator method.
 
 ## Meta programming
 
@@ -737,3 +962,90 @@ Callbacks added with then() will never be invoked before the completion of the c
 ## Memory Management
 
 ## Concurrency model and Event Loop
+
+# OTHERS
+
+## Tasks vs. microtasks
+
+A task is any JavaScript scheduled to be run by the standard mechanisms such as initially starting to execute a program, an event triggering a callback, and so forth. Other than by using events, you can enqueue a task by using setTimeout() or setInterval().
+
+The difference between the task queue and the microtask queue is simple but very important:
+
+    When executing tasks from the task queue, the runtime executes each task that is in the queue at the moment a new iteration of the event loop begins. Tasks added to the queue after the iteration begins will not run until the next iteration.
+    Each time a task exits, and the execution context stack is empty, each microtask in the microtask queue is executed, one after another. The difference is that execution of microtasks continues until the queue is empty—even if new ones are scheduled in the interim. In other words, microtasks can enqueue new microtasks and those new microtasks will execute before the next task begins to run, and before the end of the current event loop iteration.
+
+Solutions
+
+The use of web workers, which allow the main script to run other scripts in new threads, help to alleviate this problem. A well-designed website or app uses workers to perform any complex or lengthy operations, leaving the main thread to do as little work as possible beyond updating, laying out, and rendering the web page.
+
+This is further alleviated by using asynchronous JavaScript techniques such as promises to allow the main code to continue to run while waiting for the results of a request. However, code running at a more fundamental level—such as code comprising a library or framework—may need a way to schedule code to be run at a safe time while still executing on the main thread, independent of the results of any single request or task.
+
+Microtasks are another solution to this problem, providing a finer degree of access by making it possible to schedule code to run before the next iteration of the event loop begins, instead of having to wait until the next one.
+
+The microtask queue has been around for a while, but it's historically been used only internally in order to drive things like promises. The addition of queueMicrotask(), exposing it to web developers, creates a unified queue for microtasks which is used wherever it's necessary to have the ability to schedule code to run safely when there are no execution contexts left on the JavaScript execution context stack. Across multiple instances and across all browsers and JavaScript runtimes, a standardized microqueue mechanism means these microtasks will operate reliably in the same order, thus avoiding potentially difficult to find bugs.
+
+## Using microtasks in JavaScript with queueMicrotask()
+
+A microtask is a short function which is executed after the function or program which created it exits and only if the JavaScript execution stack is empty, but before returning control to the event loop being used by the user agent to drive the script's execution environment.This event loop may be either the browser's main event loop or the event loop driving a web worker.
+
+### Tasks
+
+The event loop driving your code handles these tasks one after another, in the order in which they were enqueued. The oldest runnable task in the task queue will be executed during a single iteration of the event loop. After that, microtasks will be executed until the microtask queue is empty, and then the browser may choose to update rendering. Then the browser moves on to the next iteration of event loop.
+
+### Microtasks
+
+whereas the event loop runs only the tasks present on the queue when the iteration began, one after another, it handles the microtask queue very differently.
+
+here are two key differences.
+
+First, each time a task exits, the event loop checks to see if the task is returning control to other JavaScript code. If not, it runs all of the microtasks in the microtask queue. The microtask queue is, then, processed multiple times per iteration of the event loop, including after handling events and other callbacks.
+
+Second, if a microtask adds more microtasks to the queue by calling queueMicrotask(), those newly-added microtasks execute before the next task is run. That's because the event loop will keep calling microtasks until there are none left in the queue, even if more keep getting added.
+
+### Using Microtasks
+
+#### Ensuring ordering on conditional use of promises
+
+The Problem:
+
+```js
+customElement.prototype.getData = (url) => {
+  if (this.cache[url]) {
+    this.data = this.cache[url];
+    this.dispatchEvent(new Event("load"));
+  } else {
+    fetch(url)
+      .then((result) => result.arrayBuffer())
+      .then((data) => {
+        this.cache[url] = data;
+        this.data = data;
+        this.dispatchEvent(new Event("load"));
+      });
+  }
+};
+```
+
+The problem introduced here is that by using a task in one branch of the if...else statement (in the case in which the image is available in the cache) but having promises involved in the else clause, we have a situation in which the order of operations can vary; for example, as seen below.
+
+The Solution:
+
+```js
+customElement.prototype.getData = (url) => {
+  if (this.cache[url]) {
+    queueMicrotask(() => {
+      this.data = this.cache[url];
+      this.dispatchEvent(new Event("load"));
+    });
+  } else {
+    fetch(url)
+      .then((result) => result.arrayBuffer())
+      .then((data) => {
+        this.cache[url] = data;
+        this.data = data;
+        this.dispatchEvent(new Event("load"));
+      });
+  }
+};
+```
+
+This balances the clauses by having both situations handle the setting of data and firing of the load event within a microtask (using queueMicrotask() in the if clause and using the promises used by fetch() in the else clause).
