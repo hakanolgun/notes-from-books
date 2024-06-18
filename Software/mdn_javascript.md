@@ -1040,23 +1040,558 @@ Last but not least, let's make this clear — module features are imported into 
 
 ## Client-side JS Frameworks
 
+React, Vue, Angular, Ember, Svelte tutorials
+
 ## Client-side web APIs
+
+Simple examples of DOM, Fetch, Third Party, Graphics, HTMLMediaElement and Client-side Storage APIS
+
+### Client-Side Storage APIs
+
+- **Cookies**: Old-school
+- **Web Storage**: New School (localStorage and sessionStorage)
+- **IndexedDB**: is a complete database system available in the browser in which you can store complex related data, the types of which aren't limited to simple values like strings or numbers. You can store videos, images, and pretty much anything else in an IndexedDB instance.
+- **Cache API**: Commonly used with service workers to save assets.
 
 ## Language overview
 
+Summarize of basics
+
 ## JS Data Structures
+
+Null type
+
+The Null type is inhabited by exactly one value: null.
+Undefined type
+
+The Undefined type is inhabited by exactly one value: undefined.
+
+Conceptually, undefined indicates the absence of a value, while null indicates the absence of an object (which could also make up an excuse for typeof null === "object"). The language usually defaults to undefined when something is devoid of a value:
+
+    A return statement with no value (return;) implicitly returns undefined.
+    Accessing a nonexistent object property (obj.iDontExist) returns undefined.
+    A variable declaration without initialization (let x;) implicitly initializes the variable to undefined.
+    Many methods, such as Array.prototype.find() and Map.prototype.get(), return undefined when no element is found.
+
+null is used much less often in the core language. The most important place is the end of the prototype chain — subsequently, methods that interact with prototypes, such as Object.getPrototypeOf(), Object.create(), etc., accept or return null instead of undefined.
+
+null is a keyword, but undefined is a normal identifier that happens to be a global property. In practice, the difference is minor, since undefined should not be redefined or shadowed.
+NaN ("Not a Number") is a special kind of number value that's typically encountered when the result of an arithmetic operation cannot be expressed as a number. It is also the only value in JavaScript that is not equal to itself.
+
+Symbol type
+
+A Symbol is a unique and immutable primitive value and may be used as the key of an Object property (see below). In some programming languages, Symbols are called "atoms". The purpose of symbols is to create unique property keys that are guaranteed not to clash with keys from other code.
+
+Objects
+
+In computer science, an object is a value in memory which is possibly referenced by an identifier. In JavaScript, objects are the only mutable values. Functions are, in fact, also objects with the additional capability of being callable.
+
+There are two types of object properties: The data property and the accessor property.
+
+Data property
+
+Data properties associate a key with a value. It can be described by the following attributes:
+
+value
+
+    The value retrieved by a get access of the property. Can be any JavaScript value.
+
+writable
+
+    A boolean value indicating if the property can be changed with an assignment.
+
+enumerable
+
+    A boolean value indicating if the property can be enumerated by a for...in loop. See also Enumerability and ownership of properties for how enumerability interacts with other functions and syntaxes.
+
+configurable
+
+    A boolean value indicating if the property can be deleted, can be changed to an accessor property, and can have its attributes changed.
+
+Accessor property
+
+Associates a key with one of two accessor functions (get and set) to retrieve or store a value.
+
+Note: It's important to recognize it's accessor property — not accessor method. We can give a JavaScript object class-like accessors by using a function as a value — but that doesn't make the object a class.
+
+An accessor property has the following attributes:
+
+get
+
+    A function called with an empty argument list to retrieve the property value whenever a get access to the value is performed. See also getters. May be undefined.
+
+set
+
+    A function called with an argument that contains the assigned value. Executed whenever a specified property is attempted to be changed. See also setters. May be undefined.
+
+enumerable
+
+    A boolean value indicating if the property can be enumerated by a for...in loop. See also Enumerability and ownership of properties for how enumerability interacts with other functions and syntaxes.
+
+configurable
+
+    A boolean value indicating if the property can be deleted, can be changed to a data property, and can have its attributes changed.
+
+The prototype of an object points to another object or to null — it's conceptually a hidden property of the object, commonly represented as [[Prototype]]. Properties of the object's [[Prototype]] can also be accessed on the object itself.
+
+Objects are ad-hoc key-value pairs, so they are often used as maps. However, there can be ergonomics, security, and performance issues. Use a Map for storing arbitrary data instead. The Map reference contains a more detailed discussion of the pros & cons between plain objects and maps for storing key-value associations.
+
+Type coercion
+
+As mentioned above, JavaScript is a weakly typed language. This means that you can often use a value of one type where another type is expected, and the language will convert it to the right type for you. To do so, JavaScript defines a handful of coercion rules.
+Primitive coercion
+
+The primitive coercion process is used where a primitive value is expected, but there's no strong preference for what the actual type should be. This is usually when a string, a number, or a BigInt are equally acceptable. For example:
+
+    The Date() constructor, when it receives one argument that's not a Date instance — strings represent date strings, while numbers represent timestamps.
+    The + operator — if one operand is a string, string concatenation is performed; otherwise, numeric addition is performed.
+    The == operator — if one operand is a primitive while the other is an object, the object is converted to a primitive value with no preferred type.
+
+This operation does not do any conversion if the value is already a primitive. Objects are converted to primitives by calling its [@@toPrimitive]() (with "default" as hint), valueOf(), and toString() methods, in that order. Note that primitive conversion calls valueOf() before toString(), which is similar to the behavior of number coercion but different from string coercion.
+
+The [@@toPrimitive]() method, if present, must return a primitive — returning an object results in a TypeError. For valueOf() and toString(), if one returns an object, the return value is ignored and the other's return value is used instead; if neither is present, or neither returns a primitive, a TypeError is thrown. For example, in the following code:
+js
+
+console.log({} + []); // "[object Object]"
+
+Neither {} nor [] have a [@@toPrimitive]() method. Both {} and [] inherit valueOf() from Object.prototype.valueOf, which returns the object itself. Since the return value is an object, it is ignored. Therefore, toString() is called instead. {}.toString() returns "[object Object]", while [].toString() returns "", so the result is their concatenation: "[object Object]".
+
+The [@@toPrimitive]() method always takes precedence when doing conversion to any primitive type. Primitive conversion generally behaves like number conversion, because valueOf() is called in priority; however, objects with custom [@@toPrimitive]() methods can choose to return any primitive. Date and Symbol objects are the only built-in objects that override the [@@toPrimitive]() method. Date.prototype[@@toPrimitive]() treats the "default" hint as if it's "string", while Symbol.prototype[@@toPrimitive]() ignores the hint and always returns a symbol.
+Numeric coercion
+
+There are two numeric types: Number and BigInt. Sometimes the language specifically expects a number or a BigInt (such as Array.prototype.slice(), where the index must be a number); other times, it may tolerate either and perform different operations depending on the operand's type. For strict coercion processes that do not allow implicit conversion from the other type, see number coercion and BigInt coercion.
+
+Numeric coercion is nearly the same as number coercion, except that BigInts are returned as-is instead of causing a TypeError. Numeric coercion is used by all arithmetic operators, since they are overloaded for both numbers and BigInts. The only exception is unary plus, which always does number coercion.
+Other coercions
+
+All data types, except Null, Undefined, and Symbol, have their respective coercion process. See string coercion, boolean coercion, and object coercion for more details.
+
+As you may have noticed, there are three distinct paths through which objects may be converted to primitives:
+
+    Primitive coercion: [@@toPrimitive]("default") → valueOf() → toString()
+    Numeric coercion, number coercion, BigInt coercion: [@@toPrimitive]("number") → valueOf() → toString()
+    String coercion: [@@toPrimitive]("string") → toString() → valueOf()
+
+In all cases, [@@toPrimitive](), if present, must be callable and return a primitive, while valueOf or toString will be ignored if they are not callable or return an object. At the end of the process, if successful, the result is guaranteed to be a primitive. The resulting primitive is then subject to further coercions depending on the context.
 
 ## Equality comparisons and sameness
 
+JavaScript provides three different value-comparison operations:
+
+    === — strict equality (triple equals)
+    == — loose equality (double equals)
+    Object.is()
+
+Which operation you choose depends on what sort of comparison you are looking to perform. Briefly:
+
+    Double equals (==) will perform a type conversion when comparing two things, and will handle NaN, -0, and +0 specially to conform to IEEE 754 (so NaN != NaN, and -0 == +0);
+    Triple equals (===) will do the same comparison as double equals (including the special handling for NaN, -0, and +0) but without type conversion; if the types differ, false is returned.
+    Object.is() does no type conversion and no special handling for NaN, -0, and +0 (giving it the same behavior as === except on those special numeric values).
+
+They correspond to three of four equality algorithms in JavaScript:
+
+    IsLooselyEqual: ==
+    IsStrictlyEqual: ===
+    SameValue: Object.is()
+    SameValueZero: used by many built-in operations
+
+Note that the distinction between these all have to do with their handling of primitives; none of them compares whether the parameters are conceptually similar in structure. For any non-primitive objects x and y which have the same structure but are distinct objects themselves, all of the above forms will evaluate to false.
+Strict equality using ===
+
+Strict equality compares two values for equality. Neither value is implicitly converted to some other value before being compared. If the values have different types, the values are considered unequal. If the values have the same type, are not numbers, and have the same value, they're considered equal. Finally, if both values are numbers, they're considered equal if they're both not NaN and are the same value, or if one is +0 and one is -0.
+js
+
+const num = 0;
+const obj = new String("0");
+const str = "0";
+
+console.log(num === num); // true
+console.log(obj === obj); // true
+console.log(str === str); // true
+
+console.log(num === obj); // false
+console.log(num === str); // false
+console.log(obj === str); // false
+console.log(null === undefined); // false
+console.log(obj === null); // false
+console.log(obj === undefined); // false
+
+Strict equality is almost always the correct comparison operation to use. For all values except numbers, it uses the obvious semantics: a value is only equal to itself. For numbers it uses slightly different semantics to gloss over two different edge cases. The first is that floating point zero is either positively or negatively signed. This is useful in representing certain mathematical solutions, but as most situations don't care about the difference between +0 and -0, strict equality treats them as the same value. The second is that floating point includes the concept of a not-a-number value, NaN, to represent the solution to certain ill-defined mathematical problems: negative infinity added to positive infinity, for example. Strict equality treats NaN as unequal to every other value — including itself. (The only case in which (x !== x) is true is when x is NaN.)
+
+Besides ===, strict equality is also used by array index-finding methods including Array.prototype.indexOf(), Array.prototype.lastIndexOf(), TypedArray.prototype.indexOf(), TypedArray.prototype.lastIndexOf(), and case-matching. This means you cannot use indexOf(NaN) to find the index of a NaN value in an array, or use NaN as a case value in a switch statement and make it match anything.
+js
+
+console.log([NaN].indexOf(NaN)); // -1
+switch (NaN) {
+case NaN:
+console.log("Surprise"); // Nothing is logged
+}
+
+Loose equality using ==
+
+Loose equality is symmetric: A == B always has identical semantics to B == A for any values of A and B (except for the order of applied conversions). The behavior for performing loose equality using == is as follows:
+
+    If the operands have the same type, they are compared as follows:
+        Object: return true only if both operands reference the same object.
+        String: return true only if both operands have the same characters in the same order.
+        Number: return true only if both operands have the same value. +0 and -0 are treated as the same value. If either operand is NaN, return false; so NaN is never equal to NaN.
+        Boolean: return true only if operands are both true or both false.
+        BigInt: return true only if both operands have the same value.
+        Symbol: return true only if both operands reference the same symbol.
+    If one of the operands is null or undefined, the other must also be null or undefined to return true. Otherwise return false.
+    If one of the operands is an object and the other is a primitive, convert the object to a primitive.
+    At this step, both operands are converted to primitives (one of String, Number, Boolean, Symbol, and BigInt). The rest of the conversion is done case-by-case.
+        If they are of the same type, compare them using step 1.
+        If one of the operands is a Symbol but the other is not, return false.
+        If one of the operands is a Boolean but the other is not, convert the boolean to a number: true is converted to 1, and false is converted to 0. Then compare the two operands loosely again.
+        Number to String: convert the string to a number. Conversion failure results in NaN, which will guarantee the equality to be false.
+        Number to BigInt: compare by their numeric value. If the number is ±Infinity or NaN, return false.
+        String to BigInt: convert the string to a BigInt using the same algorithm as the BigInt() constructor. If conversion fails, return false.
+
+Traditionally, and according to ECMAScript, all primitives and objects are loosely unequal to undefined and null. But most browsers permit a very narrow class of objects (specifically, the document.all object for any page), in some contexts, to act as if they emulate the value undefined. Loose equality is one such context: null == A and undefined == A evaluate to true if, and only if, A is an object that emulates undefined. In all other cases an object is never loosely equal to undefined or null.
+
+In most cases, using loose equality is discouraged. The result of a comparison using strict equality is easier to predict, and may evaluate more quickly due to the lack of type coercion.
+
+The following example demonstrates loose equality comparisons involving the number primitive 0, the bigint primitive 0n, the string primitive '0', and an object whose toString() value is '0'.
+js
+
+const num = 0;
+const big = 0n;
+const str = "0";
+const obj = new String("0");
+
+console.log(num == str); // true
+console.log(big == num); // true
+console.log(str == big); // true
+
+console.log(num == obj); // true
+console.log(big == obj); // true
+console.log(str == obj); // true
+
+Loose equality is only used by the == operator.
+Same-value equality using Object.is()
+
+Same-value equality determines whether two values are functionally identical in all contexts. (This use case demonstrates an instance of the Liskov substitution principle.) One instance occurs when an attempt is made to mutate an immutable property:
+js
+
+// Add an immutable NEGATIVE_ZERO property to the Number constructor.
+Object.defineProperty(Number, "NEGATIVE_ZERO", {
+value: -0,
+writable: false,
+configurable: false,
+enumerable: false,
+});
+
+function attemptMutation(v) {
+Object.defineProperty(Number, "NEGATIVE_ZERO", { value: v });
+}
+
+Object.defineProperty will throw an exception when attempting to change an immutable property, but it does nothing if no actual change is requested. If v is -0, no change has been requested, and no error will be thrown. Internally, when an immutable property is redefined, the newly-specified value is compared against the current value using same-value equality.
+
+Same-value equality is provided by the Object.is method. It's used almost everywhere in the language where a value of equivalent identity is expected.
+Same-value-zero equality
+
+Similar to same-value equality, but +0 and -0 are considered equal.
+
+Same-value-zero equality is not exposed as a JavaScript API, but can be implemented with custom code:
+js
+
+function sameValueZero(x, y) {
+if (typeof x === "number" && typeof y === "number") {
+// x and y are equal (may be -0 and 0) or they are both NaN
+return x === y || (x !== x && y !== y);
+}
+return x === y;
+}
+
+Same-value-zero only differs from strict equality by treating NaN as equivalent, and only differs from same-value equality by treating -0 as equivalent to 0. This makes it usually have the most sensible behavior during searching, especially when working with NaN. It's used by Array.prototype.includes(), TypedArray.prototype.includes(), as well as Map and Set methods for comparing key equality.
+Comparing equality methods
+
+People often compare double equals and triple equals by saying one is an "enhanced" version of the other. For example, double equals could be said as an extended version of triple equals, because the former does everything that the latter does, but with type conversion on its operands — for example, 6 == "6". Alternatively, it can be claimed that double equals is the baseline, and triple equals is an enhanced version, because it requires the two operands to be the same type, so it adds an extra constraint.
+
+However, this way of thinking implies that the equality comparisons form a one-dimensional "spectrum" where "totally strict" lies on one end and "totally loose" lies on the other. This model falls short with Object.is, because it isn't "looser" than double equals or "stricter" than triple equals, nor does it fit somewhere in between (i.e., being both stricter than double equals, but looser than triple equals). We can see from the sameness comparisons table below that this is due to the way that Object.is handles NaN. Notice that if Object.is(NaN, NaN) evaluated to false, we could say that it fits on the loose/strict spectrum as an even stricter form of triple equals, one that distinguishes between -0 and +0. The NaN handling means this is untrue, however. Unfortunately, Object.is has to be thought of in terms of its specific characteristics, rather than its looseness or strictness with regard to the equality operators.
+x y == === Object.is SameValueZero
+undefined undefined ✅ true ✅ true ✅ true ✅ true
+null null ✅ true ✅ true ✅ true ✅ true
+true true ✅ true ✅ true ✅ true ✅ true
+false false ✅ true ✅ true ✅ true ✅ true
+'foo' 'foo' ✅ true ✅ true ✅ true ✅ true
+0 0 ✅ true ✅ true ✅ true ✅ true
++0 -0 ✅ true ✅ true ❌ false ✅ true
++0 0 ✅ true ✅ true ✅ true ✅ true
+-0 0 ✅ true ✅ true ❌ false ✅ true
+0n -0n ✅ true ✅ true ✅ true ✅ true
+0 false ✅ true ❌ false ❌ false ❌ false
+"" false ✅ true ❌ false ❌ false ❌ false
+"" 0 ✅ true ❌ false ❌ false ❌ false
+'0' 0 ✅ true ❌ false ❌ false ❌ false
+'17' 17 ✅ true ❌ false ❌ false ❌ false
+[1, 2] '1,2' ✅ true ❌ false ❌ false ❌ false
+new String('foo') 'foo' ✅ true ❌ false ❌ false ❌ false
+null undefined ✅ true ❌ false ❌ false ❌ false
+null false ❌ false ❌ false ❌ false ❌ false
+undefined false ❌ false ❌ false ❌ false ❌ false
+{ foo: 'bar' } { foo: 'bar' } ❌ false ❌ false ❌ false ❌ false
+new String('foo') new String('foo') ❌ false ❌ false ❌ false ❌ false
+0 null ❌ false ❌ false ❌ false ❌ false
+0 NaN ❌ false ❌ false ❌ false ❌ false
+'foo' NaN ❌ false ❌ false ❌ false ❌ false
+NaN NaN ❌ false ❌ false ✅ true ✅ true
+When to use Object.is() versus triple equals
+
+In general, the only time Object.is's special behavior towards zeros is likely to be of interest is in the pursuit of certain meta-programming schemes, especially regarding property descriptors, when it is desirable for your work to mirror some of the characteristics of Object.defineProperty. If your use case does not require this, it is suggested to avoid Object.is and use === instead. Even if your requirements involve having comparisons between two NaN values evaluate to true, generally it is easier to special-case the NaN checks (using the isNaN method available from previous versions of ECMAScript) than it is to work out how surrounding computations might affect the sign of any zeros you encounter in your comparison.
+
+Here's a non-exhaustive list of built-in methods and operators that might cause a distinction between -0 and +0 to manifest itself in your code:
+
+- (unary negation)
+
+      Consider the following example:
+      js
+
+      const stoppingForce = obj.mass * -obj.velocity;
+
+      If obj.velocity is 0 (or computes to 0), a -0 is introduced at that place and propagates out into stoppingForce.
+
+  Math.atan2, Math.ceil, Math.pow, Math.round
+
+      In some cases, it's possible for a -0 to be introduced into an expression as a return value of these methods even when no -0 exists as one of the parameters. For example, using Math.pow to raise -Infinity to the power of any negative, odd exponent evaluates to -0. Refer to the documentation for the individual methods.
+
+  Math.floor, Math.max, Math.min, Math.sin, Math.sqrt, Math.tan
+
+      It's possible to get a -0 return value out of these methods in some cases where a -0 exists as one of the parameters. E.g., Math.min(-0, +0) evaluates to -0. Refer to the documentation for the individual methods.
+
+  ~, <<, >>
+
+      Each of these operators uses the ToInt32 algorithm internally. Since there is only one representation for 0 in the internal 32-bit integer type, -0 will not survive a round trip after an inverse operation. E.g., both Object.is(~~(-0), -0) and Object.is(-0 << 2 >> 2, -0) evaluate to false.
+
+Relying on Object.is when the signedness of zeros is not taken into account can be hazardous. Of course, when the intent is to distinguish between -0 and +0, it does exactly what's desired.
+Caveat: Object.is() and NaN
+
+The Object.is specification treats all instances of NaN as the same object. However, since typed arrays are available, we can have distinct floating point representations of NaN which don't behave identically in all contexts. For example:
+js
+
+const f2b = (x) => new Uint8Array(new Float64Array([x]).buffer);
+const b2f = (x) => new Float64Array(x.buffer)[0];
+// Get a byte representation of NaN
+const n = f2b(NaN);
+// Change the first bit, which is the sign bit and doesn't matter for NaN
+n[0] = 1;
+const nan2 = b2f(n);
+console.log(nan2); // NaN
+console.log(Object.is(nan2, NaN)); // true
+console.log(f2b(NaN)); // Uint8Array(8) [0, 0, 0, 0, 0, 0, 248, 127]
+console.log(f2b(nan2)); // Uint8Array(8) [1, 0, 0, 0, 0, 0, 248, 127]
+
 ## Enumerability and ownership of properties
 
+Every property in JavaScript objects can be classified by three factors:
+
+- Enumerable or non-enumerable;
+- String or symbol;
+- Own property or inherited property from the prototype chain.
+  Enumerable properties are those properties whose internal enumerable flag is set to true, which is the default for properties created via simple assignment or via a property initializer. Properties defined via Object.defineProperty and such are not enumerable by default. Most iteration means (such as for...in loops and Object.keys) only visit enumerable keys.
+
+Ownership of properties is determined by whether the property belongs to the object directly and not to its prototype chain.
+
+All properties, enumerable or not, string or symbol, own or inherited, can be accessed with dot notation or bracket notation. In this section, we will focus on the means provided by JavaScript to visit a group of object properties one-by-one.
+Querying object properties
+
+There are four built-in ways to query a property of an object. They all support both string and symbol keys. The following table summarizes when each method returns true.
+Enumerable, own Enumerable, inherited Non-enumerable, own Non-enumerable, inherited
+propertyIsEnumerable() true ✅ false ❌ false ❌ false ❌
+hasOwnProperty() true ✅ false ❌ true ✅ false ❌
+Object.hasOwn() true ✅ false ❌ true ✅ false ❌
+in true ✅ true ✅ true ✅ true ✅
+Traversing object properties
+
+There are many methods in JavaScript that traverse a group of properties of an object. Sometimes, these properties are returned as an array; sometimes, they are iterated one-by-one in a loop; sometimes, they are used for constructing or mutating another object. The following table summarizes when a property may be visited.
+
+Methods that only visit string properties or only symbol properties will have an extra note. ✅ means a property of this type will be visited; ❌ means it will not.
+Enumerable, own Enumerable, inherited Non-enumerable, own Non-enumerable, inherited
+Object.keys
+Object.values
+Object.entries ✅
+(strings) ❌ ❌ ❌
+Object.getOwnPropertyNames ✅
+(strings) ❌ ✅
+(strings) ❌
+Object.getOwnPropertySymbols ✅
+(symbols) ❌ ✅
+(symbols) ❌
+Object.getOwnPropertyDescriptors ✅ ❌ ✅ ❌
+Reflect.ownKeys ✅ ❌ ✅ ❌
+for...in ✅
+(strings) ✅
+(strings) ❌ ❌
+Object.assign
+(After the first parameter) ✅ ❌ ❌ ❌
+Object spread ✅ ❌ ❌ ❌
+
 ## Closures
+
+Those three public functions form closures that share the same lexical environment. Thanks to JavaScript's lexical scoping, they each have access to the privateCounter variable and the changeBy function.
+js
+
+const makeCounter = function () {
+let privateCounter = 0;
+function changeBy(val) {
+privateCounter += val;
+}
+return {
+increment() {
+changeBy(1);
+},
+
+    decrement() {
+      changeBy(-1);
+    },
+
+    value() {
+      return privateCounter;
+    },
+
+};
+};
+
+const counter1 = makeCounter();
+const counter2 = makeCounter();
+
+console.log(counter1.value()); // 0.
+
+counter1.increment();
+counter1.increment();
+console.log(counter1.value()); // 2.
+
+counter1.decrement();
+console.log(counter1.value()); // 1.
+console.log(counter2.value()); // 0.
+
+Notice how the two counters maintain their independence from one another. Each closure references a different version of the privateCounter variable through its own closure. Each time one of the counters is called, its lexical environment changes by changing the value of this variable. Changes to the variable value in one closure don't affect the value in the other closure.
+
+Note: Using closures in this way provides benefits that are normally associated with object-oriented programming. In particular, data hiding and encapsulation.
+
+### Closure scope chain
+
+Every closure has three scopes:
+
+    Local scope (Own scope)
+    Enclosing scope (can be block, function, or module scope)
+    Global scope
+
+A common mistake is not realizing that in the case where the outer function is itself a nested function, access to the outer function's scope includes the enclosing scope of the outer function—effectively creating a chain of function scopes. To demonstrate, consider the following example code.
 
 # ADVANCED
 
 ## Inheritance and the prototype chain
 
+Performance
+
+The lookup time for properties that are high up on the prototype chain can have a negative impact on the performance, and this may be significant in the code where performance is critical. Additionally, trying to access nonexistent properties will always traverse the full prototype chain.
+
 ## Memory Management
+
+### Memory life cycle
+
+Regardless of the programming language, the memory life cycle is pretty much always the same:
+
+    Allocate the memory you need
+    Use the allocated memory (read, write)
+    Release the allocated memory when it is not needed anymore
+
+The second part is explicit in all languages. The first and last parts are explicit in low-level languages but are mostly implicit in high-level languages like JavaScript.
+
+#### Allocation in JavaScript
+
+##### Value initialization
+
+When you initialize a value, JS automatically allocate memory for that value.
+const x = 'Same'; // allocates memory for string
+
+##### Allocation via function calls
+
+const d = new Date(); // allocates a Date object
+
+### Garbage Collection
+
+The general problem of automatically finding whether some memory "is not needed anymore" is undecidable. As a consequence, garbage collectors implement a restriction of a solution to the general problem. This section will explain the concepts that are necessary for understanding the main garbage collection algorithms and their respective limitations.
+
+Reference-counting garbage collection:This algorithm reduces the problem from determining whether or not an object is still needed to determining if an object still has any other objects referencing it. An object is said to be "garbage", or collectible if there are zero references pointing to it.
+
+Mark-and-sweep algorithm:This algorithm assumes the knowledge of a set of objects called roots. In JavaScript, the root is the global object. Periodically, the garbage collector will start from these roots, find all objects that are referenced from these roots, then all objects referenced from these, etc. Starting from the roots, the garbage collector will thus find all reachable objects and collect all non-reachable objects.
+
+#### Data structures aiding memory management
+
+Although JavaScript does not directly expose the garbage collector API, the language offers several data structures that indirectly observe garbage collection and can be used to manage memory usage.
+
+WeakMaps and WeakSets
+
+WeakMap and WeakSet are data structures whose APIs closely mirror their non-weak counterparts: Map and Set. WeakMap allows you to maintain a collection of key-value pairs, while WeakSet allows you to maintain a collection of unique values, both with performant addition, deletion, and querying.
+
+WeakMap and WeakSet got the name from the concept of weakly held values. If x is weakly held by y, it means that although you can access the value of x via y, the mark-and-sweep algorithm won't consider x as reachable if nothing else strongly holds to it. Most data structures, except the ones discussed here, strongly holds to the objects passed in so that you can retrieve them at any time. The keys of WeakMap and WeakSet can be garbage-collected (for WeakMap objects, the values would then be eligible for garbage collection as well) as long as nothing else in the program is referencing the key. This is ensured by two characteristics:
+
+    WeakMap and WeakSet can only store objects or symbols. This is because only objects are garbage collected — primitive values can always be forged (that is, 1 === 1 but {} !== {}), making them stay in the collection forever. Registered symbols (like Symbol.for("key")) can also be forged and thus not garbage collectable, but symbols created with Symbol("key") are garbage collectable. Well-known symbols like Symbol.iterator come in a fixed set and are unique throughout the lifetime of the program, similar to intrinsic objects such as Array.prototype, so they are also allowed as keys.
+    WeakMap and WeakSet are not iterable. This prevents you from using Array.from(map.keys()).length to observe the liveliness of objects, or get hold of an arbitrary key which should otherwise be eligible for garbage collection. (Garbage collection should be as invisible as possible.)
+
+WeakRefs and FinalizationRegistry
+
+Note: WeakRef and FinalizationRegistry offer direct introspection into the garbage collection machinery. Avoid using them where possible because the runtime semantics are almost completely unguaranteed.
+
+All variables with an object as value are references to that object. However, such references are strong — their existence would prevent the garbage collector from marking the object as eligible for collection. A WeakRef is a weak reference to an object that allows the object to be garbage collected, while still retaining the ability to read the object's content during its lifetime.
+
+One use case for WeakRef is a cache system which maps string URLs to large objects. We cannot use a WeakMap for this purpose, because WeakMap objects have their keys weakly held, but not their values — if you access a key, you would always deterministically get the value (since having access to the key means it's still alive). Here, we are okay to get undefined for a key (if the corresponding value is no longer alive) since we can just re-compute it, but we don't want unreachable objects to stay in the cache. In this case, we can use a normal Map, but with each value being a WeakRef of the object instead of the actual object value.
+js
+
+function cached(getter) {
+// A Map from string URLs to WeakRefs of results
+const cache = new Map();
+return async (key) => {
+if (cache.has(key)) {
+const dereferencedValue = cache.get(key).deref();
+if (dereferencedValue !== undefined) {
+return dereferencedValue;
+}
+}
+const value = await getter(key);
+cache.set(key, new WeakRef(value));
+return value;
+};
+}
+
+const getImage = cached((url) => fetch(url).then((res) => res.blob()));
+
+FinalizationRegistry provides an even stronger mechanism to observe garbage collection. It allows you to register objects and be notified when they are garbage collected. For example, for the cache system exemplified above, even when the blobs themselves are free for collection, the WeakRef objects that hold them are not — and over time, the Map may accumulate a lot of useless entries. Using a FinalizationRegistry allows one to perform cleanup in this case.
+js
+
+function cached(getter) {
+// A Map from string URLs to WeakRefs of results
+const cache = new Map();
+// Every time after a value is garbage collected, the callback is
+// called with the key in the cache as argument, allowing us to remove
+// the cache entry
+const registry = new FinalizationRegistry((key) => {
+// Note: it's important to test that the WeakRef is indeed empty.
+// Otherwise, the callback may be called after a new object has been
+// added with this key, and that new, alive object gets deleted
+if (!cache.get(key)?.deref()) {
+cache.delete(key);
+}
+});
+return async (key) => {
+if (cache.has(key)) {
+return cache.get(key).deref();
+}
+const value = await getter(key);
+cache.set(key, new WeakRef(value));
+registry.register(value, key);
+return value;
+};
+}
+
+const getImage = cached((url) => fetch(url).then((res) => res.blob()));
+
+Due to performance and security concerns, there is no guarantee of when the callback will be called, or if it will be called at all. It should only be used for cleanup — and non-critical cleanup. There are other ways for more deterministic resource management, such as try...finally, which will always execute the finally block. WeakRef and FinalizationRegistry exist solely for optimization of memory usage in long-running programs.
+
+For more information on the API of WeakRef and FinalizationRegistry, see their reference pages.
 
 ## Concurrency model and Event Loop
 
