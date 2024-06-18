@@ -569,9 +569,21 @@ When you use extends, the static methods inherit from each other as well, so you
 
 ## Using promises
 
-A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+A Promise is an object representing the eventual completion or failure of an asynchronous operation.Essentially, a promise is a returned object to which you attach callbacks, instead of passing callbacks into a function.
 
-It is important to always return promises from then callbacks, even if the promise always resolves to undefined. If the previous handler started a promise but did not return it, there's no way to track its settlement anymore, and the promise is said to be "floating".
+### Chaining
+
+```js
+doSomething()
+  .then((result) => doSomethingElse(result))
+  .then((newResult) => doThirdThing(newResult))
+  .then((finalResult) => {
+    console.log(`Got the final result: ${finalResult}`);
+  })
+  .catch(failureCallback);
+```
+
+doSomethingElse and doThirdThing can return any value — if they return promises, that promise is first waited until it settles, and the next callback receives the fulfillment value, not the promise itself. .It is important to always return promises from then callbacks, even if the promise always resolves to undefined. If the previous handler started a promise but did not return it, there's no way to track its settlement anymore, and the promise is said to be "floating".
 
 ```js
 doSomething()
@@ -585,6 +597,114 @@ doSomething()
     // call anymore, or whether it succeeded at all.
   });
 ```
+
+Therefore, as a rule of thumb, whenever your operation encounters a promise, return it and defer its handling to the next then handler.
+
+Note: async/await has the same concurrency semantics as normal promise chains. await within one async function does not stop the entire program, only the parts that depend on its value, so other async jobs can still run while the await is pending.
+
+**Chain after a catch**
+It's possible to chain after a failure, i.e. a catch, which is useful to accomplish new actions even after an action failed in the chain. Read the following example:
+
+```js
+doSomething()
+  .then(() => {
+    throw new Error("Something failed");
+
+    console.log("Do this");
+  })
+  .catch(() => {
+    console.error("Do that");
+  })
+  .then(() => {
+    console.log("Do this, no matter what happened before");
+  });
+
+// Do that
+// Do this, no matter what happened before
+```
+
+### Error Handling
+
+**Promise rejection events**
+If a promise rejection event is not handled by any handler, it bubbles to the top of the call stack, and the host needs to surface it. On the web, whenever a promise is rejected, one of two events is sent to the global scope (generally, this is either the window or, if being used in a web worker, it's the Worker or other worker-based interface). The two events are:
+
+unhandledrejection
+
+    Sent when a promise is rejected but there is no rejection handler available.
+
+rejectionhandled
+
+    Sent when a handler is attached to a rejected promise that has already caused an unhandledrejection event.
+
+In both cases, the event (of type PromiseRejectionEvent) has as members a promise property indicating the promise that was rejected, and a reason property that provides the reason given for the promise to be rejected.
+
+These make it possible to offer fallback error handling for promises, as well as to help debug issues with your promise management. These handlers are global per context, so all errors will go to the same event handlers, regardless of source.
+
+In Node.js, handling promise rejection is slightly different. You capture unhandled rejections by adding a handler for the Node.js unhandledRejection event (notice the difference in capitalization of the name), like this:
+js
+
+process.on("unhandledRejection", (reason, promise) => {
+// Add code here to examine the "promise" and "reason" values
+});
+
+For Node.js, to prevent the error from being logged to the console (the default action that would otherwise occur), adding that process.on() listener is all that's necessary; there's no need for an equivalent of the browser runtime's preventDefault() method.
+
+However, if you add that process.on listener but don't also have code within it to handle rejected promises, they will just be dropped on the floor and silently ignored. So ideally, you should add code within that listener to examine each rejected promise and make sure it was not caused by an actual code bug.
+
+### Composition
+
+Promise.all(), Promise.allSettled(), Promise.any(), Promise.race().
+
+These methods all run promises concurrently — a sequence of promises are started simultaneously and do not wait for each other. Sequential composition is possible using some clever JavaScript:
+
+```js
+[func1, func2, func3]
+  .reduce((p, f) => p.then(f), Promise.resolve())
+  .then((result3) => {
+    /* use result3 */
+  });
+
+// also possible to make compose function which is common in FP
+let result;
+for (const f of [func1, func2, func3]) {
+  result = await f(result);
+}
+/* use last result (i.e. result3) */
+```
+
+However, before you compose promises sequentially, consider if it's really necessary — it's always better to run promises concurrently so that they don't unnecessarily block each other unless one promise's execution depends on another's result.
+
+### Cancellation
+
+Promise itself has no first-class protocol for cancellation, but you may be able to directly cancel the underlying asynchronous operation, typically using AbortController.
+
+### Creating a Promise around an old callback API
+
+A Promise can be created from scratch using its constructor. This should be needed only to wrap old APIs.
+
+In an ideal world, all asynchronous functions would already return promises. Unfortunately, some APIs still expect success and/or failure callbacks to be passed in the old way. The most obvious example is the setTimeout() function:
+
+```js
+setTimeout(() => saySomething("10 seconds passed"), 10 \* 1000);
+```
+
+Mixing old-style callbacks and promises is problematic. If saySomething() fails or contains a programming error, nothing catches it. This is intrinsic to the design of setTimeout.
+
+Luckily we can wrap setTimeout in a promise. The best practice is to wrap the callback-accepting functions at the lowest possible level, and then never call them directly again:
+
+```js
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+wait(10 \* 1000)
+.then(() => saySomething("10 seconds"))
+.catch(failureCallback);
+```
+
+The promise constructor takes an executor function that lets us resolve or reject a promise manually. Since setTimeout() doesn't really fail, we left out reject in this case.
+
+### Timing
+
+Callbacks added with then() will never be invoked before the completion of the current run of the JavaScript event loop.
 
 ## JavaScript types arrays
 
