@@ -1024,8 +1024,717 @@ There are npm modules that offer asynchronous JSON APIs. See for example:
 Complex calculations without blocking the Event Loop
 
 Suppose you want to do complex calculations in JavaScript without blocking the Event Loop. You have two options: partitioning or offloading.
+Complex calculations without blocking the Event Loop
+
+Suppose you want to do complex calculations in JavaScript without blocking the Event Loop. You have two options: partitioning or offloading.
+Partitioning
+
+You could partition your calculations so that each runs on the Event Loop but regularly yields (gives turns to) other pending events. In JavaScript it's easy to save the state of an ongoing task in a closure, as shown in example 2 below.
+
+For a simple example, suppose you want to compute the average of the numbers 1 to n.
+
+Example 1: Un-partitioned average, costs O(n)
+
+for (let i = 0; i < n; i++) sum += i;
+let avg = sum / n;
+console.log('avg: ' + avg);
+
+JavaScript
+Copy to clipboard
+
+Example 2: Partitioned average, each of the n asynchronous steps costs O(1).
+
+function asyncAvg(n, avgCB) {
+// Save ongoing sum in JS closure.
+let sum = 0;
+function help(i, cb) {
+sum += i;
+if (i == n) {
+cb(sum);
+return;
+}
+
+    // "Asynchronous recursion".
+    // Schedule next operation asynchronously.
+    setImmediate(help.bind(null, i + 1, cb));
+
+}
+
+// Start the helper, with CB to call avgCB.
+help(1, function (sum) {
+let avg = sum / n;
+avgCB(avg);
+});
+}
+
+asyncAvg(n, function (avg) {
+console.log('avg of 1-n: ' + avg);
+});
+
+JavaScript
+Copy to clipboard
+
+You can apply this principle to array iterations and so forth.
+Offloading
+
+If you need to do something more complex, partitioning is not a good option. This is because partitioning uses only the Event Loop, and you won't benefit from multiple cores almost certainly available on your machine. Remember, the Event Loop should orchestrate client requests, not fulfill them itself. For a complicated task, move the work off of the Event Loop onto a Worker Pool.
+How to offload
+
+You have two options for a destination Worker Pool to which to offload work.
+
+    You can use the built-in Node.js Worker Pool by developing a C++ addon. On older versions of Node, build your C++ addon using NAN, and on newer versions use N-API. node-webworker-threads offers a JavaScript-only way to access the Node.js Worker Pool.
+    You can create and manage your own Worker Pool dedicated to computation rather than the Node.js I/O-themed Worker Pool. The most straightforward ways to do this is using Child Process or Cluster.
+
+You should not simply create a Child Process for every client. You can receive client requests more quickly than you can create and manage children, and your server might become a fork bomb.
+Downside of offloading
+
+The downside of the offloading approach is that it incurs overhead in the form of communication costs. Only the Event Loop is allowed to see the "namespace" (JavaScript state) of your application. From a Worker, you cannot manipulate a JavaScript object in the Event Loop's namespace. Instead, you have to serialize and deserialize any objects you wish to share. Then the Worker can operate on its own copy of these object(s) and return the modified object (or a "patch") to the Event Loop.
+
+For serialization concerns, see the section on JSON DOS.
+Some suggestions for offloading
+
+You may wish to distinguish between CPU-intensive and I/O-intensive tasks because they have markedly different characteristics.
+
+A CPU-intensive task only makes progress when its Worker is scheduled, and the Worker must be scheduled onto one of your machine's logical cores. If you have 4 logical cores and 5 Workers, one of these Workers cannot make progress. As a result, you are paying overhead (memory and scheduling costs) for this Worker and getting no return for it.
+
+I/O-intensive tasks involve querying an external service provider (DNS, file system, etc.) and waiting for its response. While a Worker with an I/O-intensive task is waiting for its response, it has nothing else to do and can be de-scheduled by the operating system, giving another Worker a chance to submit their request. Thus, I/O-intensive tasks will be making progress even while the associated thread is not running. External service providers like databases and file systems have been highly optimized to handle many pending requests concurrently. For example, a file system will examine a large set of pending write and read requests to merge conflicting updates and to retrieve files in an optimal order (e.g. see these slides).
+
+If you rely on only one Worker Pool, e.g. the Node.js Worker Pool, then the differing characteristics of CPU-bound and I/O-bound work may harm your application's performance.
+
+For this reason, you might wish to maintain a separate Computation Worker Pool.
+Offloading: conclusions
+
+For simple tasks, like iterating over the elements of an arbitrarily long array, partitioning might be a good option. If your computation is more complex, offloading is a better approach: the communication costs, i.e. the overhead of passing serialized objects between the Event Loop and the Worker Pool, are offset by the benefit of using multiple cores.
+
+However, if your server relies heavily on complex calculations, you should think about whether Node.js is really a good fit. Node.js excels for I/O-bound work, but for expensive computation it might not be the best option.
+
+If you take the offloading approach, see the section on not blocking the Worker Pool.
+Don't block the Worker Pool
+
+Node.js has a Worker Pool composed of k Workers. If you are using the Offloading paradigm discussed above, you might have a separate Computational Worker Pool, to which the same principles apply. In either case, let us assume that k is much smaller than the number of clients you might be handling concurrently. This is in keeping with the "one thread for many clients" philosophy of Node.js, the secret to its scalability.
+
+As discussed above, each Worker completes its current Task before proceeding to the next one on the Worker Pool queue.
+
+Now, there will be variation in the cost of the Tasks required to handle your clients' requests. Some Tasks can be completed quickly (e.g. reading short or cached files, or producing a small number of random bytes), and others will take longer (e.g reading larger or uncached files, or generating more random bytes). Your goal should be to minimize the variation in Task times, and you should use Task partitioning to accomplish this.
+Minimizing the variation in Task times
+
+If a Worker's current Task is much more expensive than other Tasks, then it will be unavailable to work on other pending Tasks. In other words, each relatively long Task effectively decreases the size of the Worker Pool by one until it is completed. This is undesirable because, up to a point, the more Workers in the Worker Pool, the greater the Worker Pool throughput (tasks/second) and thus the greater the server throughput (client requests/second). One client with a relatively expensive Task will decrease the throughput of the Worker Pool, in turn decreasing the throughput of the server.
+
+To avoid this, you should try to minimize variation in the length of Tasks you submit to the Worker Pool. While it is appropriate to treat the external systems accessed by your I/O requests (DB, FS, etc.) as black boxes, you should be aware of the relative cost of these I/O requests, and should avoid submitting requests you can expect to be particularly long.
+
+Two examples should illustrate the possible variation in task times.
+Variation example: Long-running file system reads
+
+Suppose your server must read files in order to handle some client requests. After consulting the Node.js File system APIs, you opted to use fs.readFile() for simplicity. However, fs.readFile() is (currently) not partitioned: it submits a single fs.read() Task spanning the entire file. If you read shorter files for some users and longer files for others, fs.readFile() may introduce significant variation in Task lengths, to the detriment of Worker Pool throughput.
+
+For a worst-case scenario, suppose an attacker can convince your server to read an arbitrary file (this is a directory traversal vulnerability). If your server is running Linux, the attacker can name an extremely slow file: /dev/random. For all practical purposes, /dev/random is infinitely slow, and every Worker asked to read from /dev/random will never finish that Task. An attacker then submits k requests, one for each Worker, and no other client requests that use the Worker Pool will make progress.
+Variation example: Long-running crypto operations
+
+Suppose your server generates cryptographically secure random bytes using crypto.randomBytes(). crypto.randomBytes() is not partitioned: it creates a single randomBytes() Task to generate as many bytes as you requested. If you create fewer bytes for some users and more bytes for others, crypto.randomBytes() is another source of variation in Task lengths.
+Task partitioning
+
+Tasks with variable time costs can harm the throughput of the Worker Pool. To minimize variation in Task times, as far as possible you should partition each Task into comparable-cost sub-Tasks. When each sub-Task completes it should submit the next sub-Task, and when the final sub-Task completes it should notify the submitter.
+
+To continue the fs.readFile() example, you should instead use fs.read() (manual partitioning) or ReadStream (automatically partitioned).
+
+The same principle applies to CPU-bound tasks; the asyncAvg example might be inappropriate for the Event Loop, but it is well suited to the Worker Pool.
+
+When you partition a Task into sub-Tasks, shorter Tasks expand into a small number of sub-Tasks, and longer Tasks expand into a larger number of sub-Tasks. Between each sub-Task of a longer Task, the Worker to which it was assigned can work on a sub-Task from another, shorter, Task, thus improving the overall Task throughput of the Worker Pool.
+
+Note that the number of sub-Tasks completed is not a useful metric for the throughput of the Worker Pool. Instead, concern yourself with the number of Tasks completed.
+Avoiding Task partitioning
+
+Recall that the purpose of Task partitioning is to minimize the variation in Task times. If you can distinguish between shorter Tasks and longer Tasks (e.g. summing an array vs. sorting an array), you could create one Worker Pool for each class of Task. Routing shorter Tasks and longer Tasks to separate Worker Pools is another way to minimize Task time variation.
+
+In favor of this approach, partitioning Tasks incurs overhead (the costs of creating a Worker Pool Task representation and of manipulating the Worker Pool queue), and avoiding partitioning saves you the costs of additional trips to the Worker Pool. It also keeps you from making mistakes in partitioning your Tasks.
+
+The downside of this approach is that Workers in all of these Worker Pools will incur space and time overheads and will compete with each other for CPU time. Remember that each CPU-bound Task makes progress only while it is scheduled. As a result, you should only consider this approach after careful analysis.
+Worker Pool: conclusions
+
+Whether you use only the Node.js Worker Pool or maintain separate Worker Pool(s), you should optimize the Task throughput of your Pool(s).
+
+To do this, minimize the variation in Task times by using Task partitioning.
+The risks of npm modules
+
+While the Node.js core modules offer building blocks for a wide variety of applications, sometimes something more is needed. Node.js developers benefit tremendously from the npm ecosystem, with hundreds of thousands of modules offering functionality to accelerate your development process.
+
+Remember, however, that the majority of these modules are written by third-party developers and are generally released with only best-effort guarantees. A developer using an npm module should be concerned about two things, though the latter is frequently forgotten.
+
+    Does it honor its APIs?
+    Might its APIs block the Event Loop or a Worker? Many modules make no effort to indicate the cost of their APIs, to the detriment of the community.
+
+For simple APIs you can estimate the cost of the APIs; the cost of string manipulation isn't hard to fathom. But in many cases it's unclear how much an API might cost.
+
+If you are calling an API that might do something expensive, double-check the cost. Ask the developers to document it, or examine the source code yourself (and submit a PR documenting the cost).
+
+Remember, even if the API is asynchronous, you don't know how much time it might spend on a Worker or on the Event Loop in each of its partitions. For example, suppose in the asyncAvg example given above, each call to the helper function summed half of the numbers rather than one of them. Then this function would still be asynchronous, but the cost of each partition would be O(n), not O(1), making it much less safe to use for arbitrary values of n.
+Conclusion
+
+Node.js has two types of threads: one Event Loop and k Workers. The Event Loop is responsible for JavaScript callbacks and non-blocking I/O, and a Worker executes tasks corresponding to C++ code that completes an asynchronous request, including blocking I/O and CPU-intensive work. Both types of threads work on no more than one activity at a time. If any callback or task takes a long time, the thread running it becomes blocked. If your application makes blocking callbacks or tasks, this can lead to degraded throughput (clients/second) at best, and complete denial of service at worst.
+
+To write a high-throughput, more DoS-proof web server, you must ensure that on benign and on malicious input, neither your Event Loop nor your Workers will block.
 
 # Manipulating Files
+
+## File Stats
+
+const fs = require('node:fs');
+
+fs.stat('/Users/joe/test.txt', (err, stats) => {
+if (err) {
+console.error(err);
+}
+stats.isFile(); // true
+stats.isDirectory(); // false
+stats.isSymbolicLink(); // false
+stats.size; // 1024000 //= 1MB
+});
+
+## File Paths
+
+import path from 'node:path';
+
+const notes = '/users/joe/notes.txt';
+
+path.dirname(notes); // /users/joe
+path.basename(notes); // notes.txt
+path.extname(notes); // .txt
+
+you can get the file name without the extension by specifying a second argument to basename:
+
+path.basename(notes, path.extname(notes)); // notes
+
+const name = 'joe';
+path.join('/', 'users', name, 'notes.txt'); // '/users/joe/notes.txt'
+Every file in the system has a path. On Linux and macOS, a path might look like: /users/joe/file.txt while Windows computers are different, and have a structure such as: C:\users\joe\file.txt
+
+You need to pay attention when using paths in your applications, as this difference must be taken into account.
+
+You include this module in your files using const path = require('node:path'); and you can start using its methods.
+Getting information out of a path
+
+Given a path, you can extract information out of it using those methods:
+
+    dirname: gets the parent folder of a file
+    basename: gets the filename part
+    extname: gets the file extension
+
+Example
+
+import path from 'node:path';
+
+const notes = '/users/joe/notes.txt';
+
+path.dirname(notes); // /users/joe
+path.basename(notes); // notes.txt
+path.extname(notes); // .txt
+
+JavaScript
+Copy to clipboard
+
+You can get the file name without the extension by specifying a second argument to basename:
+
+path.basename(notes, path.extname(notes)); // notes
+
+JavaScript
+Copy to clipboard
+Working with paths
+
+You can join two or more parts of a path by using path.join():
+
+const name = 'joe';
+path.join('/', 'users', name, 'notes.txt'); // '/users/joe/notes.txt'
+
+JavaScript
+Copy to clipboard
+
+You can get the absolute path calculation of a relative path using path.resolve():
+
+path.resolve('joe.txt'); // '/Users/joe/joe.txt' if run from my home folder
+
+JavaScript
+Copy to clipboard
+
+In this case Node.js will simply append /joe.txt to the current working directory. If you specify a second parameter folder, resolve will use the first as a base for the second:
+
+path.resolve('tmp', 'joe.txt'); // '/Users/joe/tmp/joe.txt' if run from my home folder
+
+JavaScript
+Copy to clipboard
+
+If the first parameter starts with a slash, that means it's an absolute path:
+
+path.resolve('/etc', 'joe.txt'); // '/etc/joe.txt'
+
+JavaScript
+Copy to clipboard
+
+path.normalize() is another useful function, that will try and calculate the actual path, when it contains relative specifiers like . or .., or double slashes:
+
+path.normalize('/users/joe/..//test.txt'); // '/users/test.txt'
+
+JavaScript
+Copy to clipboard
+
+Neither resolve nor normalize will check if the path exists. They just calculate a path based on the information they got.
+
+## File descriptors
+
+Working with file descriptors in Node.js
+
+Before you're able to interact with a file that sits in your filesystem, you must get a file descriptor.
+
+A file descriptor is a reference to an open file, a number (fd) returned by opening the file using the open() method offered by the fs module. This number (fd) uniquely identifies an open file in operating system:
+
+const fs = require('node:fs');
+
+fs.open('/Users/joe/test.txt', 'r', (err, fd) => {
+// fd is our file descriptor
+});
+
+JavaScript
+Copy to clipboard
+
+Notice the r we used as the second parameter to the fs.open() call.
+
+That flag means we open the file for reading.
+
+Other flags you'll commonly use are:
+Flag Description File gets created if it doesn't exist
+r+ This flag opens the file for reading and writing ❌
+w+ This flag opens the file for reading and writing and it also positions the stream at the beginning of the file ✅
+a This flag opens the file for writing and it also positions the stream at the end of the file ✅
+a+ This flag opens the file for reading and writing and it also positions the stream at the end of the file ✅
+
+You can also open the file by using the fs.openSync method, which returns the file descriptor, instead of providing it in a callback:
+
+const fs = require('node:fs');
+
+try {
+const fd = fs.openSync('/Users/joe/test.txt', 'r');
+} catch (err) {
+console.error(err);
+}
+
+JavaScript
+Copy to clipboard
+
+Once you get the file descriptor, in whatever way you choose, you can perform all the operations that require it, like calling fs.close() and many other operations that interact with the filesystem.
+
+You can also open the file by using the promise-based fsPromises.open method offered by the fs/promises module.
+
+The fs/promises module is available starting only from Node.js v14. Before v14, after v10, you can use require('fs').promises instead. Before v10, after v8, you can use util.promisify to convert fs methods into promise-based methods.
+
+const fs = require('node:fs/promises');
+// Or const fs = require('fs').promises before v14.
+async function example() {
+let filehandle;
+try {
+filehandle = await fs.open('/Users/joe/test.txt', 'r');
+console.log(filehandle.fd);
+console.log(await filehandle.readFile({ encoding: 'utf8' }));
+} finally {
+if (filehandle) await filehandle.close();
+}
+}
+example();
+
+JavaScript
+Copy to clipboard
+
+Here is an example of util.promisify:
+
+const fs = require('node:fs');
+const util = require('node:util');
+
+async function example() {
+const open = util.promisify(fs.open);
+const fd = await open('/Users/joe/test.txt', 'r');
+}
+example();
+
+JavaScript
+Copy to clipboard
+
+To see more details about the fs/promises module, please check fs/promises API.
+
+## Reading Files
+
+The simplest way to read a file in Node.js is to use the fs.readFile() method, passing it the file path, encoding and a callback function that will be called with the file data (and the error):
+
+const fs = require('node:fs');
+
+fs.readFile('/Users/joe/test.txt', 'utf8', (err, data) => {
+if (err) {
+console.error(err);
+return;
+}
+console.log(data);
+});
+
+JavaScript
+Copy to clipboard
+
+Alternatively, you can use the synchronous version fs.readFileSync():
+
+const fs = require('node:fs');
+
+try {
+const data = fs.readFileSync('/Users/joe/test.txt', 'utf8');
+console.log(data);
+} catch (err) {
+console.error(err);
+}
+
+JavaScript
+Copy to clipboard
+
+You can also use the promise-based fsPromises.readFile() method offered by the fs/promises module:
+
+const fs = require('node:fs/promises');
+
+async function example() {
+try {
+const data = await fs.readFile('/Users/joe/test.txt', { encoding: 'utf8' });
+console.log(data);
+} catch (err) {
+console.log(err);
+}
+}
+example();
+
+JavaScript
+Copy to clipboard
+
+All three of fs.readFile(), fs.readFileSync() and fsPromises.readFile() read the full content of the file in memory before returning the data.
+
+This means that big files are going to have a major impact on your memory consumption and speed of execution of the program.
+
+In this case, a better option is to read the file content using streams.
+
+## Writing Files
+
+Writing a file
+
+The easiest way to write to files in Node.js is to use the fs.writeFile() API.
+
+const fs = require('node:fs');
+
+const content = 'Some content!';
+
+fs.writeFile('/Users/joe/test.txt', content, err => {
+if (err) {
+console.error(err);
+} else {
+// file written successfully
+}
+});
+
+JavaScript
+Copy to clipboard
+Writing a file synchronously
+
+Alternatively, you can use the synchronous version fs.writeFileSync():
+
+const fs = require('node:fs');
+
+const content = 'Some content!';
+
+try {
+fs.writeFileSync('/Users/joe/test.txt', content);
+// file written successfully
+} catch (err) {
+console.error(err);
+}
+
+JavaScript
+Copy to clipboard
+
+You can also use the promise-based fsPromises.writeFile() method offered by the fs/promises module:
+
+const fs = require('node:fs/promises');
+
+async function example() {
+try {
+const content = 'Some content!';
+await fs.writeFile('/Users/joe/test.txt', content);
+} catch (err) {
+console.log(err);
+}
+}
+
+example();
+
+JavaScript
+Copy to clipboard
+
+By default, this API will replace the contents of the file if it does already exist.
+
+You can modify the default by specifying a flag:
+
+fs.writeFile('/Users/joe/test.txt', content, { flag: 'a+' }, err => {});
+
+JavaScript
+Copy to clipboard
+The flags you'll likely use are
+Flag Description File gets created if it doesn't exist
+r+ This flag opens the file for reading and writing ❌
+w+ This flag opens the file for reading and writing and it also positions the stream at the beginning of the file ✅
+a This flag opens the file for writing and it also positions the stream at the end of the file ✅
+a+ This flag opens the file for reading and writing and it also positions the stream at the end of the file ✅
+
+    You can find more information about the flags in the fs documentation.
+
+Appending content to a file
+
+Appending to files is handy when you don't want to overwrite a file with new content, but rather add to it.
+Examples
+
+A handy method to append content to the end of a file is fs.appendFile() (and its fs.appendFileSync() counterpart):
+
+const fs = require('node:fs');
+
+const content = 'Some content!';
+
+fs.appendFile('file.log', content, err => {
+if (err) {
+console.error(err);
+} else {
+// done!
+}
+});
+
+JavaScript
+Copy to clipboard
+Example with Promises
+
+Here is a fsPromises.appendFile() example:
+
+const fs = require('node:fs/promises');
+
+async function example() {
+try {
+const content = 'Some content!';
+await fs.appendFile('/Users/joe/test.txt', content);
+} catch (err) {
+console.log(err);
+}
+}
+
+example();
+
+## Folders
+
+The Node.js fs core module provides many handy methods you can use to work with folders.
+Check if a folder exists
+
+Use fs.access() (and its promise-based fsPromises.access() counterpart) to check if the folder exists and Node.js can access it with its permissions.
+Create a new folder
+
+Use fs.mkdir() or fs.mkdirSync() or fsPromises.mkdir() to create a new folder.
+
+const fs = require('node:fs');
+
+const folderName = '/Users/joe/test';
+
+try {
+if (!fs.existsSync(folderName)) {
+fs.mkdirSync(folderName);
+}
+} catch (err) {
+console.error(err);
+}
+
+JavaScript
+Copy to clipboard
+Read the content of a directory
+
+Use fs.readdir() or fs.readdirSync() or fsPromises.readdir() to read the contents of a directory.
+
+This piece of code reads the content of a folder, both files and subfolders, and returns their relative path:
+
+const fs = require('node:fs');
+
+const folderPath = '/Users/joe';
+
+fs.readdirSync(folderPath);
+
+JavaScript
+Copy to clipboard
+
+You can get the full path:
+
+fs.readdirSync(folderPath).map(fileName => {
+return path.join(folderPath, fileName);
+});
+
+JavaScript
+Copy to clipboard
+
+You can also filter the results to only return the files, and exclude the folders:
+
+const fs = require('node:fs');
+
+const isFile = fileName => {
+return fs.lstatSync(fileName).isFile();
+};
+
+fs.readdirSync(folderPath)
+.map(fileName => {
+return path.join(folderPath, fileName);
+})
+.filter(isFile);
+
+JavaScript
+Copy to clipboard
+Rename a folder
+
+Use fs.rename() or fs.renameSync() or fsPromises.rename() to rename folder. The first parameter is the current path, the second the new path:
+
+const fs = require('node:fs');
+
+fs.rename('/Users/joe', '/Users/roger', err => {
+if (err) {
+console.error(err);
+}
+// done
+});
+
+JavaScript
+Copy to clipboard
+
+fs.renameSync() is the synchronous version:
+
+const fs = require('node:fs');
+
+try {
+fs.renameSync('/Users/joe', '/Users/roger');
+} catch (err) {
+console.error(err);
+}
+
+JavaScript
+Copy to clipboard
+
+fsPromises.rename() is the promise-based version:
+
+const fs = require('node:fs/promises');
+
+async function example() {
+try {
+await fs.rename('/Users/joe', '/Users/roger');
+} catch (err) {
+console.log(err);
+}
+}
+example();
+
+JavaScript
+Copy to clipboard
+Remove a folder
+
+Use fs.rmdir() or fs.rmdirSync() or fsPromises.rmdir() to remove a folder.
+
+const fs = require('node:fs');
+
+fs.rmdir(dir, err => {
+if (err) {
+throw err;
+}
+
+console.log(`${dir} is deleted!`);
+});
+
+JavaScript
+Copy to clipboard
+
+To remove a folder that has contents use fs.rm() with the option { recursive: true } to recursively remove the contents.
+
+{ recursive: true, force: true } makes it so that exceptions will be ignored if the folder does not exist.
+
+const fs = require('node:fs');
+
+fs.rm(dir, { recursive: true, force: true }, err => {
+if (err) {
+throw err;
+}
+
+console.log(`${dir} is deleted!`);
+
+## Work With Different File Systems
+
+Node.js exposes many features of the filesystem. But not all filesystems are alike. The following are suggested best practices to keep your code simple and safe when working with different filesystems.
+Filesystem Behavior
+
+Before you can work with a filesystem, you need to know how it behaves. Different filesystems behave differently and have more or less features than others: case sensitivity, case insensitivity, case preservation, Unicode form preservation, timestamp resolution, extended attributes, inodes, Unix permissions, alternate data streams etc.
+
+Be wary of inferring filesystem behavior from process.platform. For example, do not assume that because your program is running on Darwin that you are therefore working on a case-insensitive filesystem (HFS+), as the user may be using a case-sensitive filesystem (HFSX). Similarly, do not assume that because your program is running on Linux that you are therefore working on a filesystem which supports Unix permissions and inodes, as you may be on a particular external drive, USB or network drive which does not.
+
+The operating system may not make it easy to infer filesystem behavior, but all is not lost. Instead of keeping a list of every known filesystem and behavior (which is always going to be incomplete), you can probe the filesystem to see how it actually behaves. The presence or absence of certain features which are easy to probe, are often enough to infer the behavior of other features which are more difficult to probe.
+
+Remember that some users may have different filesystems mounted at various paths in the working tree.
+Avoid a Lowest Common Denominator Approach
+
+You might be tempted to make your program act like a lowest common denominator filesystem, by normalizing all filenames to uppercase, normalizing all filenames to NFC Unicode form, and normalizing all file timestamps to say 1-second resolution. This would be the lowest common denominator approach.
+
+Do not do this. You would only be able to interact safely with a filesystem which has the exact same lowest common denominator characteristics in every respect. You would be unable to work with more advanced filesystems in the way that users expect, and you would run into filename or timestamp collisions. You would most certainly lose and corrupt user data through a series of complicated dependent events, and you would create bugs that would be difficult if not impossible to solve.
+
+What happens when you later need to support a filesystem that only has 2-second or 24-hour timestamp resolution? What happens when the Unicode standard advances to include a slightly different normalization algorithm (as has happened in the past)?
+
+A lowest common denominator approach would tend to try to create a portable program by using only "portable" system calls. This leads to programs that are leaky and not in fact portable.
+Adopt a Superset Approach
+
+Make the best use of each platform you support by adopting a superset approach. For example, a portable backup program should sync btimes (the created time of a file or folder) correctly between Windows systems, and should not destroy or alter btimes, even though btimes are not supported on Linux systems. The same portable backup program should sync Unix permissions correctly between Linux systems, and should not destroy or alter Unix permissions, even though Unix permissions are not supported on Windows systems.
+
+Handle different filesystems by making your program act like a more advanced filesystem. Support a superset of all possible features: case-sensitivity, case-preservation, Unicode form sensitivity, Unicode form preservation, Unix permissions, high-resolution nanosecond timestamps, extended attributes etc.
+
+Once you have case-preservation in your program, you can always implement case-insensitivity if you need to interact with a case-insensitive filesystem. But if you forego case-preservation in your program, you cannot interact safely with a case-preserving filesystem. The same is true for Unicode form preservation and timestamp resolution preservation.
+
+If a filesystem provides you with a filename in a mix of lowercase and uppercase, then keep the filename in the exact case given. If a filesystem provides you with a filename in mixed Unicode form or NFC or NFD (or NFKC or NFKD), then keep the filename in the exact byte sequence given. If a filesystem provides you with a millisecond timestamp, then keep the timestamp in millisecond resolution.
+
+When you work with a lesser filesystem, you can always downsample appropriately, with comparison functions as required by the behavior of the filesystem on which your program is running. If you know that the filesystem does not support Unix permissions, then you should not expect to read the same Unix permissions you write. If you know that the filesystem does not preserve case, then you should be prepared to see ABC in a directory listing when your program creates abc. But if you know that the filesystem does preserve case, then you should consider ABC to be a different filename to abc, when detecting file renames or if the filesystem is case-sensitive.
+Case Preservation
+
+You may create a directory called test/abc and be surprised to see sometimes that fs.readdir('test') returns ['ABC']. This is not a bug in Node. Node returns the filename as the filesystem stores it, and not all filesystems support case-preservation. Some filesystems convert all filenames to uppercase (or lowercase).
+Unicode Form Preservation
+
+Case preservation and Unicode form preservation are similar concepts. To understand why Unicode form should be preserved , make sure that you first understand why case should be preserved. Unicode form preservation is just as simple when understood correctly.
+
+Unicode can encode the same characters using several different byte sequences. Several strings may look the same, but have different byte sequences. When working with UTF-8 strings, be careful that your expectations are in line with how Unicode works. Just as you would not expect all UTF-8 characters to encode to a single byte, you should not expect several UTF-8 strings that look the same to the human eye to have the same byte representation. This may be an expectation that you can have of ASCII, but not of UTF-8.
+
+You may create a directory called test/café (NFC Unicode form with byte sequence <63 61 66 c3 a9> and string.length === 5) and be surprised to see sometimes that fs.readdir('test') returns ['café'] (NFD Unicode form with byte sequence <63 61 66 65 cc 81> and string.length === 6). This is not a bug in Node. Node.js returns the filename as the filesystem stores it, and not all filesystems support Unicode form preservation.
+
+HFS+, for example, will normalize all filenames to a form almost always the same as NFD form. Do not expect HFS+ to behave the same as NTFS or EXT4 and vice-versa. Do not try to change data permanently through normalization as a leaky abstraction to paper over Unicode differences between filesystems. This would create problems without solving any. Rather, preserve Unicode form and use normalization as a comparison function only.
+Unicode Form Insensitivity
+
+Unicode form insensitivity and Unicode form preservation are two different filesystem behaviors often mistaken for each other. Just as case-insensitivity has sometimes been incorrectly implemented by permanently normalizing filenames to uppercase when storing and transmitting filenames, so Unicode form insensitivity has sometimes been incorrectly implemented by permanently normalizing filenames to a certain Unicode form (NFD in the case of HFS+) when storing and transmitting filenames. It is possible and much better to implement Unicode form insensitivity without sacrificing Unicode form preservation, by using Unicode normalization for comparison only.
+Comparing Different Unicode Forms
+
+Node.js provides string.normalize('NFC' / 'NFD') which you can use to normalize a UTF-8 string to either NFC or NFD. You should never store the output from this function but only use it as part of a comparison function to test whether two UTF-8 strings would look the same to the user.
+
+You can use string1.normalize('NFC') === string2.normalize('NFC') or string1.normalize('NFD') === string2.normalize('NFD') as your comparison function. Which form you use does not matter.
+
+Normalization is fast but you may want to use a cache as input to your comparison function to avoid normalizing the same string many times over. If the string is not present in the cache then normalize it and cache it. Be careful not to store or persist the cache, use it only as a cache.
+
+Note that using normalize() requires that your version of Node.js include ICU (otherwise normalize() will just return the original string). If you download the latest version of Node.js from the website then it will include ICU.
+Timestamp Resolution
+
+You may set the mtime (the modified time) of a file to 1444291759414 (millisecond resolution) and be surprised to see sometimes that fs.stat returns the new mtime as 1444291759000 (1-second resolution) or 1444291758000 (2-second resolution). This is not a bug in Node. Node.js returns the timestamp as the filesystem stores it, and not all filesystems support nanosecond, millisecond or 1-second timestamp resolution. Some filesystems even have very coarse resolution for the atime timestamp in particular, e.g. 24 hours for some FAT filesystems.
+Do Not Corrupt Filenames and Timestamps Through Normalization
+
+Filenames and timestamps are user data. Just as you would never automatically rewrite user file data to uppercase the data or normalize CRLF to LF line-endings, so you should never change, interfere or corrupt filenames or timestamps through case / Unicode form / timestamp normalization. Normalization should only ever be used for comparison, never for altering data.
+
+Normalization is effectively a lossy hash code. You can use it to test for certain kinds of equivalence (e.g. do several strings look the same even though they have different byte sequences) but you can never use it as a substitute for the actual data. Your program should pass on filename and timestamp data as is.
+
+Your program can create new data in NFC (or in any combination of Unicode form it prefers) or with a lowercase or uppercase filename, or with a 2-second resolution timestamp, but your program should not corrupt existing user data by imposing case / Unicode form / timestamp normalization. Rather, adopt a superset approach and preserve case, Unicode form and timestamp resolution in your program. That way, you will be able to interact safely with filesystems which do the same.
+Use Normalization Comparison Functions Appropriately
+
+Make sure that you use case / Unicode form / timestamp comparison functions appropriately. Do not use a case-insensitive filename comparison function if you are working on a case-sensitive filesystem. Do not use a Unicode form insensitive comparison function if you are working on a Unicode form sensitive filesystem (e.g. NTFS and most Linux filesystems which preserve both NFC and NFD or mixed Unicode forms). Do not compare timestamps at 2-second resolution if you are working on a nanosecond timestamp resolution filesystem.
+Be Prepared for Slight Differences in Comparison Functions
+
+Be careful that your comparison functions match those of the filesystem (or probe the filesystem if possible to see how it would actually compare). Case-insensitivity for example is more complex than a simple toLowerCase() comparison. In fact, toUpperCase() is usually better than toLowerCase() (since it handles certain foreign language characters differently). But better still would be to probe the filesystem since every filesystem has its own case comparison table baked in.
+
+As an example, Apple's HFS+ normalizes filenames to NFD form but this NFD form is actually an older version of the current NFD form and may sometimes be slightly different from the latest Unicode standard's NFD form. Do not expect HFS+ NFD to be exactly the same as Unicode NFD all the time.
 
 # Command Line
 
