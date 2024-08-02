@@ -18,7 +18,7 @@ Thommas Hobbes's terms is Warre which is similar to anarchy.
 
 "If any two men desire the same thing which they cannot bot enjoy, they become enemies... endeavor to destroy one an other."
 
-Anarchy emerges when men live without a common power to keep them all in awe. Hobbes dubbed this common power the **Leviathan** or **Common-Wealth** or **state** interchangeably. Solution to Warre is to create a centralized authority.
+Anarchy emerges when men live without a common power to keep them all in awe.Solution to Warre is to create a centralized authority.
 
 Hobbes understood that the all-powerful Leviathan would be feared. But better to fear one powerful Leviathan than to fear everybody.
 
@@ -46,6 +46,10 @@ Hobbes was also wrong about the stateless means violance. There are societies wh
 - In Chapter 15 we'll see the challenges facing nations in the corridor. As the world changes how state and society should change in order to stay in the corridor.
 
 # 2. THE RED QUEEN
+
+“Solon’s Hubris Law reveals a more general aspect of life in the corridor—the delicate balance for creating liberty requires institutional reforms to work with and build “on existing norms, while at the same time modifying and even obliterating aspects of those norms that are holding liberty back. No easy feat to be sure, but Solon’s reforms broke considerable ground on both objectives. In the period before Draco, the rules and laws that governed people’s lives were not written down and were enforced by families and kinship groups, most often using social ostracism and exclusion. Solon managed to build on these norms by codifying and strengthening them as in his Hubris Law, but in the process he also changed these norms, so that hubristic behavior became far less acceptable in Athenian society. We’ll see many examples of this complex dance between institutional change and norms, and how failing to strike the right balance between them may damage the prospects of liberty. Solon struck the right balance”
+
+“Liberty and ultimately state capacity depend on the balance of power between state and society. If the state and the elites become too powerful, we end up with the Despotic Leviathan. If they fall behind, we get the Absent Leviathan. So we need both state and society running together and neither getting the upper hand.”
 
 # 3. WILL TO POWER
 
