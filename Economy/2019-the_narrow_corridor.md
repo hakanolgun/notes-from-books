@@ -51,7 +51,26 @@ Hobbes was also wrong about the stateless means violance. There are societies wh
 
 “Liberty and ultimately state capacity depend on the balance of power between state and society. If the state and the elites become too powerful, we end up with the Despotic Leviathan. If they fall behind, we get the Absent Leviathan. So we need both state and society running together and neither getting the upper hand.”
 
+Kuramımızın sonuçları:
+1. Dünya nereye evrilecek diye sormuştuk. Batı demokrasisi mi, Çin despotizmimi yoksa anarşı mi diye. Kuramızın birinci sonucu bütün ülkelerin aynı yoldan gitmeyeceği gerçeğidir. Her toplum kendi özel koşullarına uygun şekilde evrilecektir.
+2. Liderler veya diğer aktörlerin faaliyetleri toplumun gidişatını olumlu ya da olumsuz yönde etkileyebilir. Dar koridora yaklaştırabilir veya uzaklaştırabilir.
+3. Özgürlük, tasarlanarak/mühendislik yaparak inşa edilemez. Toplumun hareketliliği, uyanıklığı ve kararlılığı gereklidir.
+4. Koridora girmek için pek çok kapı vardır. Özgürlük bir toplum koridora girdiği anda ortaya çıkmaz, zamanla gelişir. Örneğin şiddeti tam olarak çözmeden koridorda olan toplumlar vardır.
+5. En önemli sonuçlardan biri dar koridordaki devletin zamanla despotik devletten daha güçlü ve etkili olacağıdır. Bu da günümüzdeki yaygın görüşe tersdir. Şu anda Çin örneği verilerek despotik bir devletin daha güçlü olduğu iddia ediliyor. Ancak detaylı incelendiğinde Çin despotik leviathan, shackled leviathan'a sahip bir çok devletten daha zayıftır. Bunun nedeni Çinde devleti olumlu yönde güçlendirip, geliştirecek güçlü bir toplum olmamasıdır.
+
+Leviathan'la yaşamak zor iştir. Çünkü daha güçlü olmak onun doğasında vardır. Leviathan derken aslında yöneticiler, siyasetçiler ve onları etkileyen iktisadi aktörlerden bahsediyoruz. Leviathan güçlenirse bu aktörlerin işine gelir, çıkarlarına uygun olur. Neden yetkilerini tekelleri sona erdirmek veya daha fazla kamu hizmeti sunmak için kullansınlar ki.
+
+Leviathan'ın kapasitesi arttıkça onu denetlemek de zorlaşır. Bu yüzden hepimiz örgütlü toplum olarak onu kontrol altında tutmak için güçlenmeliyiz.
+
+
 # 3. WILL TO POWER
+
+Muhammed, Shaka ve Gürcistan Cumhurbaşkanının hikayeleri. Yoktan bir devlet yaratma hikayeleri.
+
+Neden bu hikayelerin sonu despotik leviathan ile bitti de atina'da Solon'un yaptığı gibi shakled leviathan olmadı?
+
+Yazara göre bunun nedeni, leviathanı kuran liderlerin kendi güç istençlerinin peşinde oldukları ve normal olanın bu olduğudur. Sadece Solon baştan göreve leviathan'ı dizginlemek için getirilmişti. Diğerleri sıfırdan devlet yarattılar. Solon'un farkı onun ülkesinde devlet olmasa bile bir takım kurumlar gelişmişti. Bu kurumlar Solon devleti güçlendirirken onu sınırlandırdılar. Diğer örneklerde ise bu kurumlar yoktu. 
+
 
 # 4. ECONOMICS OUTSIDE THE CORRIDOR
 
