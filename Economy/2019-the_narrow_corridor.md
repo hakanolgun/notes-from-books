@@ -74,9 +74,25 @@ Yazara göre bunun nedeni, leviathanı kuran liderlerin kendi güç istençlerin
 
 # 4. ECONOMICS OUTSIDE THE CORRIDOR
 
+Anarşi veya despotik leviathan durumlarında nasıl ve neden ekonomik gelişmenin düştüğü açıklanıyor. Anarşi ortamında Afrika'daki kabileler örnek verilerek bunların çekememezlik, cadılık gibi şeylerle insanların çok üretmesini engellediği görülüyor. Despotik leviathan ise normal vatandaşın mülkiyetini gaspederek, kamuda rüşvet ve yolsuzluk yaratarak güveni ve gelimişi yok ediyor.
+
 # 5. ALLEGORY OF GOOD GOVERNMENT
 
+Ortaçağda italyan kömünlerinin kralsız ancak konseyler ile yönetilmesi ve bunun nasıl prangalanmış leviathan yaratarak bolluk ve bereket getirdiği üzerine.
+
 # 6. THE EUROPEAN SCISSORS
+Prangalanmış leviathan'ın en uzun süreli örnekleri Avrupada ortaya çıktı. Neden?
+
+Bunun nedeni 1500 yıl önce merkezi otorite ile sıradan erkeklerin gücü arasında denge yaratan bir diz tarihsel olaydır. Kızıl Kraliçe etkisini başlatan bu dengedir. Bu denge iki şeyin sonucudur.
+
+Birincisi 5.yüzyılın sonunda meclislere ve normlara dayalı demokratik olarak örgütlenmiş kabile topluluklarınca ele geçirilmesidir.
+
+İkincisi ise Roma imparatorluğundan ve kiliseden miras alınan siyasi kurumlardı.
+
+Bu iki unsur bir makasın iki bıçağı gibi bir araya geldiğinde bu sonuç oluştu.
+
+Germenlerin tabandan gelen siyasi gelenekleri ile Roma'nın yukarıdan gelen bürokrasisinin kaynaşması.
+
 
 # 7. MANDATE OF HEAVEN
 
