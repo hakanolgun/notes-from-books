@@ -14,11 +14,9 @@ It is a process because the state and its elites must learn to live with the sha
 
 # 1. HOW DOES HISTORY END?
 
-Thommas Hobbes's terms is Warre which is similar to anarchy.
-
 "If any two men desire the same thing which they cannot bot enjoy, they become enemies... endeavor to destroy one an other."
 
-Anarchy emerges when men live without a common power to keep them all in awe.Solution to Warre is to create a centralized authority.
+Anarchy emerges when men live without a common power to keep them all in awe. Solution to Warre is to create a centralized authority.
 
 Hobbes understood that the all-powerful Leviathan would be feared. But better to fear one powerful Leviathan than to fear everybody.
 
@@ -28,8 +26,6 @@ Hobbes was right about avoiding anarchy. But there was also much that Hobbes did
 
 Nazi Germany and Communist China shows that leviathan can be bad also. The state finished anarchy but it murder his people, monitor them etc.
 
-Hobbes was also wrong about the stateless means violance. There are societies which has no leviathan but in order and no violence. Mbuti Pygmies, Akan people of Ghana and Cote D'Ivoire. But people of these societies gave their freedom. No liberty.
-
 - In Chapter 2 we will explain how shackled leviathan emerges in a narrow corridor.
 - In Chapter 3 we will explain why absent leviathants may be unstable.
 - In Chapter 4 we will examine consequences of the absent and despotic leviathans for the economy and social lifes.
@@ -37,12 +33,12 @@ Hobbes was also wrong about the stateless means violance. There are societies wh
 - In Chapter 6 we'll see why several european countries achieve shackled states.
 - In Chapter 7 we'll see why despotic leviathan emerges in China and can shackled leviathan emerge in China anytime soon.
 - In Chapter 8 we'll see why Indian caste system press liberty and cancel strong society.
-- In Chapter 9 we'll see why some european contries on shackled while some not. Conditional nature of how structural factors influence state-society relationships.
+- In Chapter 9 we'll see why some european contries on shackled while some not. 
 - In Chapter 10 we'll see how American Leviathan works.
 - In Chapter 11 we'll see some paper leviathans which is despot but not powerful.
 - In Chapter 12 we'll talk about Middle East.
 - In Chapter 13 we'll see how shackled leviathan get out of control when the race between state and society turns zero-sum game, which each side trying to destroy other. We'll link them to the rise of modern populist movements.
-- In Chapter 14 we'll talk about how societies move into the corridor and whether anything can be done to facilitate suc a move.
+- In Chapter 14 we'll talk about how societies move into the corridor and whether anything can be done to facilitate such a move.
 - In Chapter 15 we'll see the challenges facing nations in the corridor. As the world changes how state and society should change in order to stay in the corridor.
 
 # 2. THE RED QUEEN
@@ -62,7 +58,6 @@ Leviathan'la yaşamak zor iştir. Çünkü daha güçlü olmak onun doğasında 
 
 Leviathan'ın kapasitesi arttıkça onu denetlemek de zorlaşır. Bu yüzden hepimiz örgütlü toplum olarak onu kontrol altında tutmak için güçlenmeliyiz.
 
-
 # 3. WILL TO POWER
 
 Muhammed, Shaka ve Gürcistan Cumhurbaşkanının hikayeleri. Yoktan bir devlet yaratma hikayeleri.
@@ -71,16 +66,16 @@ Neden bu hikayelerin sonu despotik leviathan ile bitti de atina'da Solon'un yapt
 
 Yazara göre bunun nedeni, leviathanı kuran liderlerin kendi güç istençlerinin peşinde oldukları ve normal olanın bu olduğudur. Sadece Solon baştan göreve leviathan'ı dizginlemek için getirilmişti. Diğerleri sıfırdan devlet yarattılar. Solon'un farkı onun ülkesinde devlet olmasa bile bir takım kurumlar gelişmişti. Bu kurumlar Solon devleti güçlendirirken onu sınırlandırdılar. Diğer örneklerde ise bu kurumlar yoktu. 
 
-
 # 4. ECONOMICS OUTSIDE THE CORRIDOR
 
-Anarşi veya despotik leviathan durumlarında nasıl ve neden ekonomik gelişmenin düştüğü açıklanıyor. Anarşi ortamında Afrika'daki kabileler örnek verilerek bunların çekememezlik, cadılık gibi şeylerle insanların çok üretmesini engellediği görülüyor. Despotik leviathan ise normal vatandaşın mülkiyetini gaspederek, kamuda rüşvet ve yolsuzluk yaratarak güveni ve gelimişi yok ediyor.
+Anarşi veya despotik leviathan durumlarında nasıl ve neden ekonomik gelişmenin düştüğü açıklanıyor. Anarşi ortamında Afrika'daki kabileler örnek verilerek bunların çekememezlik, cadılık gibi şeylerle insanların çok üretmesini engellediği görülüyor. Despotik leviathan ise normal vatandaşın mülkiyetini gaspederek, kamuda rüşvet ve yolsuzluk yaratarak güveni ve gelişimi yok ediyor.
 
 # 5. ALLEGORY OF GOOD GOVERNMENT
 
 Ortaçağda italyan kömünlerinin kralsız ancak konseyler ile yönetilmesi ve bunun nasıl prangalanmış leviathan yaratarak bolluk ve bereket getirdiği üzerine.
 
 # 6. THE EUROPEAN SCISSORS
+
 Prangalanmış leviathan'ın en uzun süreli örnekleri Avrupada ortaya çıktı. Neden?
 
 Bunun nedeni 1500 yıl önce merkezi otorite ile sıradan erkeklerin gücü arasında denge yaratan bir diz tarihsel olaydır. Kızıl Kraliçe etkisini başlatan bu dengedir. Bu denge iki şeyin sonucudur.
@@ -93,21 +88,49 @@ Bu iki unsur bir makasın iki bıçağı gibi bir araya geldiğinde bu sonuç ol
 
 Germenlerin tabandan gelen siyasi gelenekleri ile Roma'nın yukarıdan gelen bürokrasisinin kaynaşması.
 
-
 # 7. MANDATE OF HEAVEN
+
+Çin tarihin çok erken dönemlerinde despotik devasa monarşiler altında yönetildi. Toplum devlete karşı güçlü olamadı, boyun eğdi. Tamamen güçsüzleştirilmiş toplum Çin'in önümüzdeki yıllarda da despotik leviathan'dan kurtulmasının çok zor olduğunu gösteriyor.
 
 # 8. BROKEN RED QUEEN
 
+Hindistandaki kast sistemi devleti zayıflatıyor. Devlet temel hizmetleri dahi bazı bölgelerde veremiyor.
+
 # 9. DEVIL IN THE DETAILS
+
+Prusya devleti koridordan despotik leviathana yöneldi. İsviçre koridora girdi. Karadağ ilerleme kaydetsede koridora giremedi çünkü devlet yeterince güçlü değil.
+
+Rusyada sovyetler birliğine göre devletin gücü bir miktar azalsa da hala despotik ve koridordan çok uzakta. Polonya despotik devletten koridora iniş yapıyor. Tacikistan güçsüz bir despotik devletten namevcut leviathana geçiyor çünkü bu bölgede koridor çok dar olduğu için koridoru atlıyor.
 
 # 10. WHAT'S THE MATTER WITH FERGUSON?
 
+ABD'nin koridora giriş öyküsü. Kuzey ve güneyin birleşiminde anlaşılan koşullar. Eyaletlere verilen tavizlerden dolayı merkezi devletin prangalanmış leviathan olması. Ancak yine aynı sebepten dolayı sosyal güvenlik gibi konularda çok kötü durumda olması. Kamu-özel işbirliğinin kullanılmak zorunda kalınması.
+
 # 11. THE PAPER LEVIATHAN
+
+Arjantin, Kolombiya ve Liberya örnekleri. Devlet varmış gibi görünüyor ama aslında çürük bir devlet. Bir çok temel hizmet düzgün verilemyor. Bankamatik memurlarının aşırı fazla olması. Tanıdığın yoksa işinin görülmemesi. İktidara gelenlerin kendini ve çevresini zenginleştirmek için kullanması.
 
 # 12. WAHHAB'S CHILDREN
 
+Suudi arabistan'ın kuruluşu. Çölde vehhabi lideri ile suud liderinin tanışıp işbirliği yapmaları sonucu gelen ideoloji ve örgütlenme.
+
 # 13. RED QUEEN OUT OF CONTROL
+
+İki dünya savaşı arası dönemde almanların nasıl koridordan çıkıp nazi devletine döndükleri. 1929 krizinin sonucu sefalete düşen öfkeli halk, populist bir lider, devlete olan güvenin zayıflamış olması..
+
+İktisadi kazanımlardan istifade edemeyen, gücün seçkinlerde olduğunu hisseden, kurumlara güvenini yitiren bir toplum. RTE, Orban, Duerte gibi insanlara yol açıyor.
 
 # 14. INTO THE CORRIDOR
 
+Güney Afrika'nın koridora girişi. Siyahların örgütlenmesi ve beyazlarla intikam gütmeden beraber yaşam için koalisyon oluşturması.
+Japonyanın WW2 sonrası toplumun güçlenmesi çalışmaları.
+Türkiye'nin koridara girme şansını kaçırması. Demokratmış gibi görünen islamcı liderin devleti giderek despotikleştirmesi, tüm ülkeyi çürütmesi.
+Lagos'taki yerel yöneticinin başarısı.
+
 # 15. LIVING WITH THE LEVIATHAN
+
+İsveç'de işçi temsilcisi parti, çiftçi-köylüler, sendikalar, kapitalistler ve diğer merkez partiler ile yapılan geniş koalisyon ülkeyi dar koridorda tutuyor ve devlet ve toplum birlikte güçleniyor.
+
+ABD'de güvenlik sebebiyle temel hakların zedelenmesi durumu kötüleştiriyor. Edward Snowden.
+Finans sektörünün deregülasyon sonucu başıbozuk şekilde büyümesi tehlike yaratıyor. Lobicilik ile siyaseti de etkiliyorlar. Gelir adaletsizliği.
+Teknoloji şirketlerinin olağanüstü büyümesi tekel oluşturuyor ve gelir adaletsizliğini artırıyor.
