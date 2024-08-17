@@ -244,10 +244,3 @@ you have inversion of control problem because you have to trust to service will 
 callback function.
 
 Promise is an object which represent eventually completion or failure of an async operation.
-
-## Promise Chaining & Error Handling
-
-## Promise API
-
-Promise.all();
-Promise.any();

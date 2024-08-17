@@ -17,13 +17,13 @@
 3. Engine converst AST to some kind of byte code
 4. Finally JS Virtual Machine executes the code
 
-- Web Assembly's original intend is to provide a paht to none-JS programs to be executed by an JS Engine. WASM is a represention format similar to Assembly that can be processed by a JS engine without parsing/compiling. Parsing/compiling of the WASM done ahead of time so only the binary goes to JS engine and executed immediately.
+- Web Assembly's original intend is to provide a paht to none-JS programs to be executed by a JS Engine. WASM is a represention format similar to Assembly that can be processed by a JS engine without parsing/compiling. Parsing/compiling of the WASM done ahead of time so only the binary goes to JS engine and executed immediately.
 
 # Surveying JS
 
 - JS sees every .js file is a seperate program.
 - Execution of the program make it possible to cooperate each file and act like a single program.
-- Many projects uses build tools to get together all related js files and produce a one js file to be delivered to a webpage. Then JS treats this single file as the entire program
+- Many projects uses build tools to get together all related js files and produce one js file to be delivered to a webpage. Then JS treats this single file as the entire program
 - The only way this could be happen by sharing all files state to a **global scope**.
 - Since ES2015 introduces module system, you should still think of each file is a mini program.
 
@@ -180,7 +180,6 @@ function getSomeData(url) {
 }
 
 getSomeData("https://some.url/wherever");
-// Response (from https://some.url/wherever): ...
 ```
 
 The inner function `onResponse(..)` is closed over `url`, and thus preserves and remembers it until the Ajax call returns and executes `onResponse(..)`. Even though `getSomeData(..)` finishes right away, the `url` parameter variable is kept alive in the closure for as long as needed.

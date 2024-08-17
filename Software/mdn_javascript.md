@@ -2,7 +2,6 @@ JavaScript is an
 
 - interpreted (or JIT compiled)
 - prototype-based (like smalltalk and self but more popular. with lua)
-- multi-paradigm (supports OOP, imperative, declarative(functional) styles)
 - single threaded
   language with first-class functions.
 
@@ -18,8 +17,6 @@ JAVASCRPIT
 - Advanced
 
 2. REFERENCES
-
--
 
 # COMPLETE BEGINNERS
 
@@ -94,7 +91,7 @@ The source text of JavaScript script gets scanned from left to right, and is con
 
 #### Variables
 
-You can use most Unicode letters such as å and ü in identifiers. (For more details, see the lexical grammar reference.) You can also use Unicode escape sequences to represent characters in identifiers.
+You can use most Unicode letters such as å and ü in identifiers. You can also use Unicode escape sequences to represent characters in identifiers.
 
 #### Variable scope
 
