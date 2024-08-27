@@ -51,4 +51,13 @@
 
 # 9 - Unit Tests
 
-# 10 -
+# 10 - Classes
+
+- Classes should be small! As with functions, our immediate question is always “How small?”
+  With functions we measured size by counting physical lines. With classes we use a different measure. We count responsibilities.
+
+# 11 - Systems
+
+# 12 - Emergence
+
+# 13 - Concurrency
