@@ -112,3 +112,44 @@ Think of the kata as a 10-minute warm-up exercise in the morning and a 10-minute
 ## 3 - Saying Yes
 
 ## 4 - Coding
+
+THE FLOW ZONE
+Much has been written about the hyper-productive state known as “flow.” Some programmers call it “the Zone.” Whatever it is called, you are probably familiar with it. It is the highly focused, tunnel-vision state of consciousness that programmers can get into while they write code. In this state they feel productive. In this state they feel infallible. And so they desire to attain that state, and often measure their self-worth by how much time they can
+spend there.
+Here’s a little hint from someone whose been there and back: Avoid the Zone. This state of consciousness is not really hyper-productive and is certainly not infallible. It’s really just a mild meditative state in which certain rational faculties are diminished in favor of a sense of speed.
+Let me be clear about this. You will write more code in the Zone. If you are practicing TDD, you will go around the red/green/refactor loop more quickly. And you will feel a mild euphoria or a sense of conquest. The problem is that you lose some of the big picture while you are in the Zone, so you will likely make decisions that you will later have to go back and reverse. Code written in the Zone may come out faster, but you’ll be going back to visit it more.
+Nowadays when I feel myself slipping into the Zone, I walk away for a few minutes. I clear my head by answering a few emails or looking at some tweets. If it’s close enough to noon, I’ll break for lunch. If I’m working on a team, I’ll find a pair partner.
+One of the big benefits of pair programming is that it is virtually impossible for a pair to enter the Zone. The Zone is an uncommunicative state, while pairing requires intense and constant communication. Indeed, one of the complaints I often hear about pairing is that it blocks entry into the Zone. Good! The Zone is not where you want to be.
+Well, that’s not quite true. There are times when the Zone is exactly where you want to be. When you are practicing. But we’ll talk about that in another chapter.
+
+BEING LATE
+You will be late. It happens to the best of us. It happens to the most dedicated of us. Sometimes we just blow our estimates and wind up late.
+The trick to managing lateness is early detection and transparency. The worst case scenario occurs when you continue to tell everyone, up to the very end, that you will be on time—and then let them all down. Don’t do this. Instead, regularly measure your progress against your goal, and come up with three4 fact-based end dates: best case, nominal case, and worst case. Be as honest as you can about all three dates. Do not incorporate hope into your estimates! Present all three numbers to your team and stakeholders. Update these numbers daily.
+
+## 5 - TDD
+
+THE THREE LAWS OF TDD
+
+1. You are not allowed to write any production code until you have first written a failing unit test.
+2. You are not allowed to write more of a unit test than is sufficient to fail—and not compiling is failing.
+3. You are not allowed to write more production code that is sufficient to pass the currently failing unit test.
+   These three laws lock you into a cycle that is, perhaps, thirty seconds long. You begin by writing a small portion of a unit test. But within a few seconds you must mention the name of some class or function you have not written yet, thereby causing the unit test to fail to compile. So you must write production code that makes the test compile. But you can’t write any more than that, so you start writing more unit test code.
+
+The problem with testing code is that you have to isolate that code. It is often difficult to test a function if that function calls other functions. To write that test you’ve got to figure out some way to decouple the function from all the others. In other words, the need to test first forces you to think about good design.
+If you don’t write your tests first, there is no force preventing you from coupling the functions together into an untestable mass. If you write your tests later, you may be able to test the inputs and the outputs of the total mass, but it will probably be quite difficult to test the individual functions.
+
+## 6 - Practicing
+
+1. Kata and Dojo
+2. Contribute to open source. If you are C developer contribute a Python project.
+
+## 10 - Estimation
+
+Given these three estimates, we can describe the probability distribution as follows:
+
+`estimate = (O+4N+P)/6 O:Optimistic N:Normal P: Pesimistic`
+
+`standard deviation = (P-O)/6`
+
+s is the standard deviation4 of the probability distribution for the task. It is a measure of how uncertain the task is. When this number is large, the uncertainty is large too. For Peter this number is (12 – 1)/6, or about 1.8 days.
+Given Peter’s estimate of 4.2/1.8, Mike understands that this task will likely be done within five days but might also take 6, or even 9, days to complete.
