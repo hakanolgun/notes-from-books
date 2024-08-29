@@ -1,4 +1,6 @@
-# 2 - Meaningfull Names
+# Clean Code
+
+## 2 - Meaningfull Names
 
 - Dont use hard to understand words, abbrevations or single letters.
 - Don't add noise words, use Product not ProductInfo or ProductData
@@ -6,7 +8,7 @@
 - Pick one word per concept ( use fetch or get verb for requests not both)
 - Use CS terms (JobQueue, AccountVisitor...)
 
-# 3 - Functions
+## 3 - Functions
 
 - FUNCTIONS SHOULD BE SMALL! DOES ONE THING AND THAT THING ONLY!
 - This implies that the blocks within if statements, else statements, while statements, and so on should be one line long. Probably that line should be a function call. Not only does this keep the enclosing function small, but it also adds documentary value because the function called within the block can have a nicely descriptive name
@@ -26,14 +28,14 @@
 - Extract try/catch blocks. Create seperate functions each one of them.
 - Master programmers think of systems as stories to be told rather than programs to be written. They use the facilities of their chosen programming language to construct a much richer and more expressive language that can be used to tell that story.
 
-# 4 - Comments
+## 4 - Comments
 
 - No comments, if possible!
 - Don't comment bad code, rewrite it!
 - The proper use of comments is to compensate for our failure to express ourself in code. Note that I used the word failure. I meant it. Comments are always failures. We must have them because we cannot always figure out how to express ourselves without them, but their use is not a cause for celebration.
 - Dont commented-out codes, delete them. You can use version control to see back.
 
-# 5 - Formatting
+## 5 - Formatting
 
 - We would like a source file to be like a newspaper article. The name should be simple but explanatory. The name, by itself, should be sufficient to tell us whether we are in the right module or not. The topmost parts of the source file should provide the high-level concepts and algorithms. Detail should increase as we move downward, until at the end we find the lowest level functions and details in the source file.
 - Concepts that are closely related should be kept vertically close to each other [G10]. Clearly this rule doesn’t work for concepts that belong in separate files. But then closely related concepts should not be separated into different files unless you have a very good reason. Indeed, this is one of the reasons that protected variables should be avoided.
@@ -41,25 +43,38 @@
 - Max 200 lines long files is optimal.
 - Max 120 characters in one line is OK. 80 and 100 are also good.
 
-# 6 - Objects and Data Structures
+## 6 - Objects and Data Structures
 
-# 7 - Error Handling
+## 7 - Error Handling
 
 - DO NOT RETURN NULL. If you are tempted to return null from a method, consider throwing an exception or returning a SPECIAL CASE object instead. If you are calling a null-returning method from a third-party API, consider wrapping that method with a method that either throws an exception or returns a special case object.
 
-# 8 - Boundaries
+## 8 - Boundaries
 
-# 9 - Unit Tests
+## 9 - Unit Tests
 
-# 10 - Classes
+## 10 - Classes
 
 - Classes should be small! As with functions, our immediate question is always “How small?”
   With functions we measured size by counting physical lines. With classes we use a different measure. We count responsibilities.
 
-# 11 - Systems
+## 11 - Systems
 
-# 12 - Emergence
+## 12 - Emergence
 
-# 13 - Concurrency
+## 13 - Concurrency
 
-# 14 - Successive Refinement
+## 14 - Successive Refinement
+
+# Clean Coder
+
+## 1 - Professionalism
+
+It’s a lot easier to be a nonprofessional. Nonprofessionals don’t have to take responsibility for the job they do—they leave that to their employers. If a nonprofessional makes an error, the employer cleans up the mess. But when a professional makes a mistake, he cleans up the mess.
+What would happen if you allowed a bug to slip through a module, and it cost your company $10,000? The nonprofessional would shrug his shoulders, say “stuff happens,” and start writing the next module. The professional would write the company a check for $10,000!1
+Yeah, it feels a little different when it’s your own money, doesn’t it? But that feeling is the feeling a professional has all the time. Indeed, that feeling is the essence of professionalism. Because, you see, professionalism is all about taking responsibility.
+
+- First do not harm. Do not harm to functionality of your software. We harm the function of our software when we create bugs. Therefore, in order to be professional, we must not create bugs.
+
+- QA should find nothing
+- You must know your code works. So test it. Test it all ways to Sunday.
